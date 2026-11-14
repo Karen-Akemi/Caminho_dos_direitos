@@ -105,6 +105,8 @@ Responde a pergunta: **quem está sem documento ou sem direito, onde, e o que fa
 - **Quem tem direito e ainda não recebe:** mapa de calor por faixa de renda e faixa etária;
 - **campanhas recomendadas**, só para distritos de prioridade **urgente** ou **alta**;
 - **alertas cruzados**, regras que juntam um dado do território com o que o app registrou;
+- **efetividade dos lembretes:** faltas nos encaminhamentos de quem recebeu lembrete (texto, áudio ou os dois) comparadas com as de quem não recebeu;
+- **cobertura dos lembretes:** por faixa etária, quem recebe no próprio WhatsApp, no WhatsApp de um familiar, quem tem WhatsApp e não aceitou e quem não tem WhatsApp;
 - filtros: subprefeitura, distrito, unidade e programa;
 - **segurança por linha** no Power BI: cada gestor vê apenas a sua subprefeitura.
 
@@ -136,6 +138,8 @@ Compara cada distrito com os de perfil social parecido. Onde a cobertura de **BP
 </p>
 
 A versão HTML do painel roda direto no navegador, **sem baixar nada nem instalar o Power BI**: os filtros de subprefeitura, distrito, unidade e programa funcionam na própria página. O arquivo é autocontido ([`dashboard/index.html`](dashboard/index.html)) e é publicado pelo GitHub Pages.
+
+O arquivo do Power BI também está no repositório: [`dashboard/Caminho-dos-direitos.pbix`](dashboard/Caminho-dos-direitos.pbix) (abre no Power BI Desktop).
 
 <details>
 <summary><b>Como publicar o dashboard no GitHub Pages</b></summary>
@@ -257,7 +261,8 @@ flowchart LR
 ├── assets/
 │   └── logo.png
 ├── dashboard/
-│   └── index.html                 # Painel do monitoramento interativo (HTML autocontido)
+│   ├── index.html                 # Painel do monitoramento interativo (HTML autocontido)
+│   └── Caminho-dos-direitos.pbix  # arquivo do Power BI
 ├── notebooks/
 │   ├── Tratamento_GS_v5.ipynb      # 1. tratamento das bases públicas
 │   ├── Modelo_GS_v4.ipynb          # 2. modelo de priorização e campanhas
@@ -283,7 +288,7 @@ flowchart LR
 | Tratamento das bases públicas | ✅ Concluído |
 | Modelo de priorização e recomendação de campanhas | ✅ Concluído |
 | Simulação dos dados do app | ✅ Concluído |
-| Painel do monitoramento (versão HTML interativa) | ✅ Concluído |
+| Painel do monitoramento (Power BI e versão HTML interativa) | ✅ Concluído |
 | Protótipo do app no Figma | 🚧 Em finalização · [link atual](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
 | Diagrama do star schema | 🚧 Em finalização |
 | Slides | 🚧 Em finalização |
