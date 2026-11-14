@@ -211,19 +211,28 @@ Os dados simulados **não inventam as proporções**: 5.000 pessoas acompanhadas
 
 ## 🧩 Modelagem de dados
 
-- **Hierarquia comum** ao app e ao dashboard: subprefeitura → distrito → unidade (UBS/CRAS) → caso.
-- **Modelo conceitual:** Profissional, Caso, Item do plano, Encaminhamento e Campanha.
-- **Modelo no Power BI** (relacionamentos um para muitos, filtro em direção única):
+A modelagem segue a sequência **conceitual → lógico → dimensional**, do que o agente registra no app até o painel.
+
+- **Modelo dimensional:** Snowflake + Galaxy (constelação de fatos). São 7 tabelas fato com grãos diferentes que compartilham dimensões, e a hierarquia territorial (subprefeitura → distrito → unidade → caso) é normalizada para os filtros do painel.
+- **Duas origens no mesmo modelo:** bases públicas (REAL e ESTIMATIVA DO MODELO) e dados do app (SIMULADO, gerados a partir dos dados reais). Elas se encontram no **distrito**, e a coluna `origem` identifica cada uma.
 
 | Tipo | Tabelas |
 |---|---|
+| Dimensões | `dim_subprefeitura`, `dim_distrito`, `dim_equipamento`, `dim_programa`, `dim_caso`, `dim_tempo` (proposta em escala) |
+| Fatos do território | `fato_indicadores_distrito`, `fato_recomendacoes`, `fato_risco_setor` |
+| Fatos do app (SIMULADO) | `fato_item_plano` (um direito sugerido por caso, com a situação), `fato_documento_pendente`, `fato_encaminhamento` (destino, resultado e lembrete) |
+| Fato que cruza app e território | `fato_alertas` |
+
+- **Dados sensíveis ficam fora do modelo analítico:** login, PIN, pedidos de acesso, nomes de profissionais e telefones. A `dim_caso` não tem nome, apelido nem CPF; o painel só precisa do id.
+
+📂 Modelo conceitual, modelo lógico, modelo dimensional, matrizes de granularidade e barramento e dicionário de dados: [`modelagem/`](modelagem/).
+
+---|---|
 | Dimensões | `dim_subprefeitura`, `dim_distrito`, `dim_equipamento`, `dim_programa`, `dim_caso` |
 | Fatos do território | `fato_indicadores_distrito`, `fato_recomendacoes` |
 | Fatos do app (SIMULADO) | `fato_item_plano` (um direito sugerido por caso, com a situação), `fato_documento_pendente`, `fato_encaminhamento` (destino e resultado: agendado, compareceu, concluído ou faltou), `fato_alertas` |
 
 - **Dados sensíveis ficam fora do modelo analítico:** login, PIN, pedidos de acesso e nomes de profissionais. A `dim_caso` não tem nome, apelido nem CPF; o painel só precisa do id.
-
-> 🚧 O diagrama do star schema está em finalização e será adicionado em [`modelagem/`](modelagem/).
 
 ---
 
