@@ -10,6 +10,7 @@
 
 <p align="center">
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/"><b>📊 Abrir o dashboard</b></a> ·
+  <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>🌐 Site do projeto</b></a> ·
   <a href="https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B"><b>🎨 Protótipo no Figma</b></a> ·
   <a href="#-status-da-entrega"><b>🎥 Pitch</b></a> ·
   <a href="#-status-da-entrega"><b>🖥️ Slides</b></a>
@@ -33,6 +34,7 @@
 - [O problema](#-o-problema)
 - [A solução](#-a-solução)
 - [Principais resultados](#-principais-resultados)
+- [Site do projeto](#-site-do-projeto)
 - [Dashboard interativo](#-dashboard-interativo)
 - [Dados](#-dados)
 - [Real, estimativa e simulado](#-real-estimativa-e-simulado)
@@ -92,6 +94,25 @@ O agente (de saúde ou do serviço social) é quem encurta a distância entre a 
 - **Acesso simples, sem gov.br:** o agente pede acesso com CPF e a unidade (UBS/CRAS) e o coordenador aprova. A entrada é por PIN de 6 dígitos ou código por WhatsApp.
 - **Visão do coordenador** (no mesmo app): aba *Equipe* para aprovar ou recusar acessos e desligar agentes, visão dos casos da *Unidade* e transferência de casos entre agentes.
 
+### 📱 Telas do app
+
+<table>
+<tr>
+<td align="center" width="25%"><img src="assets/telas/login.png" alt="Tela: Login do agente" width="180"><br><sub><b>Login do agente</b></sub></td>
+<td align="center" width="25%"><img src="assets/telas/casos.png" alt="Tela: Meus casos" width="180"><br><sub><b>Meus casos</b></sub></td>
+<td align="center" width="25%"><img src="assets/telas/formulario.png" alt="Tela: Novo atendimento" width="180"><br><sub><b>Novo atendimento</b></sub></td>
+<td align="center" width="25%"><img src="assets/telas/plano.png" alt="Tela: Plano de direitos" width="180"><br><sub><b>Plano de direitos</b></sub></td>
+</tr>
+<tr>
+<td align="center" width="25%"><img src="assets/telas/encaminhamento.png" alt="Tela: Encaminhamento" width="180"><br><sub><b>Encaminhamento</b></sub></td>
+<td align="center" width="25%"><img src="assets/telas/dona-cida.png" alt="Tela: Acompanhamento do caso" width="180"><br><sub><b>Acompanhamento do caso</b></sub></td>
+<td align="center" width="25%"><img src="assets/telas/anotacao-ia.png" alt="Tela: Anotação por voz com IA" width="180"><br><sub><b>Anotação por voz com IA</b></sub></td>
+<td align="center" width="25%"><img src="assets/telas/equipe.png" alt="Tela: Equipe do coordenador" width="180"><br><sub><b>Equipe do coordenador</b></sub></td>
+</tr>
+</table>
+
+🎨 Navegue pelo protótipo completo no [Figma](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) ou conheça a jornada da Dona Cida no [site do projeto](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html).
+
 A ideia é ser um diferencial em relação ao e-SUS para os profissionais que trabalham em campo. O motor de regras do Plano de Direitos, a calculadora de renda, a anotação por voz e o lembrete por WhatsApp são demonstrados no notebook [`caminho_dos_direitos_colab_v3`](notebooks/caminho_dos_direitos_colab_v3.ipynb), com a persona **Dona Cida**, a mesma das telas do protótipo.
 
 ### 2. Painel do monitoramento
@@ -128,6 +149,16 @@ Compara cada distrito com os de perfil social parecido. Onde a cobertura de **BP
 | ⚠️ **Área de risco agrava** | quanto mais setores de risco R3/R4, mais gente com direito provável fica sem benefício por habitante (Spearman 0,23, significativo a 5%) |
 | 🚌 **Distância ao CRAS** | não tem relação clara com a falta de benefício (Spearman 0,06, p = 0,55) |
 | 🤖 **Qualidade do modelo** | BPC idoso: Random Forest com R² 0,81 (validação cruzada). Bolsa Família: R² 0,19, mais fraco, e por isso a lacuna do Bolsa Família é tratada como mais incerta |
+
+---
+
+## 🌐 Site do projeto
+
+<p align="center">
+  <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>▶️ Abrir o site de apresentação</b></a>
+</p>
+
+Uma página para conhecer o projeto sem precisar abrir o código: o problema, a jornada da Dona Cida (visita, plano, encaminhamento e lembrete), os três olhares do app (agente de campo, coordenador e gestão), as telas do protótipo com o Figma incorporado, o painel interativo, os dados e o modelo, perguntas frequentes e a equipe. O arquivo é o [`indexsite.html`](indexsite.html).
 
 ---
 
@@ -227,12 +258,16 @@ A modelagem segue a sequência **conceitual → lógico → dimensional**, do qu
 
 📂 Modelo conceitual, modelo lógico, modelo dimensional, matrizes de granularidade e barramento e dicionário de dados: [`modelagem/`](modelagem/).
 
----|---|
-| Dimensões | `dim_subprefeitura`, `dim_distrito`, `dim_equipamento`, `dim_programa`, `dim_caso` |
-| Fatos do território | `fato_indicadores_distrito`, `fato_recomendacoes` |
-| Fatos do app (SIMULADO) | `fato_item_plano` (um direito sugerido por caso, com a situação), `fato_documento_pendente`, `fato_encaminhamento` (destino e resultado: agendado, compareceu, concluído ou faltou), `fato_alertas` |
+<p align="center">
+  <img src="modelagem/3_dimensional/modelo_dimensional.svg" alt="Modelo dimensional Snowflake + Galaxy" width="800">
+</p>
 
-- **Dados sensíveis ficam fora do modelo analítico:** login, PIN, pedidos de acesso e nomes de profissionais. A `dim_caso` não tem nome, apelido nem CPF; o painel só precisa do id.
+| Etapa | O que traz | Arquivos |
+|---|---|---|
+| 1. Conceitual | O que o app registra: 16 entidades, 25 relacionamentos e as regras de negócio, cada uma ligada à tela do protótipo | [diagrama](modelagem/1_conceitual/modelo_conceitual.png) · [entidades e regras](modelagem/1_conceitual/modelo_conceitual.md) |
+| 2. Lógico | O modelo conceitual com chaves e tipos, feito no Oracle SQL Developer Data Modeler | [diagrama](modelagem/2_logico/modelo_logico_app.svg) · [script SQL](modelagem/2_logico/modelo_logico_app.sql) |
+| 3. Dimensional | Snowflake + Galaxy, com matriz de granularidade e matriz de barramento | [diagrama](modelagem/3_dimensional/modelo_dimensional.svg) · [matrizes e decisões](modelagem/3_dimensional/matriz_granularidade_barramento.md) · [script SQL](modelagem/3_dimensional/modelo_dimensional.sql) |
+| Dicionário de dados | Todas as tabelas e colunas, com a rastreabilidade tela do app → tabela → quadro do painel | [dicionario_dados.md](modelagem/dicionario_dados.md) |
 
 ---
 
@@ -268,8 +303,10 @@ flowchart LR
 ```
 ├── README.md
 ├── index.html                     # redireciona o GitHub Pages para o painel
+├── indexsite.html                 # site de apresentação do projeto
 ├── assets/
-│   └── logo.png
+│   ├── logo.png
+│   └── telas/                     # telas do protótipo do app
 ├── dashboard/
 │   ├── index.html                 # Painel do monitoramento interativo (HTML autocontido)
 │   └── Caminho-dos-direitos.pbix  # arquivo do Power BI
@@ -285,7 +322,12 @@ flowchart LR
 ├── documentacao/
 │   └── Notebooks_e_bases_de_dados.pdf   # guia dos notebooks e das bases de dados
 ├── apresentacao/                  # 🚧 pitch e slides (em finalização)
-└── modelagem/  # modelos conceitual, lógico e dimensional + dicionário de dados
+└── modelagem/
+    ├── README.md
+    ├── dicionario_dados.md
+    ├── 1_conceitual/              # modelo conceitual e regras de negócio
+    ├── 2_logico/                  # modelo lógico do app (Data Modeler)
+    └── 3_dimensional/             # Snowflake + Galaxy, matrizes e script SQL
 ```
 
 ---
@@ -299,7 +341,8 @@ flowchart LR
 | Simulação dos dados do app | ✅ Concluído |
 | Painel do monitoramento (Power BI e versão HTML interativa) | ✅ Concluído |
 | Protótipo do app no Figma | ✅ Concluído · [link atual](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
-| Modelagem de dados (conceitual, lógico e dimensional Snowflake + Galaxy) | ✅ Concluído |
+| Modelagem de dados (conceitual, lógico e dimensional Snowflake + Galaxy) | ✅ Concluído · [ver](modelagem/) |
+| Site de apresentação | ✅ Concluído · [abrir](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html) |
 | Arquitetura de Dados | 🚧 Em finalização |
 | Slides de Entrega | 🚧 Em finalização |
 | Vídeo do pitch | 🚧 Em finalização |
@@ -308,7 +351,7 @@ flowchart LR
 
 ## 🛠️ Tecnologias
 
-**Python** (pandas, NumPy, scikit-learn, SciPy, statsmodels, GeoPandas, PySAL) no **Google Colab** · **Power BI** · **Figma** · **GitHub Pages**
+**Python** (pandas, NumPy, scikit-learn, SciPy, statsmodels, GeoPandas, PySAL) no **Google Colab** · **Power BI** · **Figma** · **Oracle SQL Developer Data Modeler** · **GitHub Pages**
 
 ---
 
