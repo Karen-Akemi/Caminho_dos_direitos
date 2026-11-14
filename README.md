@@ -296,11 +296,11 @@ flowchart LR
 
 ## 👥 Equipe
 
-| Integrante | Responsabilidade |
+| Integrante |
 |---|---|
-| **Angelo Rabello** | Slides e apresentação |
-| **Karen Akemi de Oliveira** | Dashboard e dados (tratamento, análise, modelagem e Power BI) |
-| **Milena Barbosa** | Protótipo do app |
+| **Angelo Rabello** |
+| **Karen Akemi de Oliveira** |
+| **Milena Barbosa** |
 
 ---
 
