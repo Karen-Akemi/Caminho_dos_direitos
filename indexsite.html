@@ -62,7 +62,7 @@ h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin-bottom:14px}
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
 nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
 .marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;color:var(--azul)}
-.marca img{height:44px;width:auto}
+.marca img{height:52px;width:auto}
 nav ul{display:flex;gap:28px;list-style:none}
 nav ul a{text-decoration:none;color:var(--texto-2);font-size:14px;font-weight:500}
 nav ul a:hover{color:var(--azul)}
@@ -83,13 +83,19 @@ nav ul a:hover{color:var(--azul)}
 .hero-arte{position:relative;display:grid;place-items:center;min-height:520px}
 .hero-arte::before{content:"";position:absolute;width:440px;height:440px;max-width:90%;aspect-ratio:1;border-radius:50%;background:var(--azul-claro)}
 .hero-arte::after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:var(--amarelo);right:8%;top:6%;opacity:.9}
-.hero-arte img,.hero-arte .ph{position:relative;z-index:1;max-height:560px;width:auto}
-.hero-arte .ph{width:320px;min-height:520px;border-radius:36px}
 .selo{position:absolute;z-index:2;background:#fff;border-radius:16px;box-shadow:var(--sombra);padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600}
 .selo i{font-style:normal;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px}
 .selo.s1{left:0;bottom:22%}
 .selo.s2{right:0;bottom:8%}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-arte{min-height:440px}.selo{display:none}}
+
+/* Celulares (mockup em CSS) */
+.celulares{position:relative;width:420px;max-width:100%;height:600px;z-index:1}
+.cel{position:absolute;width:270px;height:560px;border:11px solid #0B1F4D;border-radius:42px;overflow:hidden;background:#fff;box-shadow:0 24px 50px rgba(11,31,77,.28)}
+.cel img{width:100%;height:100%;object-fit:cover;object-position:top}
+.cel.frente{right:0;top:30px}
+.cel.tras{left:0;top:0;transform:rotate(-6deg) scale(.9);opacity:.95}
+@media(max-width:560px){.celulares{height:520px}.cel{width:220px;height:460px}}
 
 /* ===== FAIXA DE PARCEIROS ===== */
 .faixa-azul{background:var(--azul);color:#fff;padding:34px 0}
@@ -105,8 +111,6 @@ nav ul a:hover{color:var(--azul)}
 @media(max-width:900px){.func-grid{grid-template-columns:1fr}}
 .func-arte{position:relative;display:grid;place-items:center}
 .func-arte::before{content:"";position:absolute;inset:8% 4%;border-radius:32px;background:var(--azul-claro)}
-.func-arte img,.func-arte .ph{position:relative;max-height:600px;width:auto}
-.func-arte .ph{width:100%}
 .func{list-style:none;display:grid;gap:12px;margin-top:28px}
 .func li{display:flex;align-items:center;gap:14px;background:var(--navy);color:#fff;border-radius:12px;padding:15px 18px;font-weight:600;font-size:15px}
 .func li::before{content:"✓";flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--verde);display:grid;place-items:center;font-size:14px}
@@ -190,7 +194,7 @@ nav ul a:hover{color:var(--azul)}
 .telas{display:flex;gap:22px;overflow-x:auto;padding:40px 4px 20px;scroll-snap-type:x mandatory}
 .telas::-webkit-scrollbar{height:8px}.telas::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:8px}
 .telas figure{flex:0 0 230px;scroll-snap-align:start}
-.telas img,.telas .ph{border-radius:22px;min-height:470px;box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.telas img,.telas .ph{border-radius:22px;height:480px;width:100%;object-fit:cover;object-position:top;box-shadow:0 14px 30px rgba(0,0,0,.3)}
 .telas .ph{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);color:#C9D5F0}
 .telas figcaption{font-size:14px;text-align:center;margin-top:12px;color:#C9D5F0}
 .embed{margin-top:28px;border-radius:var(--raio);overflow:hidden;background:#fff}
@@ -292,9 +296,11 @@ footer{background:var(--navy);color:#C9D5F0;padding:64px 0 0;font-size:14px}
       </div>
     </div>
     <div class="hero-arte">
-      <!-- Mockup do app (celular). Troque pelo arquivo exportado do Photoshop/Figma -->
-      <img src="assets/site/hero-mockup.png" alt="Telas do app Caminho dos Direitos no celular"
-           onerror="this.outerHTML='<div class=ph>assets/site/hero-mockup.png<br>(mockup do celular)</div>'">
+      <!-- Mockup em código: celulares com as telas exportadas do Figma -->
+      <div class="celulares">
+        <div class="cel tras"><img src="assets/telas/casos.png" alt=""></div>
+        <div class="cel frente"><img src="assets/telas/plano.png" alt="Tela do plano de direitos no app"></div>
+      </div>
       <div class="selo s1"><i style="background:var(--verde-claro)">✓</i>Plano de direitos gerado</div>
       <div class="selo s2"><i style="background:var(--amarelo-claro)">💬</i>Lembrete enviado no WhatsApp</div>
     </div>
@@ -321,9 +327,10 @@ footer{background:var(--navy);color:#C9D5F0;padding:64px 0 0;font-size:14px}
 <section id="funcionalidades">
   <div class="wrap func-grid">
     <div class="func-arte">
-      <!-- Mockup das funcionalidades (Photoshop/Figma) -->
-      <img src="assets/site/funcionalidades-mockup.png" alt="Mockup do app mostrando o plano de direitos"
-           onerror="this.outerHTML='<div class=ph style=min-height:560px>assets/site/funcionalidades-mockup.png<br>(mockup das funcionalidades)</div>'">
+      <div class="celulares">
+        <div class="cel tras"><img src="assets/telas/anotacao-ia.png" alt=""></div>
+        <div class="cel frente"><img src="assets/telas/encaminhamento.png" alt="Tela de encaminhamento com lembrete no WhatsApp"></div>
+      </div>
     </div>
     <div>
       <span class="tag">Funcionalidades</span>
