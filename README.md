@@ -113,7 +113,7 @@ O agente (de saúde ou do serviço social) é quem encurta a distância entre a 
 
 🎨 Navegue pelo protótipo completo no [Figma](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) ou conheça a jornada da Dona Cida no [site do projeto](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html).
 
-A ideia é ser um diferencial em relação ao e-SUS para os profissionais que trabalham em campo. O motor de regras do Plano de Direitos, a calculadora de renda, a anotação por voz e o lembrete por WhatsApp são demonstrados no notebook [`caminho_dos_direitos_colab_v3`](notebooks/caminho_dos_direitos_colab_v3.ipynb), com a persona **Dona Cida**, a mesma das telas do protótipo.
+A ideia é ser um diferencial em relação ao e-SUS para os profissionais que trabalham em campo. O motor de regras do Plano de Direitos, a calculadora de renda, a anotação por voz e o lembrete por WhatsApp são demonstrados no notebook [`caminho_dos_direitos_colab_v4`](notebooks/caminho_dos_direitos_colab_v4.ipynb), com a persona **Dona Cida**, a mesma das telas do protótipo. A anotação por voz também tem um notebook próprio, mais completo ([`anotacao_por_voz`](notebooks/anotacao_por_voz.ipynb)), e o lembrete chega ao WhatsApp de verdade pelo [`servidor_whatsapp_colab`](notebooks/servidor_whatsapp_colab.ipynb), feito com a Cloud API da Meta.
 
 ### 2. Painel do monitoramento
 
@@ -273,7 +273,7 @@ A modelagem segue a sequência **conceitual → lógico → dimensional**, do qu
 
 ## 🐍 Notebooks e como reproduzir
 
-Os notebooks rodam no **Google Colab** com o Google Drive. A trilha do dashboard roda em ordem; o notebook do app é independente.
+Os notebooks rodam no **Google Colab** com o Google Drive. São 6 notebooks em duas trilhas: a do dashboard roda em ordem; a do app é independente.
 
 ```mermaid
 flowchart LR
@@ -290,11 +290,13 @@ flowchart LR
 | 1 | [`Tratamento_GS_v6`](notebooks/Tratamento_GS_v6.ipynb) | Padroniza os nomes dos distritos, junta e confere as bases públicas | [`dados/saida/`](dados/saida) |
 | 2 | [`Modelo_GS_v4`](notebooks/Modelo_GS_v4.ipynb) | Estima quem tem direito e não recebe, prioriza distritos e sugere campanhas | [`dados/saida_modelo/`](dados/saida_modelo) |
 | 3 | [`Simulacao_App_v2`](notebooks/Simulacao_App_v2.ipynb) | Simula o que os agentes registrariam no app (casos, Plano de Direitos, documentos, encaminhamentos, lembretes por WhatsApp e alertas), calibrado nos dados reais e no modelo | [`dados/saida_app/`](dados/saida_app) |
-| — | [`caminho_dos_direitos_colab_v3`](notebooks/caminho_dos_direitos_colab_v3.ipynb) | Demonstra o app: Plano de Direitos, calculadora de renda, testes, IA, anotação por voz e WhatsApp | — |
+| App | [`caminho_dos_direitos_colab_v4`](notebooks/caminho_dos_direitos_colab_v4.ipynb) | Demonstra o app com a Dona Cida: Plano de Direitos, testes, IA (RAG), calculadora de renda, anotação por voz, lembrete por WhatsApp e comparação de vozes | — |
+| App | [`anotacao_por_voz`](notebooks/anotacao_por_voz.ipynb) | Anotação por voz com IA: transcreve, remove dado clínico, resume a visita e sugere 10 marcações que o agente confirma | — |
+| App | [`servidor_whatsapp_colab`](notebooks/servidor_whatsapp_colab.ipynb) | Servidor do WhatsApp de verdade (Cloud API da Meta): lembrete em texto com o botão "Ouvir em áudio" e mensagem de voz | — |
 
 **Para rodar:** coloque as bases brutas na pasta `Meu Drive/Dados` e, em cada notebook, use **Ambiente de execução → Executar tudo**. O 2 só funciona depois do 1, e o 3 depois do 2, porque cada um lê os arquivos que o anterior gera. Os CSVs usam `;` como separador e vírgula decimal.
 
-📄 Guia completo, com as bases, os arquivos de entrada, as saídas, o Power BI e os problemas comuns: [`documentacao/Notebooks_e_bases_de_dados.pdf`](documentacao/Notebooks_e_bases_de_dados.pdf).
+📄 Guia de cada notebook, seção por seção: [`notebooks/README.md`](notebooks/README.md). Bases, saídas da trilha do dashboard, Power BI e problemas comuns: [`documentacao/Notebooks_e_bases_de_dados.pdf`](documentacao/Notebooks_e_bases_de_dados.pdf).
 
 ---
 
@@ -314,7 +316,10 @@ flowchart LR
 │   ├── Tratamento_GS_v6.ipynb      # 1. tratamento das bases públicas
 │   ├── Modelo_GS_v4.ipynb          # 2. modelo de priorização e campanhas
 │   ├── Simulacao_App_v2.ipynb      # 3. simulação dos dados do app
-│   └── caminho_dos_direitos_colab_v3.ipynb   # demonstração do app
+│   ├── caminho_dos_direitos_colab_v4.ipynb   # demonstração do app
+│   ├── anotacao_por_voz.ipynb      # anotação por voz com IA
+│   ├── servidor_whatsapp_colab.ipynb   # WhatsApp de verdade (Cloud API)
+│   └── README.md                   # guia dos notebooks
 ├── dados/
 │   ├── saida/                     # território tratado (dimensões, acesso, risco, mapas)
 │   ├── saida_modelo/              # indicadores, lacunas, recomendações e métricas do modelo
