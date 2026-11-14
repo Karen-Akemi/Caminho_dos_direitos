@@ -285,7 +285,7 @@ flowchart LR
 ├── documentacao/
 │   └── Notebooks_e_bases_de_dados.pdf   # guia dos notebooks e das bases de dados
 ├── apresentacao/                  # 🚧 pitch e slides (em finalização)
-└── modelagem/                     # 🚧 star schema (em finalização)
+└── modelagem/  # modelos conceitual, lógico e dimensional + dicionário de dados
 ```
 
 ---
@@ -298,8 +298,8 @@ flowchart LR
 | Modelo de priorização e recomendação de campanhas | ✅ Concluído |
 | Simulação dos dados do app | ✅ Concluído |
 | Painel do monitoramento (Power BI e versão HTML interativa) | ✅ Concluído |
-| Protótipo do app no Figma | 🚧 Em finalização · [link atual](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
-| Modelo Dimensional (Snowflake + Galaxy) | 🚧 Em finalização |
+| Protótipo do app no Figma | ✅ Concluído · [link atual](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
+| Modelagem de dados (conceitual, lógico e dimensional Snowflake + Galaxy) | ✅ Concluído |
 | Slides | 🚧 Em finalização |
 | Vídeo do pitch | 🚧 Em finalização |
 
