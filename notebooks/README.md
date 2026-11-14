@@ -37,6 +37,16 @@ Demonstra o app funcionando com a persona **Dona Cida**, a mesma das telas do pr
 
 **Arquivos de apoio no Drive:** `simulador.py`, `avaliar.py`, `regras.csv`, `casos_teste.json`, `explicador.py` e `base_conhecimento.csv` são obrigatórios. `anotacoes.py` (seção 10), `whatsapp.py` (seção 11) e `voz.py` (seção 11b) são opcionais. Podem ficar todos na mesma pasta ou separados em `simulador/` e `ia/`.
 
+**Módulos de IA neste repositório** ([`ia/`](ia/)):
+
+| Arquivo | Para quê | Usado em |
+|---|---|---|
+| [`anotacoes.py`](ia/anotacoes.py) | Anotação por voz: transcrição (Whisper), filtro de dado clínico, resumo da visita e 5 marcações | Notebook 4, seção 10 |
+| [`voz.py`](ia/voz.py) | Texto → mensagem de voz em OGG/Opus, com voz neural (edge-tts) e gTTS como reserva | Notebook 4, seção 11b, e notebook 6 |
+| [`servidor_whatsapp.py`](ia/servidor_whatsapp.py) | Servidor do WhatsApp (Cloud API da Meta): envia o lembrete, recebe o webhook, PARAR / VOLTAR e status de entrega | Notebook 6 |
+
+Para rodar, copie esses arquivos para a pasta do projeto no Drive. Os segredos (tokens da Meta e chave do Claude) ficam só nos Secrets do Colab, nunca no código.
+
 ---
 
 ## 5. anotacao_por_voz

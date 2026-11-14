@@ -319,6 +319,7 @@ flowchart LR
 │   ├── caminho_dos_direitos_colab_v4.ipynb   # demonstração do app
 │   ├── anotacao_por_voz.ipynb      # anotação por voz com IA
 │   ├── servidor_whatsapp_colab.ipynb   # WhatsApp de verdade (Cloud API)
+│   ├── ia/                         # anotacoes.py, voz.py e servidor_whatsapp.py
 │   └── README.md                   # guia dos notebooks
 ├── dados/
 │   ├── saida/                     # território tratado (dimensões, acesso, risco, mapas)
