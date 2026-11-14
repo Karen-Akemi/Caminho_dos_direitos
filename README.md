@@ -290,7 +290,7 @@ flowchart LR
 | Simulação dos dados do app | ✅ Concluído |
 | Painel do monitoramento (Power BI e versão HTML interativa) | ✅ Concluído |
 | Protótipo do app no Figma | 🚧 Em finalização · [link atual](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
-| Diagrama do star schema | 🚧 Em finalização |
+| Modelo Dimensional (Snowflake + Galaxy) | 🚧 Em finalização |
 | Slides | 🚧 Em finalização |
 | Vídeo do pitch | 🚧 Em finalização |
 
