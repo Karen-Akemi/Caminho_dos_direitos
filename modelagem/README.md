@@ -35,7 +35,7 @@ O que o app registra: 16 entidades, 25 relacionamentos e as regras de negócio, 
 
 O modelo conceitual com chaves e tipos, feito no Oracle SQL Developer Data Modeler.
 
-![Modelo lógico do app](2_logico/modelo_logico_app.png)
+![Modelo lógico do app](2_logico/modelo_logico_app.svg)
 
 🗄️ Script para importar no Data Modeler: [`modelo_logico_app.sql`](2_logico/modelo_logico_app.sql)
 
