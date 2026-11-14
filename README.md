@@ -300,7 +300,8 @@ flowchart LR
 | Painel do monitoramento (Power BI e versão HTML interativa) | ✅ Concluído |
 | Protótipo do app no Figma | ✅ Concluído · [link atual](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
 | Modelagem de dados (conceitual, lógico e dimensional Snowflake + Galaxy) | ✅ Concluído |
-| Slides | 🚧 Em finalização |
+| Arquitetura de Dados | 🚧 Em finalização |
+| Slides de Entrega | 🚧 Em finalização |
 | Vídeo do pitch | 🚧 Em finalização |
 
 ---
