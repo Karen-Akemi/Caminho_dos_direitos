@@ -1,0 +1,8 @@
+﻿id_programa;programa;onde_pedir;tem_dado_publico_por_distrito
+1;Documentação básica;Cartório / Poupatempo;False
+2;CadÚnico;CRAS (SMADS);True
+3;Bolsa Família;MDS via CadÚnico;True
+4;BPC;INSS;True
+5;Tarifa Social de Energia;Distribuidora (Enel SP);False
+6;Pé-de-Meia;MEC;False
+7;Farmácia Popular;Ministério da Saúde;False

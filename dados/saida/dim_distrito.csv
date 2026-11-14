@@ -1,0 +1,97 @@
+﻿cod_distrito;nome_distrito;subprefeitura;area_km2;pop_2022;densidade_hab_km2
+63;Pirituba;Pirituba/Jaraguá;17,122;179724,0;10496,878
+95;São Domingos;Pirituba/Jaraguá;9,887;88884,0;8990,013
+42;Jaraguá;Pirituba/Jaraguá;28,33;211610,0;7469,53
+11;Brasilândia;Freguesia/Brasilândia;21,079;243273,0;11540,85
+29;Freguesia do Ó;Freguesia/Brasilândia;11,017;137240,0;12457,074
+21;Casa Verde;Casa Verde/Cachoeirinha;7,203;80536,0;11180,86
+13;Cachoeirinha;Casa Verde/Cachoeirinha;13,543;143366,0;10585,749
+50;Limão;Casa Verde/Cachoeirinha;6,456;82373,0;12758,302
+86;Vila Guilherme;Vila Maria/Vila Guilherme;7,2;52587,0;7304,174
+89;Vila Maria;Vila Maria/Vila Guilherme;11,843;108543,0;9165,173
+92;Vila Medeiros;Vila Maria/Vila Guilherme;7,855;114939,0;14632,395
+5;Artur Alvim;Penha;6,507;95575,0;14688,36
+59;Penha;Penha;11,48;132452,0;11537,837
+18;Cangaíba;Penha;16,593;141172,0;8507,901
+91;Vila Matilde;Penha;8,767;103558,0;11811,859
+64;Ponte Rasa;Ermelino Matarazzo;6,595;89881,0;13628,23
+28;Ermelino Matarazzo;Ermelino Matarazzo;9,387;112333,0;11967,321
+84;Vila Curuçá;Itaim Paulista;9,462;140673,0;14867,307
+36;Itaim Paulista;Itaim Paulista;12,141;205295,0;16909,378
+31;Guaianases;Guaianases;8,945;109316,0;12220,663
+96;Lajeado;Guaianases;8,814;164391,0;18650,456
+6;Barra Funda;Lapa;5,853;33436,0;5712,518
+60;Perdizes;Lapa;6,337;102391,0;16156,994
+88;Vila Leopoldina;Lapa;6,992;46875,0;6703,726
+40;Jaguara;Lapa;4,576;24730,0;5404,78
+48;Lapa;Lapa;10,282;75533,0;7345,988
+41;Jaguaré;Lapa;6,529;55382,0;8483,058
+66;República;Sé;2,397;60720,0;25334,438
+69;Santa Cecília;Sé;3,759;80972,0;21539,889
+78;Sé;Sé;2,194;23832,0;10864,492
+7;Bela Vista;Sé;2,718;60024,0;22085,927
+9;Bom Retiro;Sé;4,205;33520,0;7970,641
+14;Cambuci;Sé;3,924;45163,0;11508,908
+26;Consolação;Sé;3,815;53249,0;13957,611
+49;Liberdade;Sé;3,651;66056,0;18094,01
+53;Mooca;Mooca;7,948;80880,0;10176,368
+56;Pari;Mooca;2,73;17359,0;6359,55
+80;Tatuapé;Mooca;8,513;98601,0;11582,557
+1;Água Rasa;Mooca;7,176;85788,0;11954,854
+8;Belém;Mooca;6,046;55785,0;9226,915
+10;Brás;Mooca;3,629;38750,0;10677,07
+20;Carrão;Aricanduva/Formosa/Carrão;7,901;84397,0;10681,524
+85;Vila Formosa;Aricanduva/Formosa/Carrão;7,472;92186,0;12337,791
+4;Aricanduva;Aricanduva/Formosa/Carrão;6,958;89574,0;12872,952
+73;São Mateus;São Mateus;12,818;155682,0;12145,683
+75;São Rafael;São Mateus;13,078;148145,0;11327,996
+33;Iguatemi;São Mateus;19,575;149700,0;7647,68
+93;Vila Prudente;Vila Prudente;9,583;105690,0;11028,463
+72;São Lucas;Vila Prudente;9,674;138038,0;14269,583
+54;Morumbi;Butantã;11,489;43690,0;3802,849
+67;Rio Pequeno;Butantã;9,535;131631,0;13804,606
+94;Vila Sônia;Butantã;9,99;123748,0;12387,074
+12;Butantã;Butantã;12,952;51715,0;3992,826
+65;Raposo Tavares;Butantã;12,441;117738,0;9463,59
+62;Pinheiros;Pinheiros;8,319;65145,0;7831,219
+2;Alto de Pinheiros;Pinheiros;7,461;37359,0;5007,189
+35;Itaim Bibi;Pinheiros;10,026;101452,0;10119,263
+45;Jardim Paulista;Pinheiros;6,186;81859,0;13232,764
+17;Campo Limpo;Campo Limpo;12,6;236162,0;18742,895
+19;Capão Redondo;Campo Limpo;13,769;270767,0;19665,346
+83;Vila Andrade;Campo Limpo;10,307;168669,0;16365,251
+43;Jardim Ângela;M'Boi Mirim;37,411;311432,0;8324,544
+46;Jardim São Luís;M'Boi Mirim;26,047;259377,0;9957,968
+79;Socorro;Capela do Socorro;11,965;38051,0;3180,211
+23;Cidade Dutra;Capela do Socorro;27,964;182459,0;6524,725
+30;Grajaú;Capela do Socorro;92,698;384873,0;4151,891
+52;Marsilac;Parelheiros;208,174;11443,0;54,968
+55;Parelheiros;Parelheiros;152,607;153695,0;1007,126
+25;Cidade Tiradentes;Cidade Tiradentes;14,934;194177,0;13002,433
+61;Perus;Perus;23,664;87723,0;3707,075
+3;Anhanguera;Perus;33,549;75360,0;2246,293
+76;Sapopemba;Sapopemba;13,624;266715,0;19576,827
+68;Sacomã;Ipiranga;14,558;261436,0;17958,55
+27;Cursino;Ipiranga;12,029;103171,0;8576,539
+34;Ipiranga;Ipiranga;11,004;116271,0;10565,918
+32;Moema;Vila Mariana;9,079;81899,0;9021,006
+77;Saúde;Vila Mariana;9,306;128469,0;13804,806
+90;Vila Mariana;Vila Mariana;8,597;127286,0;14806,155
+58;Pedreira;Cidade Ademar;18,326;163586,0;8926,281
+22;Cidade Ademar;Cidade Ademar;12,342;249218,0;20193,213
+39;Jaçanã;Jaçanã/Tremembé;8,26;87329,0;10572,21
+81;Tremembé;Jaçanã/Tremembé;56,706;196563,0;3466,339
+51;Mandaqui;Santana/Tucuruvi;13,246;103665,0;7825,865
+70;Santana;Santana/Tucuruvi;13,09;115689,0;8837,809
+82;Tucuruvi;Santana/Tucuruvi;9,44;99559,0;10546,855
+71;Santo Amaro;Santo Amaro;16,035;85349,0;5322,561
+16;Campo Grande;Santo Amaro;12,951;115925,0;8951,178
+15;Campo Belo;Santo Amaro;8,773;71058,0;8099,761
+38;Jabaquara;Jabaquara;14,008;214958,0;15345,401
+87;Vila Jacuí;São Miguel;8,277;134189,0;16211,551
+74;São Miguel;São Miguel;8,624;81011,0;9393,958
+44;Jardim Helena;São Miguel;9,144;129409,0;14152,63
+24;Cidade Líder;Itaquera;10,355;136660,0;13197,348
+57;Parque do Carmo;Itaquera;15,451;74677,0;4833,01
+47;José Bonifácio;Itaquera;14,571;128243,0;8801,347
+37;Itaquera;Itaquera;14,721;210960,0;14330,635

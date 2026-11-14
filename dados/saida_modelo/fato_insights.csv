@@ -1,0 +1,6 @@
+﻿ordem;insight;origem
+1;Quanto mais setores de risco R3/R4 o distrito tem, mais gente com direito provável fica sem benefício por habitante (correlação de Spearman 0,23, significativa a 5%): a área de risco agrava a falta de acesso.;ESTIMATIVA DO MODELO
+2;Os 10 distritos urgentes concentram 55% das pessoas com direito provável sem benefício (cerca de 54.947 pessoas).;ESTIMATIVA DO MODELO
+3;Nos distritos com área R3/R4, 38,2% das famílias do CadÚnico recebem Bolsa Família, contra 40,1% nos sem risco (2,0 pontos a menos). A diferença é significativa a 5%.;ESTIMATIVA DO MODELO
+4;A cobertura de BPC idoso é maior nos distritos com R3/R4 (14,6% contra 6,3%) porque eles têm mais famílias pobres (mais CadÚnico por habitante). Por isso o modelo compara cada distrito com os de perfil parecido, e não com a média da cidade.;ESTIMATIVA DO MODELO
+5;A distância ao CRAS não tem relação clara com a falta de benefício (Spearman 0,06, p = 0,55).;ESTIMATIVA DO MODELO

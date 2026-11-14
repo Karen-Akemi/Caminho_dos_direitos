@@ -1,0 +1,55 @@
+﻿cod_distrito;distrito;subprefeitura;classe_prioridade;acao;programa;cras_referencia;motivo;publico_estimado;origem
+11;Brasilândia;Freguesia/Brasilândia;urgente;Mutirão BPC: busca ativa de idosos 65+ com ACS e CRAS;BPC;CRAS - Rua Ibiraiaras, 372;Cobertura de BPC idoso 19,6% vs esperada 25,2%;1256,0;ESTIMATIVA DO MODELO
+11;Brasilândia;Freguesia/Brasilândia;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Ibiraiaras, 372;Cobertura do PBF 40,0% vs esperada 41,2%;614,0;ESTIMATIVA DO MODELO
+11;Brasilândia;Freguesia/Brasilândia;urgente;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Ibiraiaras, 372;52 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+13;Cachoeirinha;Casa Verde/Cachoeirinha;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Avenida Imirim, 4328;Cobertura do PBF 36,0% vs esperada 39,1%;782,0;ESTIMATIVA DO MODELO
+13;Cachoeirinha;Casa Verde/Cachoeirinha;alta;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Avenida Imirim, 4328;23 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+59;Penha;Penha;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Henrique Jacobs, 788;Distância média ao CRAS de 4,2 km (entre as 25% maiores);15266,0;ESTIMATIVA DO MODELO
+18;Cangaíba;Penha;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Avenida Paranagua, 1492;Cobertura do PBF 35,9% vs esperada 38,5%;593,0;ESTIMATIVA DO MODELO
+18;Cangaíba;Penha;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Avenida Paranagua, 1492;Distância média ao CRAS de 4,3 km (entre as 25% maiores);22865,0;ESTIMATIVA DO MODELO
+31;Guaianases;Guaianases;alta;Mutirão BPC: busca ativa de idosos 65+ com ACS e CRAS;BPC;CRAS - Rua Clarinia, 19;Cobertura de BPC idoso 18,8% vs esperada 22,3%;338,0;ESTIMATIVA DO MODELO
+31;Guaianases;Guaianases;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Clarinia, 19;Cobertura do PBF 38,9% vs esperada 41,1%;519,0;ESTIMATIVA DO MODELO
+31;Guaianases;Guaianases;alta;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Clarinia, 19;16 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+96;Lajeado;Guaianases;alta;Mutirão BPC: busca ativa de idosos 65+ com ACS e CRAS;BPC;CRAS - Rua Cruz Do Espirito Santo, 1142 C;Cobertura de BPC idoso 24,0% vs esperada 26,8%;352,0;ESTIMATIVA DO MODELO
+96;Lajeado;Guaianases;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Cruz Do Espirito Santo, 1142 C;Cobertura do PBF 41,8% vs esperada 43,4%;615,0;ESTIMATIVA DO MODELO
+96;Lajeado;Guaianases;alta;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Cruz Do Espirito Santo, 1142 C;13 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+88;Vila Leopoldina;Lapa;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Tito, 104;Distância média ao CRAS de 4,3 km (entre as 25% maiores);1984,0;ESTIMATIVA DO MODELO
+40;Jaguara;Lapa;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Guerino Giovani Leardini, 290;Distância média ao CRAS de 3,8 km (entre as 25% maiores);2324,0;ESTIMATIVA DO MODELO
+41;Jaguaré;Lapa;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Junta Mizumoto, 591;Distância média ao CRAS de 5,2 km (entre as 25% maiores);6266,0;ESTIMATIVA DO MODELO
+78;Sé;Sé;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Avenida Tiradentes, 749;Cobertura do PBF 58,4% vs esperada 69,8%;1642,0;ESTIMATIVA DO MODELO
+75;São Rafael;São Mateus;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Elisio Ferreira, 519;Distância média ao CRAS de 3,0 km (entre as 25% maiores);30962,0;ESTIMATIVA DO MODELO
+75;São Rafael;São Mateus;alta;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Elisio Ferreira, 519;15 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+33;Iguatemi;São Mateus;alta;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Jorge Barros, 88/92;29 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+65;Raposo Tavares;Butantã;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Estrada Do Campo Limpo, 3420;Cobertura do PBF 33,8% vs esperada 37,5%;619,0;ESTIMATIVA DO MODELO
+65;Raposo Tavares;Butantã;urgente;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Estrada Do Campo Limpo, 3420;Distância média ao CRAS de 4,6 km (entre as 25% maiores);16625,0;ESTIMATIVA DO MODELO
+65;Raposo Tavares;Butantã;urgente;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Estrada Do Campo Limpo, 3420;14 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+35;Itaim Bibi;Pinheiros;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua General Joao Pereira De Oliveira, 26;Distância média ao CRAS de 3,9 km (entre as 25% maiores);1499,0;ESTIMATIVA DO MODELO
+17;Campo Limpo;Campo Limpo;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Estrada Do Campo Limpo, 3420;Cobertura do PBF 32,1% vs esperada 38,8%;2401,0;ESTIMATIVA DO MODELO
+17;Campo Limpo;Campo Limpo;urgente;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Estrada Do Campo Limpo, 3420;22 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+19;Capão Redondo;Campo Limpo;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Luiz Baldinato, 150;Cobertura do PBF 32,5% vs esperada 39,6%;3301,0;ESTIMATIVA DO MODELO
+19;Capão Redondo;Campo Limpo;urgente;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Luiz Baldinato, 150;25 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+43;Jardim Ângela;M'Boi Mirim;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Luiz Baldinato, 150;Cobertura do PBF 36,9% vs esperada 41,7%;3081,0;ESTIMATIVA DO MODELO
+43;Jardim Ângela;M'Boi Mirim;urgente;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Luiz Baldinato, 150;Distância média ao CRAS de 3,6 km (entre as 25% maiores);65237,0;ESTIMATIVA DO MODELO
+43;Jardim Ângela;M'Boi Mirim;urgente;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Luiz Baldinato, 150;55 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+46;Jardim São Luís;M'Boi Mirim;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Avenida Inacio Dias Da Silva, S/N;Cobertura do PBF 33,1% vs esperada 38,8%;2528,0;ESTIMATIVA DO MODELO
+46;Jardim São Luís;M'Boi Mirim;urgente;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Avenida Inacio Dias Da Silva, S/N;16 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+23;Cidade Dutra;Capela do Socorro;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Ezequiel Lopes Cardoso, 333;Cobertura do PBF 31,4% vs esperada 38,5%;2135,0;ESTIMATIVA DO MODELO
+23;Cidade Dutra;Capela do Socorro;urgente;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Ezequiel Lopes Cardoso, 333;Distância média ao CRAS de 2,9 km (entre as 25% maiores);30171,0;ESTIMATIVA DO MODELO
+30;Grajaú;Capela do Socorro;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Ezequiel Lopes Cardoso, 333;Cobertura do PBF 38,1% vs esperada 41,2%;2397,0;ESTIMATIVA DO MODELO
+30;Grajaú;Capela do Socorro;urgente;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Ezequiel Lopes Cardoso, 333;Distância média ao CRAS de 5,0 km (entre as 25% maiores);77270,0;ESTIMATIVA DO MODELO
+30;Grajaú;Capela do Socorro;urgente;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Ezequiel Lopes Cardoso, 333;22 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+52;Marsilac;Parelheiros;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Henrique Silva, 68;Distância média ao CRAS de 3,2 km (entre as 25% maiores);2654,0;ESTIMATIVA DO MODELO
+55;Parelheiros;Parelheiros;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Pedro Klein Do Nascimento, 100;Cobertura do PBF 38,0% vs esperada 41,0%;1039,0;ESTIMATIVA DO MODELO
+25;Cidade Tiradentes;Cidade Tiradentes;alta;Mutirão BPC: busca ativa de idosos 65+ com ACS e CRAS;BPC;CRAS - Rua Nascer Do Sol, 529;Cobertura de BPC idoso 23,3% vs esperada 26,4%;437,0;ESTIMATIVA DO MODELO
+25;Cidade Tiradentes;Cidade Tiradentes;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Nascer Do Sol, 529;Cobertura do PBF 41,2% vs esperada 42,7%;749,0;ESTIMATIVA DO MODELO
+25;Cidade Tiradentes;Cidade Tiradentes;alta;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Rua Nascer Do Sol, 529;24 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+22;Cidade Ademar;Cidade Ademar;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Avenida Cupece, 2278;Cobertura do PBF 38,5% vs esperada 40,2%;863,0;ESTIMATIVA DO MODELO
+22;Cidade Ademar;Cidade Ademar;alta;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Avenida Cupece, 2278;13 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+81;Tremembé;Jaçanã/Tremembé;urgente;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Avenida Mario Pernambuco, 43;Cobertura do PBF 32,0% vs esperada 39,7%;2704,0;ESTIMATIVA DO MODELO
+81;Tremembé;Jaçanã/Tremembé;urgente;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Avenida Mario Pernambuco, 43;Distância média ao CRAS de 5,3 km (entre as 25% maiores);34942,0;ESTIMATIVA DO MODELO
+81;Tremembé;Jaçanã/Tremembé;urgente;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Avenida Mario Pernambuco, 43;35 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+16;Campo Grande;Santo Amaro;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Avenida Cupece, 2278;Distância média ao CRAS de 2,9 km (entre as 25% maiores);6949,0;ESTIMATIVA DO MODELO
+24;Cidade Líder;Itaquera;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Avenida Maria Luiza Americano, 2681;Cobertura do PBF 36,0% vs esperada 39,0%;682,0;ESTIMATIVA DO MODELO
+24;Cidade Líder;Itaquera;alta;Priorizar visitas dos ACS nos setores de risco R3/R4;Todos;CRAS - Avenida Maria Luiza Americano, 2681;18 setores R3/R4 no distrito;;ESTIMATIVA DO MODELO
+47;José Bonifácio;Itaquera;alta;CRAS itinerante ou atendimento do CadÚnico dentro da UBS;CadÚnico;CRAS - Rua Fontoura Xavier, 695;Distância média ao CRAS de 3,1 km (entre as 25% maiores);20741,0;ESTIMATIVA DO MODELO
+37;Itaquera;Itaquera;alta;Busca ativa Bolsa Família e atualização do CadÚnico;Bolsa Família;CRAS - Rua Fontoura Xavier, 695;Cobertura do PBF 38,1% vs esperada 39,5%;499,0;ESTIMATIVA DO MODELO
