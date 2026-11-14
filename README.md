@@ -106,7 +106,7 @@ Responde a pergunta: **quem está sem documento ou sem direito, onde, e o que fa
 - **campanhas recomendadas**, só para distritos de prioridade **urgente** ou **alta**;
 - **alertas cruzados**, regras que juntam um dado do território com o que o app registrou;
 - **efetividade dos lembretes:** faltas nos encaminhamentos de quem recebeu lembrete (texto, áudio ou os dois) comparadas com as de quem não recebeu;
-- **cobertura dos lembretes:** por faixa etária, quem recebe no próprio WhatsApp, no WhatsApp de um familiar, quem tem WhatsApp e não aceitou e quem não tem WhatsApp;
+- **cobertura dos lembretes:** por faixa etária, quem recebe no próprio WhatsApp, no WhatsApp de um familiar, quem tem WhatsApp e não aceitou e quem não tem WhatsApp. Como não há dado público sobre lembretes, esses dois blocos usam premissas da simulação: mostram o que o painel vai medir, não um resultado;
 - filtros: subprefeitura, distrito, unidade e programa;
 - **segurança por linha** no Power BI: cada gestor vê apenas a sua subprefeitura.
 
@@ -177,7 +177,7 @@ O projeto usa **14 bases públicas e reais**, todas recortadas nos 96 distritos 
 
 **Conferências feitas no tratamento:** 96 distritos sem nome repetido · população somada igual ao total do Censo (**11.451.999**) · as duas bases do CadÚnico iguais distrito a distrito (diferença 0) · todos os distritos com Bolsa Família, BPC e população de 65+.
 
-📄 Detalhes de cada base, de como foram juntadas e das limitações: [`documentacao/Bases_de_dados_usadas.docx`](documentacao/Bases_de_dados_usadas.docx).
+📄 Detalhes de cada base, de como foram juntadas e das limitações: [`documentacao/Notebooks_e_bases_de_dados.pdf`](documentacao/Notebooks_e_bases_de_dados.pdf).
 
 ---
 
@@ -189,7 +189,7 @@ O app é um **protótipo de ideação** e ainda não está em funcionamento. Por
 |---|---|---|
 | **REAL** | Contado pelo governo ou medido direto nas bases públicas | Famílias no CadÚnico, coberturas de Bolsa Família e BPC, distâncias aos serviços, setores de risco |
 | **ESTIMATIVA** | Calculado pelo modelo do grupo a partir dos dados reais | Pessoas com direito provável sem benefício, índice e classe de prioridade, campanhas e insights |
-| **SIMULADO** | O que o app registraria, gerado no notebook `Simulacao_App` | Pessoas acompanhadas, direitos sem acesso, documentos pendentes, encaminhamentos e alertas |
+| **SIMULADO** | O que o app registraria, gerado no notebook `Simulacao_App_v2` | Pessoas acompanhadas, direitos sem acesso, documentos pendentes, encaminhamentos, lembretes e alertas |
 
 Os dados simulados **não inventam as proporções**: 5.000 pessoas acompanhadas, distribuídas pelos distritos conforme o CadÚnico, com chances calibradas nos dados reais de cada distrito (cobertura real ÷ esperada pelo modelo, moradias em setores R3/R4, distância ao cartório, ao Poupatempo e ao serviço de destino). O que não tem dado público por distrito fica numa célula de premissas do notebook, para ser revisado. **Os dados de território são reais.**
 
@@ -200,6 +200,7 @@ Os dados simulados **não inventam as proporções**: 5.000 pessoas acompanhadas
 - O CadÚnico por distrito não traz renda, o que deixa o modelo do Bolsa Família fraco (R² 0,19).
 - A lacuna é relativa: mede quanto o distrito está abaixo dos parecidos, não conta pessoas elegíveis uma a uma.
 - Não há dado de documentação por distrito; o mapa de pessoas sem documento usa a simulação.
+- Os lembretes por WhatsApp são premissa: a diferença de faltas com e sem lembrete foi colocada na simulação.
 - Não há base de agências do INSS; no encaminhamento do BPC, a distância ao INSS usa a do Poupatempo.
 - A distância é medida do centro do distrito, o que não representa cada casa em distritos grandes (Marsilac, Parelheiros).
 - Não há população com deficiência por distrito, então o modelo usa só o BPC idoso.
@@ -232,9 +233,9 @@ Os notebooks rodam no **Google Colab** com o Google Drive. A trilha do dashboard
 
 ```mermaid
 flowchart LR
-    A[Bases públicas] --> B[1. Tratamento_GS_v5]
+    A[Bases públicas] --> B[1. Tratamento_GS_v6]
     B -->|dados/saida| C[2. Modelo_GS_v4]
-    C -->|dados/saida_modelo| D[3. Simulacao_App]
+    C -->|dados/saida_modelo| D[3. Simulacao_App_v2]
     B --> E[Power BI / Painel]
     C --> E
     D -->|dados/saida_app| E
@@ -242,14 +243,14 @@ flowchart LR
 
 | Ordem | Notebook | Para quê | Gera |
 |---|---|---|---|
-| 1 | [`Tratamento_GS_v5`](notebooks/Tratamento_GS_v5.ipynb) | Padroniza os nomes dos distritos, junta e confere as bases públicas | [`dados/saida/`](dados/saida) |
+| 1 | [`Tratamento_GS_v6`](notebooks/Tratamento_GS_v6.ipynb) | Padroniza os nomes dos distritos, junta e confere as bases públicas | [`dados/saida/`](dados/saida) |
 | 2 | [`Modelo_GS_v4`](notebooks/Modelo_GS_v4.ipynb) | Estima quem tem direito e não recebe, prioriza distritos e sugere campanhas | [`dados/saida_modelo/`](dados/saida_modelo) |
-| 3 | [`Simulacao_App`](notebooks/Simulacao_App.ipynb) | Simula o que os agentes registrariam no app, calibrado nos dados reais e no modelo | [`dados/saida_app/`](dados/saida_app) |
+| 3 | [`Simulacao_App_v2`](notebooks/Simulacao_App_v2.ipynb) | Simula o que os agentes registrariam no app (casos, Plano de Direitos, documentos, encaminhamentos, lembretes por WhatsApp e alertas), calibrado nos dados reais e no modelo | [`dados/saida_app/`](dados/saida_app) |
 | — | [`caminho_dos_direitos_colab_v3`](notebooks/caminho_dos_direitos_colab_v3.ipynb) | Demonstra o app: Plano de Direitos, calculadora de renda, testes, IA, anotação por voz e WhatsApp | — |
 
 **Para rodar:** coloque as bases brutas na pasta `Meu Drive/Dados` e, em cada notebook, use **Ambiente de execução → Executar tudo**. O 2 só funciona depois do 1, e o 3 depois do 2, porque cada um lê os arquivos que o anterior gera. Os CSVs usam `;` como separador e vírgula decimal.
 
-📄 Guia completo, com os arquivos de entrada, as saídas e os problemas comuns: [`documentacao/Guia_dos_notebooks.docx`](documentacao/Guia_dos_notebooks.docx).
+📄 Guia completo, com as bases, os arquivos de entrada, as saídas, o Power BI e os problemas comuns: [`documentacao/Notebooks_e_bases_de_dados.pdf`](documentacao/Notebooks_e_bases_de_dados.pdf).
 
 ---
 
@@ -264,17 +265,16 @@ flowchart LR
 │   ├── index.html                 # Painel do monitoramento interativo (HTML autocontido)
 │   └── Caminho-dos-direitos.pbix  # arquivo do Power BI
 ├── notebooks/
-│   ├── Tratamento_GS_v5.ipynb      # 1. tratamento das bases públicas
+│   ├── Tratamento_GS_v6.ipynb      # 1. tratamento das bases públicas
 │   ├── Modelo_GS_v4.ipynb          # 2. modelo de priorização e campanhas
-│   ├── Simulacao_App.ipynb         # 3. simulação dos dados do app
+│   ├── Simulacao_App_v2.ipynb      # 3. simulação dos dados do app
 │   └── caminho_dos_direitos_colab_v3.ipynb   # demonstração do app
 ├── dados/
 │   ├── saida/                     # território tratado (dimensões, acesso, risco, mapas)
 │   ├── saida_modelo/              # indicadores, lacunas, recomendações e métricas do modelo
 │   └── saida_app/                 # dados do app (SIMULADO)
 ├── documentacao/
-│   ├── Bases_de_dados_usadas.docx
-│   └── Guia_dos_notebooks.docx
+│   └── Notebooks_e_bases_de_dados.pdf   # guia dos notebooks e das bases de dados
 ├── apresentacao/                  # 🚧 pitch e slides (em finalização)
 └── modelagem/                     # 🚧 star schema (em finalização)
 ```
