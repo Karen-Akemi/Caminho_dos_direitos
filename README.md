@@ -22,6 +22,10 @@
   <img alt="Recorte" src="https://img.shields.io/badge/Recorte-96%20distritos%20de%20S%C3%A3o%20Paulo-1F3FAE">
 </p>
 
+<p align="center">
+  👥 <b>Equipe:</b> Angelo Rabello · Karen Akemi de Oliveira · Milena Barbosa
+</p>
+
 ---
 
 ## 📌 Sumário
@@ -36,7 +40,6 @@
 - [Notebooks e como reproduzir](#-notebooks-e-como-reproduzir)
 - [Estrutura do repositório](#-estrutura-do-repositório)
 - [Status da entrega](#-status-da-entrega)
-- [Equipe](#-equipe)
 
 ---
 
@@ -291,16 +294,6 @@ flowchart LR
 ## 🛠️ Tecnologias
 
 **Python** (pandas, NumPy, scikit-learn, SciPy, statsmodels, GeoPandas, PySAL) no **Google Colab** · **Power BI** · **Figma** · **GitHub Pages**
-
----
-
-## 👥 Equipe
-
-| Integrante |
-|---|---|
-| **Angelo Rabello** |
-| **Karen Akemi de Oliveira** |
-| **Milena Barbosa** |
 
 ---
 
