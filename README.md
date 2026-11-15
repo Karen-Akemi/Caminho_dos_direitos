@@ -135,7 +135,7 @@ Clique na imagem para assistir.
 </td>
 <td align="center" width="50%" valign="top">
 <a href="https://karen-akemi.github.io/Caminho_dos_direitos/assets/videos/lembrete_whatsapp.mp4"><img src="assets/videos/lembrete_whatsapp.jpg" alt="Vídeo: lembrete por WhatsApp" width="220"></a><br>
-<b>💬 Lembrete por WhatsApp</b> <sub>(35 s)</sub>
+<b>💬 Lembrete por WhatsApp</b> <sub>(36 s)</sub>
 </td>
 </tr>
 <tr>
@@ -153,7 +153,7 @@ Tela do app no caso da **Dona Cida**, gerada pelo notebook [`anotacao_por_voz`](
 
 O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pelo notebook [`servidor_whatsapp_colab`](notebooks/servidor_whatsapp_colab.ipynb):
 
-- mensagem em texto para a **Dona Cida**: atendimento no Poupatempo Santo Amaro em 18/11, às 9h, com os documentos para levar;
+- mensagem em texto para a **Dona Cida**: atendimento no Poupatempo M'Boi Mirim em 18/11, às 9h, levando certidão de nascimento, RG e comprovante de residência, como na tela de encaminhamento do protótipo;
 - a opção de responder PARAR para não receber mais;
 - em seguida, a **mensagem de voz** com o mesmo lembrete, como recurso de acessibilidade.
 
