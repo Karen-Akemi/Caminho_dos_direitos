@@ -12,6 +12,7 @@
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/"><b>📊 Abrir o dashboard</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>🌐 Site do projeto</b></a> ·
   <a href="https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B"><b>🎨 Protótipo no Figma</b></a> ·
+  <a href="#-vídeos-de-demonstração"><b>🎬 Vídeos</b></a> ·
   <a href="#-status-da-entrega"><b>🎥 Pitch</b></a> ·
   <a href="#-status-da-entrega"><b>🖥️ Slides</b></a>
 </p>
@@ -114,6 +115,44 @@ O agente (de saúde ou do serviço social) é quem encurta a distância entre a 
 🎨 Navegue pelo protótipo completo no [Figma](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) ou conheça a jornada da Dona Cida no [site do projeto](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html).
 
 A ideia é ser um diferencial em relação ao e-SUS para os profissionais que trabalham em campo. O motor de regras do Plano de Direitos, a calculadora de renda, a anotação por voz e o lembrete por WhatsApp são demonstrados no notebook [`caminho_dos_direitos_colab_v4`](notebooks/caminho_dos_direitos_colab_v4.ipynb), com a persona **Dona Cida**, a mesma das telas do protótipo. A anotação por voz também tem um notebook próprio, mais completo ([`anotacao_por_voz`](notebooks/anotacao_por_voz.ipynb)), e o lembrete chega ao WhatsApp de verdade pelo [`servidor_whatsapp_colab`](notebooks/servidor_whatsapp_colab.ipynb), feito com a Cloud API da Meta.
+
+### 🎬 Vídeos de demonstração
+
+As duas funções de IA do app gravadas funcionando. Clique na imagem para assistir.
+
+<table>
+<tr>
+<td align="center" width="50%" valign="top">
+<a href="https://karen-akemi.github.io/Caminho_dos_direitos/assets/videos/anotacao_app.mp4"><img src="assets/videos/anotacao_app.jpg" alt="Vídeo: anotação por voz com IA" width="220"></a><br>
+<b>🎙️ Anotação por voz com IA</b> <sub>(29 s)</sub>
+</td>
+<td align="center" width="50%" valign="top">
+<a href="https://karen-akemi.github.io/Caminho_dos_direitos/assets/videos/lembrete_whatsapp.mp4"><img src="assets/videos/lembrete_whatsapp.jpg" alt="Vídeo: lembrete por WhatsApp" width="220"></a><br>
+<b>💬 Lembrete por WhatsApp</b> <sub>(35 s)</sub>
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+Tela do app no caso da **Dona Cida**, gerada pelo notebook [`anotacao_por_voz`](notebooks/anotacao_por_voz.ipynb). O agente grava a anotação da visita e o app:
+
+- mostra a transcrição, com o trecho de saúde já removido pela IA;
+- sugere as marcações (dificuldade de se locomover, precisa de atendimento médico, precisa de acompanhante, melhor horário: à tarde), que o agente pode tirar ou adicionar;
+- propõe próximos passos, como remarcar o Poupatempo para a tarde e confirmar com o filho;
+- ao salvar, guarda só as marcações em `fato_necessidade_caso.csv`, apaga o áudio e descarta o texto.
+
+</td>
+<td valign="top">
+
+O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pelo notebook [`servidor_whatsapp_colab`](notebooks/servidor_whatsapp_colab.ipynb):
+
+- mensagem em texto para a **Dona Cida**: atendimento no Poupatempo Santo Amaro em 18/11, às 9h, com os documentos para levar;
+- a opção de responder PARAR para não receber mais;
+- em seguida, a **mensagem de voz** com o mesmo lembrete, como recurso de acessibilidade.
+
+</td>
+</tr>
+</table>
 
 ### 2. Painel do monitoramento
 
@@ -308,7 +347,8 @@ flowchart LR
 ├── indexsite.html                 # site de apresentação do projeto
 ├── assets/
 │   ├── logo.png
-│   └── telas/                     # telas do protótipo do app
+│   ├── telas/                     # telas do protótipo do app
+│   └── videos/                    # vídeos de demonstração (anotação por voz e WhatsApp)
 ├── dashboard/
 │   ├── index.html                 # Painel do monitoramento interativo (HTML autocontido)
 │   └── Caminho-dos-direitos.pbix  # arquivo do Power BI

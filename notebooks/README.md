@@ -53,10 +53,12 @@ Para rodar, copie esses arquivos para a pasta do projeto no Drive. Os segredos (
 
 Versão independente e mais completa da anotação por voz. O código está todo dentro do notebook.
 
-1. **Grava e transcreve** a fala no próprio Colab (Whisper local) e apaga o áudio.
+1. **Grava e transcreve** a fala no próprio Colab (Whisper local). O áudio fica só até o agente salvar e dá para ouvi-lo na tela antes disso.
 2. **Remove os dados clínicos** (pressão, peso, altura, glicemia, nome de doença ou remédio) e avisa: *registre no e-SUS*.
 3. **Organiza** o texto filtrado em um resumo da visita (situação, prioridade, próximos passos e pendências) e em **10 marcações**: dificuldade de se locomover, dificuldade de ir ao posto, pessoa com deficiência, precisa de atendimento médico, uso contínuo de remédio ou fralda, precisa de acompanhante, melhor horário, problema com benefício, problema com documentos e urgência social.
-4. **Guarda só as marcações que o agente confirmar** (`fato_necessidade_caso`): nem o texto, nem o áudio, nem o dado clínico.
+4. **Guarda só as marcações que o agente confirmar** (`fato_necessidade_caso`): ao salvar, o áudio é apagado; o texto e o dado clínico nunca são guardados.
+
+O resultado aparece numa **tela de celular** (seção 5), como no app: o agente toca nas marcações para tirar ou adicionar e clica em **Salvar**. Veja no [vídeo de demonstração](https://karen-akemi.github.io/Caminho_dos_direitos/assets/videos/anotacao_app.mp4). Para as telas interativas funcionarem, é preciso executar o notebook de novo.
 
 | Teste | O que mostra |
 |---|---|
@@ -85,6 +87,8 @@ Liga o app ao WhatsApp de verdade, seguindo o manual da Cloud API da Meta. Sobe 
 | 6. Mandar o lembrete | Envia para um celular cadastrado no painel. Enquanto o modelo não é aprovado, usa a janela de 24 h (plano B) |
 | 7. Acompanhar | Envios e status de entrega |
 | 8. Desligar | Para o servidor e o túnel |
+
+🎬 [Vídeo do lembrete chegando ao WhatsApp](https://karen-akemi.github.io/Caminho_dos_direitos/assets/videos/lembrete_whatsapp.mp4)
 
 **Segurança e LGPD:** valida a assinatura `X-Hub-Signature-256`, não duplica mensagens, respeita PARAR / VOLTAR, mascara o telefone no log, guarda o telefone como hash, apaga conversas em 30 dias e limita os envios por pessoa.
 
