@@ -66,7 +66,7 @@ Todas as tabelas e colunas, com tipo, chave, descrição e valores reais, além 
 
 ## Proteção de dados (LGPD)
 
-Nome, CPF, telefone, dados dos profissionais e anotações ficam só no banco do app. O modelo analítico trabalha com o identificador do caso e com faixas (idade e renda por pessoa): o app nunca guarda o valor da renda.
+Nome, CPF, telefone, dados dos profissionais e as marcações da anotação por voz ficam só no banco do app; o texto da anotação e o dado clínico nem chegam a ser guardados. O modelo analítico trabalha com o identificador do caso e com faixas (idade e renda por pessoa): o app nunca guarda o valor da renda.
 
 ## Arquivos desta pasta
 
@@ -79,7 +79,8 @@ modelagem/
 │   └── modelo_conceitual.png
 ├── 2_logico/
 │   ├── modelo_logico_app.png
-│   └── modelo_logico_app.sql
+│   ├── modelo_logico_app.sql
+│   └── modelo_logico_app.svg
 └── 3_dimensional/
     ├── matriz_granularidade_barramento.md
     ├── modelo_dimensional.png

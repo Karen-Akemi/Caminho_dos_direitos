@@ -307,6 +307,18 @@ Grão: um setor de risco geológico dentro de um distrito.
 | `fato_indicadores_distrito.csv` | `pop_0_6`, `pct_0_6`, `familias_cadunico_pobreza`, `pct_pobreza_cadunico` | Vazias nas bases tratadas |
 | `fato_recomendacoes.csv` | `distrito`, `subprefeitura` | Repetidas: vêm de `dim_distrito` |
 
+## Outros arquivos de saída
+
+Ficam em [`dados/`](../dados), fora do modelo dimensional. São resumos e conferências gerados pelos notebooks.
+
+| Arquivo | Linhas | O que traz |
+|---|---|---|
+| `saida/fato_acesso_distrito_servico.csv` | 384 | Distrito × serviço (CRAS, UBS, cartório, Poupatempo): o serviço mais próximo, a distância em km e quantos há num raio de 2 km e no distrito |
+| `saida/kpi_cidade.csv` | 1 | Totais da cidade: população 2022, famílias no CadÚnico e número de CRAS, UBS, cartórios e postos do Poupatempo |
+| `saida_modelo/fato_lacuna_programa.csv` | 192 | Distrito × programa (BPC e Bolsa Família): público, beneficiários, cobertura real e esperada e lacuna |
+| `saida_modelo/fato_comparacao_risco.csv` | 4 | Distritos com e sem setores R3/R4: diferença em cada indicador e p-valor |
+| `saida_modelo/fato_insights.csv` | 5 | Frases de resultado do modelo, em ordem |
+
 Tabelas de apoio carregadas no Power BI, fora do modelo dimensional: `distritos_base` e `fato_beneficios_distrito` (etapas do tratamento; os números já estão em `fato_indicadores_distrito`) e `metricas_modelo`, `sensibilidade_pesos`, `teste_barreiras` (validação do modelo de priorização).
 
 ## Rastreabilidade: tela do app → tabela → quadro do painel
@@ -319,4 +331,5 @@ Tabelas de apoio carregadas no Power BI, fora do modelo dimensional: `distritos_
 | 07 Registrar encaminhamento · 08 Acompanhamento do caso | `fato_encaminhamento` | Encaminhamentos · Encaminhamentos concluídos · Efetividade do atendimento |
 | 09 Campanhas | `fato_recomendacoes` + `fato_indicadores_distrito` | Prioridade de ação por distrito · Onde agir primeiro |
 | (regras que cruzam app e território) | `fato_alertas` | Alertas cruzados |
-| L1–L5 Login · C1–C3 Coordenação · 10 Anotação por voz | — | Ficam só no banco do app (dados pessoais e operacionais, LGPD) |
+| L1–L5 Login · C1–C3 Coordenação | — | Ficam só no banco do app (dados pessoais e operacionais, LGPD) |
+| 10 Anotação por voz | `marcacao` (banco do app; o notebook exporta como `fato_necessidade_caso.csv`) | Fica só no banco do app: só as categorias confirmadas, sem texto nem dado clínico (LGPD) |

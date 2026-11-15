@@ -1,6 +1,6 @@
 # Modelo dimensional — matriz de granularidade e matriz de barramento
 
-Etapa 2 da modelagem do **Caminho dos Direitos**. Antes de desenhar o modelo dimensional, definimos **o que cada tabela fato registra (grão)** e **quais dimensões cada fato compartilha (barramento)**. As duas matrizes mostram como os dados públicos do território e os dados do app se cruzam no mesmo painel.
+Primeira parte da etapa 3 (modelo dimensional) do **Caminho dos Direitos**. Antes de desenhar o modelo dimensional, definimos **o que cada tabela fato registra (grão)** e **quais dimensões cada fato compartilha (barramento)**. As duas matrizes mostram como os dados públicos do território e os dados do app se cruzam no mesmo painel.
 
 ```
 Modelo conceitual  →  Modelo lógico  →  Matrizes (esta etapa)  →  Modelo dimensional  →  Painel

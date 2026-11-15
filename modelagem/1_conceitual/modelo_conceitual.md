@@ -113,9 +113,11 @@ erDiagram
     atributo status_do_envio
   }
   MARCACAO {
-    atributo texto
+    atributo categoria
     atributo origem
     atributo data
+    atributo tem_laudo
+    atributo detalhe
   }
   CAMPANHA {
     id id PK
@@ -157,7 +159,7 @@ Notação: `1` exatamente um · `0..1` zero ou um · `0..N` zero ou muitos · `1
 | **Item do plano** | Um direito sugerido para o caso, com a situação marcada pelo agente | Plano de Direitos, Detalhe do direito |
 | **Encaminhamento** | Ida da pessoa a um serviço para resolver um item do plano, com data e resultado | Registrar encaminhamento, Acompanhamento do caso |
 | **Lembrete** | Mensagem de WhatsApp (texto, áudio ou os dois) enviada antes do atendimento | Registrar encaminhamento (conversa com o cidadão) |
-| **Marcação** | Observação sobre o caso (ex.: "dificuldade para ir sozinha"), sugerida pela IA a partir da anotação por voz ou digitada, sempre confirmada pelo profissional | Anotação por voz com IA, Acompanhamento do caso |
+| **Marcação** | Necessidade do caso, escolhida entre 10 categorias fixas (dificuldade de se locomover, dificuldade de ir ao posto, pessoa com deficiência, precisa de atendimento médico, uso contínuo de remédio ou fralda, precisa de acompanhante, melhor horário, problema com benefício, problema com documentos e urgência social). É sugerida pela IA a partir da anotação por voz ou digitada e sempre confirmada pelo profissional. Guarda se há laudo (só para pessoa com deficiência) e o período (só para melhor horário) | Anotação por voz com IA, Acompanhamento do caso |
 | **Campanha** | Ação coletiva recomendada para um distrito de prioridade urgente ou alta (ex.: mutirão de Bolsa Família) | Campanhas |
 | **Indicação** | Caso indicado para participar de uma campanha | Campanhas (indicar casos à busca ativa) |
 
@@ -194,7 +196,7 @@ Notação: `1` exatamente um · `0..1` zero ou um · `0..N` zero ou muitos · `1
 4. Encaminhamento **concluído** muda a situação do item do plano para **"Já recebe"**; na Documentação básica, o documento deixa de estar pendente.
 5. Quem recebe Bolsa Família, BPC ou Tarifa Social **tem CadÚnico** (no máximo "Precisa atualizar").
 6. Lembrete só é enviado se o caso tiver contato e a pessoa **aceitar** receber.
-7. A IA **não guarda áudio, transcrição nem dados clínicos**: só ficam as marcações confirmadas.
+7. A IA **não guarda transcrição nem dados clínicos**, e o áudio é apagado quando o agente salva: só ficam as marcações confirmadas, de 10 categorias fixas.
 8. Campanhas só são recomendadas para distritos de prioridade **urgente ou alta**.
 
 ## Consistência com os dados e o Power BI
@@ -218,7 +220,7 @@ Cada coluna das tabelas do app no Power BI (e nos arquivos de [`dados/saida_app`
 | `grupo_lembrete`, `categoria_lembrete` | — | colunas calculadas no Power BI |
 | `origem` | — | marca da carga: REAL, SIMULADO ou ESTIMATIVA DO MODELO |
 
-Profissional, Responsabilidade (histórico), Marcação, Indicação, nome do contato e número de WhatsApp **não vão para o painel**: são dados pessoais ou operacionais e ficam só no banco do app (LGPD).
+Profissional, Responsabilidade (histórico), Marcação, Indicação, nome do contato e número de WhatsApp **não vão para o painel**: são dados pessoais ou operacionais e ficam só no banco do app (LGPD). As marcações são a tabela `marcacao` do banco do app; o notebook `anotacao_por_voz` as exporta como `fato_necessidade_caso.csv`, só com as categorias confirmadas.
 
 ## Do conceitual ao modelo dimensional
 

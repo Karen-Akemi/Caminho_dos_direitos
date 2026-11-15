@@ -185,13 +185,18 @@ CREATE TABLE lembrete (
         REFERENCES contato (id_caso)
 );
 
+-- Marcação confirmada pelo agente: uma das 10 categorias fixas da anotação por voz.
+-- tem_laudo só para pessoa_com_deficiencia; detalhe só para melhor_horario (manhã, tarde, noite).
+-- O notebook anotacao_por_voz exporta estas linhas como fato_necessidade_caso.csv.
 CREATE TABLE marcacao (
     id_marcacao         NUMBER(10)    NOT NULL,
     id_caso             NUMBER(8)     NOT NULL,
     id_profissional     NUMBER(8)     NOT NULL,
-    texto_marcacao      VARCHAR2(100) NOT NULL,
+    categoria           VARCHAR2(40)  NOT NULL,
     origem_marcacao     VARCHAR2(10)  NOT NULL,
     data_marcacao       DATE          NOT NULL,
+    tem_laudo           CHAR(1),
+    detalhe             VARCHAR2(10),
     CONSTRAINT pk_marcacao PRIMARY KEY (id_marcacao),
     CONSTRAINT fk_marcacao_caso FOREIGN KEY (id_caso)
         REFERENCES caso (id_caso),
