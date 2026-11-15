@@ -35,17 +35,27 @@ Demonstra o app funcionando com a persona **Dona Cida**, a mesma das telas do pr
 | 11b. Comparar as vozes | A mesma mensagem em gTTS e nas vozes `feminina`, `feminina2` e `masculina` (padrão: `feminina`) |
 | 12. WhatsApp de verdade | Aponta para o notebook 6 |
 
-**Arquivos de apoio no Drive:** `simulador.py`, `avaliar.py`, `regras.csv`, `casos_teste.json`, `explicador.py` e `base_conhecimento.csv` são obrigatórios. `anotacoes.py` (seção 10), `whatsapp.py` (seção 11) e `voz.py` (seção 11b) são opcionais. Podem ficar todos na mesma pasta ou separados em `simulador/` e `ia/`.
+**Arquivos de apoio:** estão todos neste repositório. Os do motor de regras ficam em [`simulador/`](simulador/) e são obrigatórios. Os de IA ficam em [`ia/`](ia/): `anotacoes.py` (seção 10), `whatsapp.py` (seção 11) e `voz.py` (seção 11b) são opcionais.
 
-**Módulos de IA neste repositório** ([`ia/`](ia/)):
+**Motor de regras** ([`simulador/`](simulador/)):
+
+| Arquivo | Para quê |
+|---|---|
+| [`simulador.py`](simulador/simulador.py) | Aplica as regras às respostas do formulário e gera o Plano de Direitos. Traz a persona `DONA_CIDA`, com as mesmas respostas das telas do protótipo |
+| [`regras.csv`](simulador/regras.csv) | As 47 regras dos 7 programas, cada uma com a fonte oficial |
+| [`casos_teste.json`](simulador/casos_teste.json) e [`avaliar.py`](simulador/avaliar.py) | Os 30 casos rotulados à mão e o teste que confere as regras |
+| [`explicador.py`](simulador/explicador.py) e [`base_conhecimento.csv`](simulador/base_conhecimento.csv) | Explicação do plano em linguagem simples (RAG), citando as fontes |
+
+**Módulos de IA** ([`ia/`](ia/)):
 
 | Arquivo | Para quê | Usado em |
 |---|---|---|
 | [`anotacoes.py`](ia/anotacoes.py) | Anotação por voz: transcrição (Whisper), filtro de dado clínico, resumo da visita e 5 marcações | Notebook 4, seção 10 |
+| [`whatsapp.py`](ia/whatsapp.py) | Lembrete por WhatsApp: texto com o botão "Ouvir em áudio" e mensagem de voz. Sem token, roda em modo demonstração | Notebook 4, seção 11 |
 | [`voz.py`](ia/voz.py) | Texto → mensagem de voz em OGG/Opus, com voz neural (edge-tts) e gTTS como reserva | Notebook 4, seção 11b, e notebook 6 |
 | [`servidor_whatsapp.py`](ia/servidor_whatsapp.py) | Servidor do WhatsApp (Cloud API da Meta): envia o lembrete, recebe o webhook, PARAR / VOLTAR e status de entrega | Notebook 6 |
 
-Para rodar, copie esses arquivos para a pasta do projeto no Drive. Os segredos (tokens da Meta e chave do Claude) ficam só nos Secrets do Colab, nunca no código.
+Para rodar, copie as pastas `simulador/` e `ia/` para a pasta do projeto no Drive. Os segredos (tokens da Meta e chave do Claude) ficam só nos Secrets do Colab, nunca no código.
 
 ---
 

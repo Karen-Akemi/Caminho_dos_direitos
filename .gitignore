@@ -6,3 +6,6 @@ __pycache__/
 desktop.ini
 Thumbs.db
 ~$*
+
+# Arquivos para subir no Drive e rodar no Colab (não vão para o GitHub)
+para_o_colab/

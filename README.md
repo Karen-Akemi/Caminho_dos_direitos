@@ -181,7 +181,8 @@ O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pel
 │   ├── caminho_dos_direitos_colab_v4.ipynb
 │   ├── anotacao_por_voz.ipynb
 │   ├── servidor_whatsapp_colab.ipynb
-│   ├── ia/                        # anotacoes.py, voz.py e servidor_whatsapp.py
+│   ├── simulador/                 # motor de regras do Plano de Direitos (regras, testes e RAG)
+│   ├── ia/                        # anotação por voz, voz e WhatsApp
 │   └── README.md                  # guia dos notebooks
 ├── dados/
 │   ├── saida/                     # território tratado
