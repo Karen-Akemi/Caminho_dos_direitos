@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/"><b>📊 Abrir o dashboard</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>🌐 Site do projeto</b></a> ·
-  <a href="https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B"><b>🎨 Protótipo no Figma</b></a> ·
+  <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo"><b>📱 Protótipo do app</b></a> ·
   <a href="#-vídeos-de-demonstração"><b>🎬 Vídeos</b></a> ·
   <a href="#-demonstração"><b>🎥 Pitch</b></a> ·
   <a href="#-demonstração"><b>🖥️ Slides</b></a>
@@ -100,7 +100,7 @@ O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos
 |---|---|
 | 📊 **Painel do monitoramento** (interativo, sem baixar nada) | [Abrir no navegador](https://karen-akemi.github.io/Caminho_dos_direitos/) · [arquivo do Power BI](dashboard/Caminho-dos-direitos.pbix) |
 | 🌐 **Site do projeto** | [Abrir o site](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html) |
-| 🎨 **Protótipo do app** | [Abrir no Figma](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
+| 📱 **Protótipo do app** | [Ver as telas no site](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo) |
 | 🎬 **Vídeos das funções de IA** | [Ver abaixo](#-vídeos-de-demonstração) |
 | 🎥 **Pitch** e 🖥️ **Slides** | 🚧 Em finalização |
 
@@ -198,9 +198,9 @@ O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pel
 
 | Integrante | Links |
 |---|---|
-| Angelo Rabello | — |
+| Angelo Rabello | [GitHub](https://github.com/AngeloRBLL0) |
 | Karen Akemi de Oliveira | [GitHub](https://github.com/Karen-Akemi) |
-| Milena Barbosa | — |
+| Milena Barbosa | [GitHub](https://github.com/MiihDev) |
 
 ## 📚 Referências
 
