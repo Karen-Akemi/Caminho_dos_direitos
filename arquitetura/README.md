@@ -7,6 +7,7 @@ A arquitetura do **Caminho dos Direitos** é **híbrida**: a infraestrutura roda
 </p>
 
 > **Como ler:** da esquerda para a direita, **Origem → Ingestão → Armazenamento → Processamento → Consumo**. A **Governança e segurança** atravessa todas as camadas. Ícone **quadrado** = serviço da Microsoft Azure · ícone **redondo** = ferramenta externa ou open source.
+
 ---
 
 ## 📌 Sumário
@@ -99,7 +100,7 @@ Na origem há dois tipos de dado: **o que já existe** (bases públicas) e **o q
 | Organização da anotação | **Claude (Anthropic)** | Recebe **só o texto já filtrado** e sugere marcações que o agente confirma |
 | Lembrete em áudio | **edge-tts** + gTTS (reserva) + ffmpeg | Gera a mensagem de voz em OGG/Opus, o formato de áudio do WhatsApp |
 
-Código dos módulos: [`notebooks/ia/`](../notebooks/ia/) (`anotacoes.py`, `voz.py` e `servidor_whatsapp.py`).
+Código: o motor de regras e o RAG estão em [`notebooks/simulador/`](../notebooks/simulador/); a anotação por voz, a voz e o WhatsApp, em [`notebooks/ia/`](../notebooks/ia/) (`anotacoes.py`, `whatsapp.py`, `voz.py` e `servidor_whatsapp.py`).
 
 ### 5. Consumo
 
@@ -117,8 +118,8 @@ Código dos módulos: [`notebooks/ia/`](../notebooks/ia/) (`anotacoes.py`, `voz.
 | Camada | O que tem | Equivale hoje a |
 |---|---|---|
 | **Bronze** | Bases brutas, do jeito que chegaram, e a cópia diária do banco do app | Pasta `Dados` do Drive |
-| **Prata** | Território tratado e conferido: nomes de distrito padronizados, join espacial, 96 distritos sem repetição | [`dados/saida/`](../dados/saida) |
-| **Ouro** | Modelo dimensional **Snowflake + Galaxy**: 7 fatos e 6 dimensões, pronto para o painel | [`dados/saida_modelo/`](../dados/saida_modelo) e [`dados/saida_app/`](../dados/saida_app) |
+| **Prata** | Território tratado e conferido: nomes de distrito padronizados, join espacial, 96 distritos sem repetição | [`dados/saida/`](../dados/saida): `distritos_base`, `fato_acesso_distrito_servico`, `fato_beneficios_distrito` e `kpi_cidade` |
+| **Ouro** | Modelo dimensional **Snowflake + Galaxy**: 7 fatos e 6 dimensões, pronto para o painel | [`dados/saida_modelo/`](../dados/saida_modelo), [`dados/saida_app/`](../dados/saida_app) e, de [`dados/saida/`](../dados/saida), `dim_distrito`, `dim_subprefeitura`, `dim_equipamento` e `fato_risco_setor` |
 
 As conferências do tratamento (96 distritos, população somada igual ao Censo, as duas bases do CadÚnico iguais) são a porta de entrada da Prata: dado que não passa nelas não sobe de camada.
 
@@ -165,7 +166,7 @@ O que já foi construído e como cada peça roda quando a solução estiver em o
 - **Por que híbrida?** O tratamento, o modelo e a IA já foram desenvolvidos e testados em Python no Colab. Levar o mesmo código para a nuvem evita reescrever o que funciona. A WhatsApp Cloud API é o canal oficial da Meta, e o Claude é usado só para organizar texto já filtrado.
 - **Por que Databricks no armazenamento?** O Delta Lake dá as camadas Bronze, Prata e Ouro com histórico de versões, e o Databricks SQL entrega a camada Ouro direto ao Power BI.
 - **Por que Azure SQL para o app?** O app grava cada caso e cada encaminhamento na hora, e precisa de um banco transacional. O lakehouse fica para a análise.
-- **Por que o Oracle Data Modeler aparece na governança?** Ele é a ferramenta de **modelagem**, não de armazenamento nem de processamento: define a estrutura do banco do app e da camada Ouro e gera o script de criação das tabelas para SQL Server, o mesmo motor do Azure SQL.
+- **Por que o Oracle Data Modeler aparece na governança?** Ele é a ferramenta de **modelagem**, não de armazenamento nem de processamento: define a estrutura do banco do app e da camada Ouro e gera o script de criação das tabelas. Os scripts do projeto estão em Oracle 19c; para o Azure SQL, o mesmo modelo é exportado pelo Data Modeler no formato do SQL Server.
 - **Por que a transcrição é local?** O faster-whisper roda no próprio servidor, então o áudio do agente não sai da infraestrutura do projeto e é apagado logo depois da transcrição.
 
 ---
