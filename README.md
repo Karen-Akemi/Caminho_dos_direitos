@@ -12,7 +12,6 @@
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/"><b>📊 Abrir o dashboard</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>🌐 Site do projeto</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo"><b>📱 Protótipo do app</b></a> ·
-  <a href="#-vídeos-de-demonstração"><b>🎬 Vídeos</b></a> ·
   <a href="#-demonstração"><b>🎥 Pitch</b></a> ·
   <a href="#-demonstração"><b>🖥️ Slides</b></a>
 </p>
