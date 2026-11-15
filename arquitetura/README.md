@@ -7,9 +7,6 @@ A arquitetura do **Caminho dos Direitos** é **híbrida**: a infraestrutura roda
 </p>
 
 > **Como ler:** da esquerda para a direita, **Origem → Ingestão → Armazenamento → Processamento → Consumo**. A **Governança e segurança** atravessa todas as camadas. Ícone **quadrado** = serviço da Microsoft Azure · ícone **redondo** = ferramenta externa ou open source.
-
-📎 Arquivo editável: [`arquitetura_dados.pptx`](arquitetura_dados.pptx)
-
 ---
 
 ## 📌 Sumário
