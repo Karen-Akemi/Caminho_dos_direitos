@@ -11,7 +11,7 @@ São 6 notebooks em duas trilhas independentes. Todos rodam no **Google Colab** 
 | App | 5 | [`anotacao_por_voz`](anotacao_por_voz.ipynb) | Anotação por voz com IA, sozinha, para mostrar no pitch |
 | App | 6 | [`servidor_whatsapp_colab`](servidor_whatsapp_colab.ipynb) | Liga o app ao WhatsApp de verdade (Cloud API da Meta) |
 
-Na trilha do dashboard, o 2 só funciona depois do 1, e o 3 depois do 2. A trilha do app não depende dela. O guia completo da trilha do dashboard (bases, saídas, Power BI e problemas comuns) está em [`documentacao/Notebooks_e_bases_de_dados.pdf`](../documentacao/Notebooks_e_bases_de_dados.pdf). Para a trilha do app, vale este guia, que está mais atualizado que o PDF.
+Na trilha do dashboard, o 2 só funciona depois do 1, e o 3 depois do 2. A trilha do app não depende dela. O guia completo das duas trilhas (bases, saídas, Power BI, notebooks do app e problemas comuns) está em [`documentacao/Notebooks_e_bases_de_dados.pdf`](../documentacao/Notebooks_e_bases_de_dados.pdf).
 
 ---
 

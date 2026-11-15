@@ -103,11 +103,6 @@ O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos
 | 🎬 **Vídeos das funções de IA** | [Ver abaixo](#-vídeos-de-demonstração) |
 | 🎥 **Pitch** e 🖥️ **Slides** | 🚧 Em finalização |
 
-> O app ainda é um protótipo. Por isso, no painel cada número tem um selo que diz de onde ele vem:
-> - **REAL:** vem das bases públicas;
-> - **ESTIMATIVA:** foi calculado pelo modelo;
-> - **SIMULADO:** é o que o app registraria, gerado a partir dos dados reais de cada distrito.
-
 ## 🐍 Função dos notebooks
 
 Os notebooks rodam no **Google Colab** com **Ambiente de execução → Executar tudo**. Eles estão divididos em duas trilhas.
