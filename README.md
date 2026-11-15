@@ -13,8 +13,8 @@
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>🌐 Site do projeto</b></a> ·
   <a href="https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B"><b>🎨 Protótipo no Figma</b></a> ·
   <a href="#-vídeos-de-demonstração"><b>🎬 Vídeos</b></a> ·
-  <a href="#-status-da-entrega"><b>🎥 Pitch</b></a> ·
-  <a href="#-status-da-entrega"><b>🖥️ Slides</b></a>
+  <a href="#-demonstração"><b>🎥 Pitch</b></a> ·
+  <a href="#-demonstração"><b>🖥️ Slides</b></a>
 </p>
 
 <p align="center">
@@ -30,95 +30,103 @@
 
 ---
 
-## 📌 Sumário
+# Caminho dos Direitos
 
-- [O problema](#-o-problema)
-- [A solução](#-a-solução)
-- [Principais resultados](#-principais-resultados)
-- [Site do projeto](#-site-do-projeto)
-- [Dashboard interativo](#-dashboard-interativo)
-- [Dados](#-dados)
-- [Real, estimativa e simulado](#-real-estimativa-e-simulado)
-- [Modelagem de dados](#-modelagem-de-dados)
-- [Notebooks e como reproduzir](#-notebooks-e-como-reproduzir)
-- [Estrutura do repositório](#-estrutura-do-repositório)
-- [Status da entrega](#-status-da-entrega)
+O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos benefícios sociais e dos documentos a que elas têm direito. Ele junta um **app para os agentes em campo**, um **painel para coordenadores e gestores** e um **modelo de priorização** que mostra onde agir primeiro nos 96 distritos do município de São Paulo.
 
----
+## 📖 Sobre o Projeto
 
-## ❓ O problema
+- **Problema:** muitas pessoas que teriam direito a benefícios sociais não os recebem. Falta documento, o cadastro (como o CadÚnico) está desatualizado ou elas não sabem que têm o direito.
+- **Motivação:** os agentes de saúde e os assistentes sociais são quem chega até essas pessoas. Mas eles não têm uma ferramenta simples para identificar as pendências, orientar e encaminhar cada caso aos serviços (CRAS, cartório, Poupatempo, UBS). A ideia é ser um diferencial em relação ao e-SUS para quem trabalha em campo.
+- **Objetivo principal:** responder **quem está sem documento ou sem direito, onde, e o que fazer primeiro**. Para isso, o projeto cruza o que o app registra com os dados públicos do território.
+- **Público-alvo:**
+  - agentes de saúde e assistentes sociais em campo, que usam o app;
+  - coordenadores e gestores públicos, que usam o painel;
+  - famílias em situação de vulnerabilidade, que são atendidas por eles.
 
-Muitas pessoas que teriam direito a benefícios sociais não os recebem porque falta documento, porque o cadastro (como o CadÚnico) está desatualizado ou porque elas não sabem que têm o direito. Os agentes de saúde e os assistentes sociais são quem chega até essas pessoas, mas não têm uma ferramenta simples para identificar as pendências, orientar e encaminhar cada caso aos serviços (CRAS, cartório, Poupatempo, UBS).
+## ⚙️ Funcionalidades
 
-## 💡 A solução
-
-O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos benefícios sociais e dos documentos a que elas têm direito. O recorte é o **município de São Paulo**, nos seus 96 distritos. A solução tem três partes que conversam entre si:
-
-<table>
-<tr>
-<td width="33%" valign="top">
-
-### 📱 App do agente
-*Protótipo no Figma*
-
-Para agentes de saúde e assistentes sociais em campo. Gera o **Plano de Direitos** da pessoa, registra pendências e encaminha ao serviço certo.
-
-</td>
-<td width="33%" valign="top">
-
-### 📊 Painel do monitoramento
-*Power BI + versão HTML*
-
-Para coordenadores e gestores públicos. Cruza o que o app coleta com os dados públicos do território e aponta **onde agir primeiro**.
-
-</td>
-<td width="33%" valign="top">
-
-### 🧠 Modelo de priorização
-*Python*
-
-Estima onde há gente com **direito provável sem benefício**, calcula um índice de prioridade por distrito e recomenda campanhas.
-
-</td>
-</tr>
-</table>
-
-### 1. App do agente (protótipo de ideação)
-
-O agente (de saúde ou do serviço social) é quem encurta a distância entre a população vulnerável e a rede de assistência (CRAS/SMADS).
-
-- **Formulário de orientação:** a partir das respostas, o app gera o Plano de Direitos, uma lista de **possíveis benefícios** para a pessoa ou família, entre 7 programas: Documentação básica, CadÚnico, Bolsa Família, BPC, Tarifa Social de Energia, Pé-de-Meia e Farmácia Popular.
-- **Identificação de pendências:** o agente marca a situação de cada benefício (*já recebe*, *bloqueado*, *precisa atualizar*, *falta documento*, *ainda não pediu*) e encaminha a pessoa ao serviço certo, avisando quais documentos levar.
-- **Renda sem constrangimento:** no lugar de faixas em reais, uma calculadora (pessoas na casa + renda de cada uma) chega à renda por pessoa. O app guarda só a faixa, nunca o valor.
-- **Anotação por voz com IA:** o agente dita suas observações e a IA transcreve e organiza as informações (necessidade de atendimento, dificuldade de locomoção etc.), filtrando dado clínico.
+**📱 App do agente** (protótipo de ideação no Figma)
+- **Plano de Direitos:** a partir de um formulário, o app lista os **possíveis benefícios** da pessoa ou da família entre 7 programas: Documentação básica, CadÚnico, Bolsa Família, BPC, Tarifa Social de Energia, Pé-de-Meia e Farmácia Popular.
+- **Pendências e encaminhamento:** o agente marca a situação de cada benefício (*já recebe*, *bloqueado*, *precisa atualizar*, *falta documento*, *ainda não pediu*). Depois encaminha a pessoa ao serviço certo, com a lista de documentos para levar.
+- **Renda sem constrangimento:** uma calculadora (pessoas na casa + renda de cada uma) chega à renda por pessoa. O app guarda só a faixa, nunca o valor.
+- **Anotação por voz com IA:** a IA transcreve o que o agente fala e remove o dado clínico. Depois organiza a visita e sugere marcações, que o agente confirma.
 - **Lembretes por WhatsApp**, em texto e em **áudio**, como recurso de acessibilidade.
-- **Acesso simples, sem gov.br:** o agente pede acesso com CPF e a unidade (UBS/CRAS) e o coordenador aprova. A entrada é por PIN de 6 dígitos ou código por WhatsApp.
-- **Visão do coordenador** (no mesmo app): aba *Equipe* para aprovar ou recusar acessos e desligar agentes, visão dos casos da *Unidade* e transferência de casos entre agentes.
+- **Acesso simples, sem gov.br:**
+  - o agente pede acesso com CPF e a unidade (UBS/CRAS);
+  - o coordenador aprova o pedido;
+  - a entrada é por PIN de 6 dígitos ou por código no WhatsApp.
+- **Visão do coordenador:** aprovar ou recusar acessos, ver os casos da unidade e transferir casos entre agentes.
 
-### 📱 Telas do app
+**📊 Painel do monitoramento** (Power BI e versão HTML)
+- **Indicadores e mapa:**
+  - indicadores do app;
+  - **mapa de prioridade** dos 96 distritos;
+  - tabela **Onde agir primeiro**.
+- **Direitos e encaminhamentos:**
+  - situação dos direitos por programa;
+  - documentos que faltam;
+  - resultado dos encaminhamentos.
+- **Campanhas recomendadas** para os distritos urgentes e de prioridade alta, e **alertas cruzados** entre o território e o que o app registrou.
+- **Filtros** por subprefeitura, distrito, unidade e programa. No Power BI, cada gestor vê só a sua subprefeitura.
 
-<table>
-<tr>
-<td align="center" width="25%"><img src="assets/telas/login.png" alt="Tela: Login do agente" width="180"><br><sub><b>Login do agente</b></sub></td>
-<td align="center" width="25%"><img src="assets/telas/casos.png" alt="Tela: Meus casos" width="180"><br><sub><b>Meus casos</b></sub></td>
-<td align="center" width="25%"><img src="assets/telas/formulario.png" alt="Tela: Novo atendimento" width="180"><br><sub><b>Novo atendimento</b></sub></td>
-<td align="center" width="25%"><img src="assets/telas/plano.png" alt="Tela: Plano de direitos" width="180"><br><sub><b>Plano de direitos</b></sub></td>
-</tr>
-<tr>
-<td align="center" width="25%"><img src="assets/telas/encaminhamento.png" alt="Tela: Encaminhamento" width="180"><br><sub><b>Encaminhamento</b></sub></td>
-<td align="center" width="25%"><img src="assets/telas/dona-cida.png" alt="Tela: Acompanhamento do caso" width="180"><br><sub><b>Acompanhamento do caso</b></sub></td>
-<td align="center" width="25%"><img src="assets/telas/anotacao-ia.png" alt="Tela: Anotação por voz com IA" width="180"><br><sub><b>Anotação por voz com IA</b></sub></td>
-<td align="center" width="25%"><img src="assets/telas/equipe.png" alt="Tela: Equipe do coordenador" width="180"><br><sub><b>Equipe do coordenador</b></sub></td>
-</tr>
-</table>
+**🧠 Modelo de priorização** (Python)
+- **Direito provável sem benefício:** compara cada distrito com os de perfil social parecido. Assim estima quantas pessoas têm direito provável a **BPC idoso** ou **Bolsa Família** e não recebem.
+- **Índice e campanhas:** calcula um **índice de prioridade (0 a 100)** e sugere campanhas.
+- **Resultado do modelo:**
+  - os **10 distritos urgentes** concentram **55%** dessas pessoas (cerca de 54.947);
+  - os mais prioritários são Jardim Ângela, Tremembé e Grajaú.
 
-🎨 Navegue pelo protótipo completo no [Figma](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) ou conheça a jornada da Dona Cida no [site do projeto](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html).
+## 🛠️ Tecnologias Utilizadas
 
-A ideia é ser um diferencial em relação ao e-SUS para os profissionais que trabalham em campo. O motor de regras do Plano de Direitos, a calculadora de renda, a anotação por voz e o lembrete por WhatsApp são demonstrados no notebook [`caminho_dos_direitos_colab_v4`](notebooks/caminho_dos_direitos_colab_v4.ipynb), com a persona **Dona Cida**, a mesma das telas do protótipo. A anotação por voz também tem um notebook próprio, mais completo ([`anotacao_por_voz`](notebooks/anotacao_por_voz.ipynb)), e o lembrete chega ao WhatsApp de verdade pelo [`servidor_whatsapp_colab`](notebooks/servidor_whatsapp_colab.ipynb), feito com a Cloud API da Meta.
+- **Front-end:**
+  - **Figma**, para o protótipo do app;
+  - **HTML, CSS e JavaScript**, para o painel interativo e o site do projeto, publicados no **GitHub Pages**.
+- **Back-end:**
+  - **Python** no **Google Colab**;
+  - **FastAPI** com **Cloudflare Tunnel**, para o servidor do WhatsApp;
+  - **WhatsApp Cloud API** (Meta).
+- **Banco de dados:**
+  - **Oracle SQL Developer Data Modeler**, para o modelo conceitual, o lógico e o dimensional (Snowflake + Galaxy), com scripts SQL;
+  - os dados tratados ficam em CSV.
+- **Outras ferramentas:**
+  - **Power BI**;
+  - **IA:** Whisper para a transcrição, Claude (Anthropic) para a explicação com RAG e para organizar a anotação, edge-tts e gTTS para as vozes;
+  - **bibliotecas de dados:** pandas, NumPy, scikit-learn, SciPy, statsmodels, GeoPandas e PySAL.
+
+## 🚀 Demonstração
+
+| | Link |
+|---|---|
+| 📊 **Painel do monitoramento** (interativo, sem baixar nada) | [Abrir no navegador](https://karen-akemi.github.io/Caminho_dos_direitos/) · [arquivo do Power BI](dashboard/Caminho-dos-direitos.pbix) |
+| 🌐 **Site do projeto** | [Abrir o site](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html) |
+| 🎨 **Protótipo do app** | [Abrir no Figma](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
+| 🎬 **Vídeos das funções de IA** | [Ver abaixo](#-vídeos-de-demonstração) |
+| 🎥 **Pitch** e 🖥️ **Slides** | 🚧 Em finalização |
+
+> O app ainda é um protótipo. Por isso, no painel cada número tem um selo que diz de onde ele vem:
+> - **REAL:** vem das bases públicas;
+> - **ESTIMATIVA:** foi calculado pelo modelo;
+> - **SIMULADO:** é o que o app registraria, gerado a partir dos dados reais de cada distrito.
+
+## 🐍 Função dos notebooks
+
+Os notebooks rodam no **Google Colab** com **Ambiente de execução → Executar tudo**. Eles estão divididos em duas trilhas.
+
+| Trilha | Notebook | Principais funcionalidades |
+|---|---|---|
+| Dashboard · 1 | [`Tratamento_GS_v6`](notebooks/Tratamento_GS_v6.ipynb) | Padroniza os 96 distritos, junta e confere as bases públicas |
+| Dashboard · 2 | [`Modelo_GS_v4`](notebooks/Modelo_GS_v4.ipynb) | Estima quem tem direito e não recebe, prioriza os distritos e sugere campanhas |
+| Dashboard · 3 | [`Simulacao_App_v2`](notebooks/Simulacao_App_v2.ipynb) | Simula o que os agentes registrariam no app, calibrado nos dados reais e no modelo |
+| App | [`caminho_dos_direitos_colab_v4`](notebooks/caminho_dos_direitos_colab_v4.ipynb) | Demonstra o app com a persona Dona Cida. Mostra o Plano de Direitos, os testes, a explicação com IA (RAG), a calculadora de renda, a anotação por voz e o lembrete |
+| App | [`anotacao_por_voz`](notebooks/anotacao_por_voz.ipynb) | Transcreve a fala, remove o dado clínico, resume a visita e sugere marcações que o agente confirma |
+| App | [`servidor_whatsapp_colab`](notebooks/servidor_whatsapp_colab.ipynb) | Envia o lembrete por WhatsApp de verdade, em texto e em mensagem de voz |
+
+Na trilha do dashboard, o 2 só funciona depois do 1, e o 3 depois do 2. A trilha do app é independente. O guia seção por seção está em [`notebooks/README.md`](notebooks/README.md).
 
 ### 🎬 Vídeos de demonstração
 
-As duas funções de IA do app gravadas funcionando. Clique na imagem para assistir.
+Clique na imagem para assistir.
 
 <table>
 <tr>
@@ -154,253 +162,64 @@ O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pel
 </tr>
 </table>
 
-### 2. Painel do monitoramento
-
-Responde a pergunta: **quem está sem documento ou sem direito, onde, e o que fazer primeiro?**
-
-- 5 indicadores do app: pessoas acompanhadas, direitos sem acesso, pessoas sem documento, casos em área de risco e encaminhamentos concluídos;
-- **mapa de prioridade** dos 96 distritos (urgente, alta, média, baixa);
-- **Onde agir primeiro:** tabela que junta território (modelo) e o que o app registrou;
-- situação dos direitos por programa, documentos que faltam e resultado dos encaminhamentos;
-- **Quem tem direito e ainda não recebe:** mapa de calor por faixa de renda e faixa etária;
-- **campanhas recomendadas**, só para distritos de prioridade **urgente** ou **alta**;
-- **alertas cruzados**, regras que juntam um dado do território com o que o app registrou;
-- **efetividade dos lembretes:** faltas nos encaminhamentos de quem recebeu lembrete (texto, áudio ou os dois) comparadas com as de quem não recebeu;
-- **cobertura dos lembretes:** por faixa etária, quem recebe no próprio WhatsApp, no WhatsApp de um familiar, quem tem WhatsApp e não aceitou e quem não tem WhatsApp. Como não há dado público sobre lembretes, esses dois blocos usam premissas da simulação: mostram o que o painel vai medir, não um resultado;
-- filtros: subprefeitura, distrito, unidade e programa;
-- **segurança por linha** no Power BI: cada gestor vê apenas a sua subprefeitura.
-
-### 3. Modelo de priorização
-
-Compara cada distrito com os de perfil social parecido. Onde a cobertura de **BPC idoso** ou de **Bolsa Família** fica abaixo do esperado, estima quantas pessoas têm direito provável e não recebem. Depois calcula o **índice de prioridade (0 a 100)** e sugere campanhas só para os distritos urgentes e de prioridade alta.
-
----
-
-## 📈 Principais resultados
-
-> Resultados do modelo rodado com os dados públicos reais (selo **ESTIMATIVA**).
-
-| | |
-|---|---|
-| 🎯 **10 distritos urgentes** | concentram **55%** das pessoas com direito provável sem benefício (cerca de 54.947 pessoas) |
-| 📍 **Distritos mais prioritários** | Jardim Ângela (índice 79,0), Tremembé (76,2) e Grajaú (67,1) |
-| 🗂️ **Classificação dos 96 distritos** | 10 urgentes · 19 alta · 29 média · 38 baixa |
-| ⚠️ **Área de risco agrava** | quanto mais setores de risco R3/R4, mais gente com direito provável fica sem benefício por habitante (Spearman 0,23, significativo a 5%) |
-| 🚌 **Distância ao CRAS** | não tem relação clara com a falta de benefício (Spearman 0,06, p = 0,55) |
-| 🤖 **Qualidade do modelo** | BPC idoso: Random Forest com R² 0,81 (validação cruzada). Bolsa Família: R² 0,19, mais fraco, e por isso a lacuna do Bolsa Família é tratada como mais incerta |
-
----
-
-## 🌐 Site do projeto
-
-<p align="center">
-  <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>▶️ Abrir o site de apresentação</b></a>
-</p>
-
-Uma página para conhecer o projeto sem precisar abrir o código: o problema, a jornada da Dona Cida (visita, plano, encaminhamento e lembrete), os três olhares do app (agente de campo, coordenador e gestão), as telas do protótipo com o Figma incorporado, o painel interativo, os dados e o modelo, perguntas frequentes e a equipe. O arquivo é o [`indexsite.html`](indexsite.html).
-
----
-
-## 📊 Dashboard interativo
-
-<p align="center">
-  <a href="https://karen-akemi.github.io/Caminho_dos_direitos/"><b>▶️ Abrir o Painel do monitoramento no navegador</b></a>
-</p>
-
-A versão HTML do painel roda direto no navegador, **sem baixar nada nem instalar o Power BI**: os filtros de subprefeitura, distrito, unidade e programa funcionam na própria página. O arquivo é autocontido ([`dashboard/index.html`](dashboard/index.html)) e é publicado pelo GitHub Pages.
-
-O arquivo do Power BI também está no repositório: [`dashboard/Caminho-dos-direitos.pbix`](dashboard/Caminho-dos-direitos.pbix) (abre no Power BI Desktop).
-
-<details>
-<summary><b>Como publicar o dashboard no GitHub Pages</b></summary>
-
-1. No repositório, vá em **Settings → Pages**.
-2. Em **Build and deployment**, escolha **Deploy from a branch**, branch `main` e pasta `/ (root)`. Clique em **Save**.
-3. Em 1 ou 2 minutos o painel fica no ar em `https://karen-akemi.github.io/Caminho_dos_direitos/`.
-
-O `index.html` da raiz redireciona para o painel, então o link principal do Pages já abre o dashboard.
-
-</details>
-
----
-
-## 🗃️ Dados
-
-O projeto usa **14 bases públicas e reais**, todas recortadas nos 96 distritos da cidade de São Paulo. A chave que liga tudo é o **distrito**.
-
-| # | Base | Fonte | Referência | Uso no projeto |
-|---|---|---|---|---|
-| 1 | Limites dos 96 distritos | GeoSampa (Prefeitura) | Atual | Mapa e base de todos os cruzamentos |
-| 2 | População total | IBGE, Censo 2022 | 2022 | Denominador por habitante |
-| 3 | População por faixa etária | IBGE, Censo 2022 via TabNet SMS-SP | 2022 | Idosos de 65+ (base do BPC) |
-| 4 | Famílias no CadÚnico (CSV) | SMADS | jan/2026 | CadÚnico por distrito |
-| 5 | Famílias no CadÚnico (.ods) | Portal de Dados Abertos SP | jan/2026 | Conferência da base 4 |
-| 6 | Famílias com Bolsa Família | Portal de Dados Abertos SP | 2025 | Cobertura do Bolsa Família |
-| 7 | Beneficiários do BPC (idoso e PcD) | Portal de Dados Abertos SP | jul/2025 | Cobertura do BPC |
-| 8 | CRAS | Geoportal SMADS | Atual | Distância ao CRAS, CRAS de referência |
-| 9 | UBS | CNES (Ministério da Saúde) | Atual | Distância à UBS, unidade do agente |
-| 10 | Cartórios de registro civil | Levantamento do grupo | 2026 | Distância ao cartório |
-| 11 | Postos do Poupatempo | Levantamento do grupo | 2026 | Distância ao Poupatempo |
-| 12 | Setores de risco geológico R1–R4 | GeoSampa | Atual | Zona de risco como agravante |
-| 13 | Beneficiários da CDE (Tarifa Social) | ANEEL | 2024 | Testada e descartada (não traz a distribuidora da capital) |
-| 14 | Crianças de até 5 anos sem registro | IBGE, Censo 2022 (SIDRA) | 2022 | Número da cidade (só existe por município) |
-
-**Conferências feitas no tratamento:** 96 distritos sem nome repetido · população somada igual ao total do Censo (**11.451.999**) · as duas bases do CadÚnico iguais distrito a distrito (diferença 0) · todos os distritos com Bolsa Família, BPC e população de 65+.
-
-📄 Detalhes de cada base, de como foram juntadas e das limitações: [`documentacao/Notebooks_e_bases_de_dados.pdf`](documentacao/Notebooks_e_bases_de_dados.pdf).
-
----
-
-## 🏷️ Real, estimativa e simulado
-
-O app é um **protótipo de ideação** e ainda não está em funcionamento. Por isso, no painel cada número leva um selo que diz de onde ele vem:
-
-| Selo | O que é | Exemplos |
-|---|---|---|
-| **REAL** | Contado pelo governo ou medido direto nas bases públicas | Famílias no CadÚnico, coberturas de Bolsa Família e BPC, distâncias aos serviços, setores de risco |
-| **ESTIMATIVA** | Calculado pelo modelo do grupo a partir dos dados reais | Pessoas com direito provável sem benefício, índice e classe de prioridade, campanhas e insights |
-| **SIMULADO** | O que o app registraria, gerado no notebook `Simulacao_App_v2` | Pessoas acompanhadas, direitos sem acesso, documentos pendentes, encaminhamentos, lembretes e alertas |
-
-Os dados simulados **não inventam as proporções**: 5.000 pessoas acompanhadas, distribuídas pelos distritos conforme o CadÚnico, com chances calibradas nos dados reais de cada distrito (cobertura real ÷ esperada pelo modelo, moradias em setores R3/R4, distância ao cartório, ao Poupatempo e ao serviço de destino). O que não tem dado público por distrito fica numa célula de premissas do notebook, para ser revisado. **Os dados de território são reais.**
-
-<details>
-<summary><b>Principais limitações</b></summary>
-
-- As bases têm datas diferentes (2022, 2025, jan/2026).
-- O CadÚnico por distrito não traz renda, o que deixa o modelo do Bolsa Família fraco (R² 0,19).
-- A lacuna é relativa: mede quanto o distrito está abaixo dos parecidos, não conta pessoas elegíveis uma a uma.
-- Não há dado de documentação por distrito; o mapa de pessoas sem documento usa a simulação.
-- Os lembretes por WhatsApp são premissa: a diferença de faltas com e sem lembrete foi colocada na simulação.
-- Não há base de agências do INSS; no encaminhamento do BPC, a distância ao INSS usa a do Poupatempo.
-- A distância é medida do centro do distrito, o que não representa cada casa em distritos grandes (Marsilac, Parelheiros).
-- Não há população com deficiência por distrito, então o modelo usa só o BPC idoso.
-
-</details>
-
----
-
-## 🧩 Modelagem de dados
-
-A modelagem segue a sequência **conceitual → lógico → dimensional**, do que o agente registra no app até o painel.
-
-- **Modelo dimensional:** Snowflake + Galaxy (constelação de fatos). São 7 tabelas fato com grãos diferentes que compartilham dimensões, e a hierarquia territorial (subprefeitura → distrito → unidade → caso) é normalizada para os filtros do painel.
-- **Duas origens no mesmo modelo:** bases públicas (REAL e ESTIMATIVA DO MODELO) e dados do app (SIMULADO, gerados a partir dos dados reais). Elas se encontram no **distrito**, e a coluna `origem` identifica cada uma.
-
-| Tipo | Tabelas |
-|---|---|
-| Dimensões | `dim_subprefeitura`, `dim_distrito`, `dim_equipamento`, `dim_programa`, `dim_caso`, `dim_tempo` (proposta em escala) |
-| Fatos do território | `fato_indicadores_distrito`, `fato_recomendacoes`, `fato_risco_setor` |
-| Fatos do app (SIMULADO) | `fato_item_plano` (um direito sugerido por caso, com a situação), `fato_documento_pendente`, `fato_encaminhamento` (destino, resultado e lembrete) |
-| Fato que cruza app e território | `fato_alertas` |
-
-- **Dados sensíveis ficam fora do modelo analítico:** login, PIN, pedidos de acesso, nomes de profissionais e telefones. A `dim_caso` não tem nome, apelido nem CPF; o painel só precisa do id.
-
-📂 Modelo conceitual, modelo lógico, modelo dimensional, matrizes de granularidade e barramento e dicionário de dados: [`modelagem/`](modelagem/).
-
-<p align="center">
-  <img src="modelagem/3_dimensional/modelo_dimensional.svg" alt="Modelo dimensional Snowflake + Galaxy" width="800">
-</p>
-
-| Etapa | O que traz | Arquivos |
-|---|---|---|
-| 1. Conceitual | O que o app registra: 16 entidades, 25 relacionamentos e as regras de negócio, cada uma ligada à tela do protótipo | [diagrama](modelagem/1_conceitual/modelo_conceitual.png) · [entidades e regras](modelagem/1_conceitual/modelo_conceitual.md) |
-| 2. Lógico | O modelo conceitual com chaves e tipos, feito no Oracle SQL Developer Data Modeler | [diagrama](modelagem/2_logico/modelo_logico_app.svg) · [script SQL](modelagem/2_logico/modelo_logico_app.sql) |
-| 3. Dimensional | Snowflake + Galaxy, com matriz de granularidade e matriz de barramento | [diagrama](modelagem/3_dimensional/modelo_dimensional.svg) · [matrizes e decisões](modelagem/3_dimensional/matriz_granularidade_barramento.md) · [script SQL](modelagem/3_dimensional/modelo_dimensional.sql) |
-| Dicionário de dados | Todas as tabelas e colunas, com a rastreabilidade tela do app → tabela → quadro do painel | [dicionario_dados.md](modelagem/dicionario_dados.md) |
-
----
-
-## 🐍 Notebooks e como reproduzir
-
-Os notebooks rodam no **Google Colab** com o Google Drive. São 6 notebooks em duas trilhas: a do dashboard roda em ordem; a do app é independente.
-
-```mermaid
-flowchart LR
-    A[Bases públicas] --> B[1. Tratamento_GS_v6]
-    B -->|dados/saida| C[2. Modelo_GS_v4]
-    C -->|dados/saida_modelo| D[3. Simulacao_App_v2]
-    B --> E[Power BI / Painel]
-    C --> E
-    D -->|dados/saida_app| E
-```
-
-| Ordem | Notebook | Para quê | Gera |
-|---|---|---|---|
-| 1 | [`Tratamento_GS_v6`](notebooks/Tratamento_GS_v6.ipynb) | Padroniza os nomes dos distritos, junta e confere as bases públicas | [`dados/saida/`](dados/saida) |
-| 2 | [`Modelo_GS_v4`](notebooks/Modelo_GS_v4.ipynb) | Estima quem tem direito e não recebe, prioriza distritos e sugere campanhas | [`dados/saida_modelo/`](dados/saida_modelo) |
-| 3 | [`Simulacao_App_v2`](notebooks/Simulacao_App_v2.ipynb) | Simula o que os agentes registrariam no app (casos, Plano de Direitos, documentos, encaminhamentos, lembretes por WhatsApp e alertas), calibrado nos dados reais e no modelo | [`dados/saida_app/`](dados/saida_app) |
-| App | [`caminho_dos_direitos_colab_v4`](notebooks/caminho_dos_direitos_colab_v4.ipynb) | Demonstra o app com a Dona Cida: Plano de Direitos, testes, IA (RAG), calculadora de renda, anotação por voz, lembrete por WhatsApp e comparação de vozes | — |
-| App | [`anotacao_por_voz`](notebooks/anotacao_por_voz.ipynb) | Anotação por voz com IA: transcreve, remove dado clínico, resume a visita e sugere 10 marcações que o agente confirma | — |
-| App | [`servidor_whatsapp_colab`](notebooks/servidor_whatsapp_colab.ipynb) | Servidor do WhatsApp de verdade (Cloud API da Meta): lembrete em texto com o botão "Ouvir em áudio" e mensagem de voz | — |
-
-**Para rodar:** coloque as bases brutas na pasta `Meu Drive/Dados` e, em cada notebook, use **Ambiente de execução → Executar tudo**. O 2 só funciona depois do 1, e o 3 depois do 2, porque cada um lê os arquivos que o anterior gera. Os CSVs usam `;` como separador e vírgula decimal.
-
-📄 Guia de cada notebook, seção por seção: [`notebooks/README.md`](notebooks/README.md). Bases, saídas da trilha do dashboard, Power BI e problemas comuns: [`documentacao/Notebooks_e_bases_de_dados.pdf`](documentacao/Notebooks_e_bases_de_dados.pdf).
-
----
-
-## 📁 Estrutura do repositório
+## 📁 Estrutura do Projeto
 
 ```
 ├── README.md
-├── index.html                     # redireciona o GitHub Pages para o painel
+├── index.html                     # abre o painel no GitHub Pages
 ├── indexsite.html                 # site de apresentação do projeto
 ├── assets/
 │   ├── logo.png
 │   ├── telas/                     # telas do protótipo do app
 │   └── videos/                    # vídeos de demonstração (anotação por voz e WhatsApp)
 ├── dashboard/
-│   ├── index.html                 # Painel do monitoramento interativo (HTML autocontido)
+│   ├── index.html                 # painel interativo (HTML)
 │   └── Caminho-dos-direitos.pbix  # arquivo do Power BI
 ├── notebooks/
-│   ├── Tratamento_GS_v6.ipynb      # 1. tratamento das bases públicas
-│   ├── Modelo_GS_v4.ipynb          # 2. modelo de priorização e campanhas
-│   ├── Simulacao_App_v2.ipynb      # 3. simulação dos dados do app
-│   ├── caminho_dos_direitos_colab_v4.ipynb   # demonstração do app
-│   ├── anotacao_por_voz.ipynb      # anotação por voz com IA
-│   ├── servidor_whatsapp_colab.ipynb   # WhatsApp de verdade (Cloud API)
-│   ├── ia/                         # anotacoes.py, voz.py e servidor_whatsapp.py
-│   └── README.md                   # guia dos notebooks
+│   ├── Tratamento_GS_v6.ipynb
+│   ├── Modelo_GS_v4.ipynb
+│   ├── Simulacao_App_v2.ipynb
+│   ├── caminho_dos_direitos_colab_v4.ipynb
+│   ├── anotacao_por_voz.ipynb
+│   ├── servidor_whatsapp_colab.ipynb
+│   ├── ia/                        # anotacoes.py, voz.py e servidor_whatsapp.py
+│   └── README.md                  # guia dos notebooks
 ├── dados/
-│   ├── saida/                     # território tratado (dimensões, acesso, risco, mapas)
-│   ├── saida_modelo/              # indicadores, lacunas, recomendações e métricas do modelo
+│   ├── saida/                     # território tratado
+│   ├── saida_modelo/              # indicadores, lacunas e recomendações do modelo
 │   └── saida_app/                 # dados do app (SIMULADO)
+├── modelagem/                     # modelos conceitual, lógico e dimensional e dicionário de dados
 ├── documentacao/
 │   └── Notebooks_e_bases_de_dados.pdf   # guia dos notebooks e das bases de dados
-├── apresentacao/                  # 🚧 pitch e slides (em finalização)
-└── modelagem/
-    ├── README.md
-    ├── dicionario_dados.md
-    ├── 1_conceitual/              # modelo conceitual e regras de negócio
-    ├── 2_logico/                  # modelo lógico do app (Data Modeler)
-    └── 3_dimensional/             # Snowflake + Galaxy, matrizes e script SQL
+└── apresentacao/                  # 🚧 pitch e slides (em finalização)
 ```
 
----
+## 👥 Equipe e Colaboradores
 
-## ✅ Status da entrega
-
-| Entrega | Status |
+| Integrante | Links |
 |---|---|
-| Tratamento das bases públicas | ✅ Concluído |
-| Modelo de priorização e recomendação de campanhas | ✅ Concluído |
-| Simulação dos dados do app | ✅ Concluído |
-| Painel do monitoramento (Power BI e versão HTML interativa) | ✅ Concluído |
-| Protótipo do app no Figma | ✅ Concluído · [link atual](https://www.figma.com/design/1eyGN1dPpd0AkRcqTDco4B) |
-| Modelagem de dados (conceitual, lógico e dimensional Snowflake + Galaxy) | ✅ Concluído · [ver](modelagem/) |
-| Site de apresentação | ✅ Concluído · [abrir](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html) |
-| Arquitetura de Dados | 🚧 Em finalização |
-| Slides de Entrega | 🚧 Em finalização |
-| Vídeo do pitch | 🚧 Em finalização |
+| Angelo Rabello | — |
+| Karen Akemi de Oliveira | [GitHub](https://github.com/Karen-Akemi) |
+| Milena Barbosa | — |
 
----
+## 📚 Referências
 
-## 🛠️ Tecnologias
+O projeto usa 14 bases públicas, recortadas nos 96 distritos da cidade de São Paulo:
 
-**Python** (pandas, NumPy, scikit-learn, SciPy, statsmodels, GeoPandas, PySAL) no **Google Colab** · **Power BI** · **Figma** · **Oracle SQL Developer Data Modeler** · **GitHub Pages**
+- **GeoSampa (Prefeitura de São Paulo):** limites dos distritos e setores de risco geológico (R1 a R4);
+- **IBGE, Censo 2022:** população total, população por faixa etária (via TabNet SMS-SP) e crianças de até 5 anos sem registro (SIDRA);
+- **SMADS:** famílias no CadÚnico (jan/2026) e localização dos CRAS (Geoportal SMADS);
+- **Portal de Dados Abertos da Prefeitura de São Paulo:**
+  - famílias no CadÚnico (jan/2026);
+  - famílias com Bolsa Família (2025);
+  - beneficiários do BPC (jul/2025);
+- **CNES (Ministério da Saúde):** UBS;
+- **ANEEL:** beneficiários da Tarifa Social (testada e descartada);
+- **Levantamento do grupo (2026):** cartórios de registro civil e postos do Poupatempo;
+- **Documentação da WhatsApp Cloud API (Meta):** base do servidor de lembretes.
 
----
+Os detalhes de cada base, de como foram juntadas e das limitações estão em [`documentacao/Notebooks_e_bases_de_dados.pdf`](documentacao/Notebooks_e_bases_de_dados.pdf).
 
-<p align="center">
-  <sub>FIAP · Global Solution 2026.2 · Disciplina de Data Visualization</sub>
-</p>
+## 📄 Licença
+
+Projeto acadêmico, desenvolvido para a Global Solution 2026.2 da FIAP. O repositório ainda não tem uma licença definida. Sem ela, todos os direitos ficam com os autores.

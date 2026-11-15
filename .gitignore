@@ -1,0 +1,8 @@
+# Python e Colab
+__pycache__/
+.ipynb_checkpoints/
+
+# Arquivos temporários do Windows e do Office
+desktop.ini
+Thumbs.db
+~$*
