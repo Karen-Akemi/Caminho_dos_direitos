@@ -31,7 +31,7 @@
     coord: { nome: 'Coordenação', cargo: titulo(uni.n), av: 'C', cor: 'var(--verde-esc)', chip: 'Perfil: Coordenação',
       menu: [['visao', 'Minha unidade', 'casa'], ['acessos', 'Pedidos de acesso', 'cadeado'], ['equipe', 'Equipe e casos', 'pessoas'], ['campanhas', 'Campanhas do território', 'sino'], ['painel', 'Painel da unidade', 'tela']] },
     agente: { nome: 'Agente de campo', cargo: 'ACS · ' + titulo(CD.unidades['410'].n), av: 'A', cor: '#8A6200', chip: 'Perfil: Agente',
-      menu: [['hoje', 'Visitas de hoje', 'calendario'], ['telas', 'Telas do app', 'celular'], ['ia', 'IA em ação', 'mic'], ['prototipo', 'Protótipo navegável', 'olho']] }
+      menu: [['hoje', 'Visitas de hoje', 'calendario'], ['telas', 'Telas do app', 'celular'], ['ia', 'IA em ação', 'mic']] }
   };
   const P = PERFIS[perfil];
   document.title = P.nome + ' · Caminho dos Direitos';
@@ -192,7 +192,8 @@
   function secRanking() {
     let cl = 'todas', busca = '', sub = '';
     vista.innerHTML = cab('Secretaria municipal', 'Onde agir primeiro', 'Os 96 distritos ordenados pelo índice de prioridade. Filtre por classe, subprefeitura ou nome.') +
-      `<div class="bloco"><div class="filtros" id="fcl" style="margin-bottom:14px"></div><div id="tab"></div></div>
+      `<div class="explica">${ic('alvo')}<div><b>O que é o índice de prioridade?</b>Uma nota de 0 a 100 que diz onde a busca ativa rende mais. Quanto maior, mais urgente: pesa principalmente quantas pessoas têm direito provável e ainda não recebem o benefício, e também a distância até o CRAS, as áreas de risco e o peso do CadÚnico no distrito.</div></div>
+      <div class="bloco"><div class="filtros" id="fcl" style="margin-bottom:14px"></div><div id="tab"></div></div>
        <p class="fonte">Índice (0 a 100): soma ponderada, normalizada, de pessoas com direito provável sem benefício (45%), distância ao CRAS (25%), setores de risco R3/R4 (15%) e CadÚnico por mil habitantes (15%). Origem: ESTIMATIVA DO MODELO (Modelo_GS_v4).</p>`;
     function desenhar() {
       $('fcl').innerHTML = ['todas', 'urgente', 'alta', 'média', 'baixa'].map(c => `<button type="button" data-c="${c}" aria-pressed="${c === cl}">${c === 'todas' ? 'Todas' : c[0].toUpperCase() + c.slice(1)}</button>`).join('') +
@@ -231,7 +232,7 @@
         ${kpi(55, 'das pessoas com direito sem benefício estão em 10 distritos', 'pin', 'var(--p-urgente)', 'Estimativa do modelo', 0, '%')}
         ${kpi(m.lemComp / m.lem * 100, 'de comparecimento com lembrete no WhatsApp', 'msg', 'var(--verde-esc)', 'Simulado', 1, '%')}
         ${kpi(m.semLemComp / m.semLem * 100, 'de comparecimento sem lembrete', 'x', 'var(--texto-2)', 'Simulado', 1, '%')}</div>
-      <div class="alertas">${CD.insights.map((t, i) => `<div class="alerta"><span class="cl alta" style="flex-shrink:0">${i + 1}</span><p>${esc(t)}</p></div>`).join('')}</div>
+      <div class="alertas">${CD.insights.map((t, i) => `<div class="alerta"><span class="cl alta num">${i + 1}</span><p>${esc(t)}</p></div>`).join('')}</div>
       <p class="fonte">Insights 1 a 5: Modelo_GS_v4 (testes de Spearman e de diferença de proporções). Comparecimento: dados do app SIMULADOS, só para mostrar o indicador.</p>`;
   }
 
@@ -383,13 +384,9 @@
   function agIA() {
     vista.innerHTML = cab('Agente de campo', 'IA em ação', 'As funções de IA já funcionam em Python. Os vídeos mostram o resultado real.') +
       `<div class="videos-g">
-        <div><video controls preload="none" poster="../assets/videos/anotacao_app.jpg"><source src="../assets/videos/anotacao_app.mp4" type="video/mp4"></video><h3>Anotação por voz com IA · 29 s</h3><p>Transcreve, remove o dado de saúde e sugere marcações que o agente confirma.</p></div>
-        <div><video controls preload="none" poster="../assets/videos/lembrete_whatsapp.jpg"><source src="../assets/videos/lembrete_whatsapp.mp4" type="video/mp4"></video><h3>Lembrete por WhatsApp · 36 s</h3><p>Chegando em um celular de verdade, em texto e em mensagem de voz.</p></div>
+        <div class="video-item"><video controls preload="none" poster="../assets/videos/anotacao_app.jpg"><source src="../assets/videos/anotacao_app.mp4" type="video/mp4"></video><div><h3>Anotação por voz com IA · 29 s</h3><p>Transcreve, remove o dado de saúde e sugere marcações que o agente confirma.</p></div></div>
+        <div class="video-item"><video controls preload="none" poster="../assets/videos/lembrete_whatsapp.jpg"><source src="../assets/videos/lembrete_whatsapp.mp4" type="video/mp4"></video><div><h3>Lembrete por WhatsApp · 36 s</h3><p>Chegando em um celular de verdade, em texto e em mensagem de voz.</p></div></div>
       </div>`;
-  }
-  function agProto() {
-    vista.innerHTML = cab('Agente de campo', 'Protótipo navegável', 'O fluxo completo no Figma.') +
-      `<div class="painel-frame"><iframe src="https://embed.figma.com/design/1eyGN1dPpd0AkRcqTDco4B/Projeto-Global-Solutions---Caminhos?node-id=175-5995&embed-host=share" title="Protótipo do app no Figma" allowfullscreen></iframe></div>`;
   }
 
   /* ---------- roteamento por #hash ---------- */
@@ -397,7 +394,7 @@
     sec: { visao: secVisao, ranking: secRanking, campanhas: vistaCampanhas, subprefeituras: secSubs, insights: secInsights, painel: vistaPainel },
     sub: { visao: subVisao, campanhas: vistaCampanhas, alertas: subAlertas, unidades: subUnidades, painel: vistaPainel },
     coord: { visao: coordVisao, acessos: coordAcessos, equipe: coordEquipe, campanhas: vistaCampanhas, painel: vistaPainel },
-    agente: { hoje: agHoje, telas: agTelas, ia: agIA, prototipo: agProto }
+    agente: { hoje: agHoje, telas: agTelas, ia: agIA }
   }[perfil];
   function rota() {
     let v = location.hash.slice(1);
