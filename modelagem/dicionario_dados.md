@@ -28,6 +28,7 @@ Documentos relacionados: [modelo conceitual](1_conceitual/modelo_conceitual.md) 
 | `dim_tempo` | dimensão | um dia | — | proposta |
 | `fato_item_plano` | fato sem medida | um direito sugerido por pessoa | 13.404 | SIMULADO |
 | `fato_documento_pendente` | fato sem medida | um documento faltante por pessoa | 929 | SIMULADO |
+| `fato_documento_historico` | fato de acompanhamento | um documento identificado por pessoa, pendente ou resolvido | 1.198 | SIMULADO |
 | `fato_encaminhamento` | fato sem medida | um encaminhamento | 3.191 | SIMULADO |
 | `fato_alertas` | fato derivado | um alerta por regra e distrito | 38 | SIMULADO + TERRITÓRIO |
 | `fato_indicadores_distrito` | fato de foto (snapshot) | um distrito | 96 | REAL + ESTIMATIVA DO MODELO |
@@ -129,10 +130,12 @@ Uma pessoa acompanhada pelo app. Sem nome, apelido, CPF ou telefone (LGPD).
 | `formato_lembrete` | VARCHAR2(15) |  | Formato preferido do lembrete (vazio quando não recebe) | Texto · Texto e áudio · Áudio |
 | `categoria_lembrete` | VARCHAR2(40) |  | Coluna calculada no Power BI para o quadro Cobertura dos lembretes | calculada no Power BI |
 | `origem` | VARCHAR2(30) |  | Origem do dado | SIMULADO |
+| `data_abertura` | DATE |  | Dia em que o agente cadastrou a pessoa no app (premissa da simulação: piloto de 04/05 a 13/11/2026) | 2026-05-04 a 2026-11-13 |
+| `data_encerramento` | DATE |  | Dia em que o caso foi encerrado (vazio quando ativo) | até 2026-11-13 |
 
 ### `dim_tempo`
 
-Calendário. PROPOSTA EM ESCALA: não existe nos arquivos de dados nem no Power BI porque os dados simulados não têm data.
+Calendário. Não existe como arquivo: os fatos já trazem datas (simuladas) e, no Power BI, a tabela é criada com `CALENDAR(DATE(2026;5;4); DATE(2026;11;13))` e ligada a `data_abertura`, `data_encaminhamento` e `data_identificacao`.
 
 - **Origem:** proposta
 - **Arquivo:** —
@@ -181,6 +184,26 @@ Grão: um documento que falta para uma pessoa. Fato sem medida.
 | `id_caso` | NUMBER(8) | PK FK → `dim_caso.id_caso` | Pessoa | 1 a 4995 |
 | `documento` | VARCHAR2(40) | PK | Documento que falta (dimensão degenerada) | CPF · Carteira de trabalho · Certidão de nascimento · Comprovante de residência · RG/CIN · Título de eleitor |
 | `origem` | VARCHAR2(30) |  | Origem do dado | SIMULADO |
+| `data_identificacao` | DATE |  | Dia em que o agente identificou que o documento falta (= abertura do caso) | 2026-05-04 a 2026-11-13 |
+
+### `fato_documento_historico`
+
+Grão: um documento que faltava para uma pessoa, **pendente ou já resolvido**. É a base da evolução no tempo do painel ("chegaram 30 sem documento, 20 já foram atendidas, 10 aguardam"). Os pendentes são as mesmas linhas de `fato_documento_pendente`.
+
+- **Origem:** SIMULADO
+- **Arquivo:** [`dados/saida_app/fato_documento_historico.csv`](../dados/saida_app/fato_documento_historico.csv)
+- **Linhas:** 1.198
+- **Chave primária:** `id_caso, documento`
+
+| Coluna | Tipo | Chave | Descrição | Valores / exemplo |
+|---|---|---|---|---|
+| `id_caso` | NUMBER(8) | PK FK → `dim_caso.id_caso` | Pessoa | 1 a 4995 |
+| `documento` | VARCHAR2(40) | PK | Documento que faltava | CPF · Carteira de trabalho · Certidão de nascimento · Comprovante de residência · RG/CIN · Título de eleitor |
+| `data_identificacao` | DATE |  | Dia em que o agente identificou a falta | 2026-05-04 a 2026-11-13 |
+| `data_resolucao` | DATE |  | Dia em que o encaminhamento de Documentação básica foi concluído (vazio = pendente) | 2026-05-24 a 2026-11-13 |
+| `situacao_documento` | VARCHAR2(10) |  | Situação atual | Pendente · Resolvido |
+| `dias_ate_resolver` | NUMBER(4) |  | Dias entre identificar e resolver (vazio = pendente) | 5 a 69 |
+| `origem` | VARCHAR2(30) |  | Origem do dado | SIMULADO |
 
 ### `fato_encaminhamento`
 
@@ -196,7 +219,6 @@ Grão: uma ida da pessoa a um serviço, com resultado e lembrete por WhatsApp.
 | `id_encaminhamento` | NUMBER(8) | PK | Identificador do encaminhamento | 1 a 3191 |
 | `id_caso` | NUMBER(8) | FK → `dim_caso.id_caso` | Pessoa encaminhada | 1 a 5000 |
 | `id_programa` | NUMBER(2) | FK → `dim_programa.id_programa` | Direito que motivou o encaminhamento | 1 · 2 · 3 · 4 · 5 · 6 · 7 |
-| `id_data` | NUMBER(8) | FK → `dim_tempo.id_data` | Data do atendimento. PROPOSTA EM ESCALA: vazio nos dados atuais | proposta |
 | `tipo_destino` | VARCHAR2(20) |  | Tipo de serviço de destino (dimensão degenerada) | CRAS · Cartório · INSS · Poupatempo · UBS |
 | `resultado` | VARCHAR2(20) |  | Resultado do encaminhamento (dimensão degenerada) | Agendado · Compareceu · Concluído · Faltou |
 | `resultado_ordem` | NUMBER(1) |  | Ordem do resultado para os gráficos | 1 · 2 · 3 · 4 |
@@ -204,6 +226,9 @@ Grão: uma ida da pessoa a um serviço, com resultado e lembrete por WhatsApp.
 | `formato_lembrete` | VARCHAR2(15) |  | Formato do lembrete enviado (vazio quando não houve) | Texto · Texto e áudio · Áudio |
 | `grupo_lembrete` | VARCHAR2(30) |  | Coluna calculada no Power BI a partir de lembrete_enviado (quadro Efetividade do atendimento) | calculada no Power BI |
 | `origem` | VARCHAR2(30) |  | Origem do dado | SIMULADO |
+| `data_encaminhamento` | DATE |  | Dia em que o agente encaminhou a pessoa | 2026-05-04 a 2026-11-13 |
+| `data_resultado` | DATE |  | Dia do resultado (falta, comparecimento ou conclusão). Vazio quando ainda está agendado | 2026-05-11 a 2026-11-13 |
+| `dias_ate_resultado` | NUMBER(4) |  | Dias entre o encaminhamento e o resultado (vazio quando agendado) | 1 a 108 |
 
 ### `fato_alertas`
 

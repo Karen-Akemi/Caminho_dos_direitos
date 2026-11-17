@@ -162,9 +162,10 @@
 
   /* ---------- painel embutido ---------- */
   function vistaPainel() {
-    const qs = perfil === 'sub' ? `?sub=${encodeURIComponent(SUB)}&travar=1` : perfil === 'coord' ? `?uni=${UNI}&travar=1` : '';
+    // coordenador de unidade abre na aba Operação; secretaria e subprefeitura, na aba Gestão
+    const qs = perfil === 'sub' ? `?sub=${encodeURIComponent(SUB)}&travar=1&aba=gestao` : perfil === 'coord' ? `?uni=${UNI}&travar=1&aba=operacao` : '?aba=gestao';
     vista.innerHTML = cab('Power BI · versão HTML', P.menu.find(m => m[0] === 'painel')[1],
-      perfil === 'sec' ? 'O painel completo, sem restrição: os 96 distritos e todas as unidades.' : 'O mesmo painel, com o filtro travado no seu acesso. Os outros filtros continuam livres.',
+      perfil === 'sec' ? 'O painel completo, sem restrição: os 96 distritos e todas as unidades. Abre na aba Gestão (metas, evolução e onde agir); a aba Operação mostra a fila de trabalho das unidades.' : perfil === 'coord' ? 'O mesmo painel, com o filtro travado na sua unidade. Abre na aba Operação: fila de trabalho, quem espera há mais tempo e o próximo passo de cada caso.' : 'O mesmo painel, com o filtro travado no seu acesso. Abre na aba Gestão: metas, evolução no tempo e onde agir primeiro.',
       `<a class="btn btn-contorno btn-sm" href="../dashboard/index.html${qs}" target="_blank" rel="noopener">${ic('olho')}Abrir em tela cheia</a>`) + rls() +
       `<div class="painel-frame"><iframe src="../dashboard/index.html${qs}" title="Painel do monitoramento"></iframe></div>`;
   }

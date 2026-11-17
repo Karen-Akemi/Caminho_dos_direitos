@@ -76,18 +76,20 @@ O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos
   - a entrada é por PIN de 6 dígitos ou por código no WhatsApp.
 - **Visão do coordenador:** aprovar ou recusar acessos, ver os casos da unidade e transferir casos entre agentes.
 
-**📊 Painel do monitoramento** (Power BI e versão HTML)
-- **Indicadores e mapa:**
-  - indicadores do app;
-  - **mapa de prioridade** dos 96 distritos;
-  - tabela **Onde agir primeiro**.
-- **Direitos e encaminhamentos:**
-  - situação dos direitos por programa;
-  - documentos que faltam;
-  - resultado dos encaminhamentos.
-- **Campanhas recomendadas** para os distritos urgentes e de prioridade alta, e **alertas cruzados** entre o território e o que o app registrou.
+**📊 Painel do monitoramento** (Power BI e versão HTML), em duas abas, uma para cada público:
+- **Gestão** (coordenação, subprefeituras e órgãos públicos):
+  - **indicadores com meta** e sinal de *dentro da meta*, *atenção* ou *fora da meta*: encaminhamentos concluídos, faltas, pessoas sem documento já atendidas, tempo até concluir e pessoas que recebem lembrete;
+  - **evolução no tempo**: por mês, quantas pessoas chegaram sem documento (ou quantos encaminhamentos foram feitos), quantas já foram atendidas e quantas aguardam, e há quanto tempo esperam;
+  - **mapa de prioridade** e **Onde agir primeiro**, com a explicação do índice (0 a 100) e de quanto cada critério soma na nota de cada distrito;
+  - situação dos direitos por programa, quem tem direito e não recebe, **alertas cruzados** e efeito dos lembretes.
+- **Operação** (UBS, CRAS e agentes de campo):
+  - quem está esperando há mais de 30 dias (com meta), agendados e faltas para remarcar;
+  - ritmo da equipe nas últimas 12 semanas (casos novos × pendências resolvidas);
+  - **fila de trabalho**: cada pessoa com pendência, há quanto tempo espera e o próximo passo;
+  - documentos que faltam, encaminhamentos por destino e alertas do território.
 - **Filtros** por subprefeitura, distrito, unidade e programa. No Power BI, cada gestor vê só a sua subprefeitura.
-- Na versão HTML, a segurança por linha é simulada pela URL: `dashboard/?sub=M'Boi Mirim&travar=1` ou `dashboard/?uni=410&travar=1` travam o filtro (é o que a demo por cargo usa).
+- Na versão HTML, a segurança por linha é simulada pela URL: `dashboard/?sub=M'Boi Mirim&travar=1` ou `dashboard/?uni=410&travar=1` travam o filtro (é o que a demo por cargo usa). `&aba=gestao` ou `&aba=operacao` escolhem a aba.
+- As definições de cada indicador e as metas estão em [`dashboard/README.md`](dashboard/README.md).
 
 > ⚠️ **Dados do app são simulados.** O app ainda não está em uso. Os indicadores de casos, pendências, encaminhamentos e alertas do painel vêm de [`Simulacao_App_v2`](notebooks/Simulacao_App_v2.ipynb), calibrado nos dados reais e no modelo (pasta `dados/saida_app/`). Os dados do território e do modelo vêm das bases públicas.
 
@@ -217,7 +219,11 @@ O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pel
 
 ## ▶️ Como rodar
 
-**Painel e site:** não precisam de instalação. Basta abrir os links da [Demonstração](#-demonstração) ou abrir `dashboard/index.html` e `indexsite.html` direto no navegador, porque os dados já vêm dentro das páginas. Se os dados de `dados/` mudarem, gere de novo o arquivo de dados do site:
+**Painel e site:** não precisam de instalação. Basta abrir os links da [Demonstração](#-demonstração) ou abrir `dashboard/index.html` e `indexsite.html` direto no navegador, porque os dados já vêm junto das páginas. Se os dados de `dados/` mudarem, gere de novo os arquivos de dados do painel e do site:
+
+```bash
+python dashboard/gerar_dados_painel.py
+```
 
 ```bash
 python site/gerar_dados_site.py .
@@ -256,7 +262,10 @@ O passo a passo de cada notebook está em [`notebooks/README.md`](notebooks/READ
 │   ├── telas/                     # telas do protótipo do app
 │   └── videos/                    # vídeos de demonstração (anotação por voz e WhatsApp)
 ├── dashboard/
-│   ├── index.html                 # painel interativo (HTML)
+│   ├── index.html                 # painel interativo (HTML), abas Gestão e Operação
+│   ├── dados_painel.js            # dados do painel, gerados a partir de dados/
+│   ├── gerar_dados_painel.py      # gera o dados_painel.js (python dashboard/gerar_dados_painel.py)
+│   ├── README.md                  # indicadores, metas e como replicar no Power BI
 │   └── Caminho-dos-direitos.pbix  # arquivo do Power BI
 ├── notebooks/
 │   ├── Tratamento_GS_v6.ipynb
