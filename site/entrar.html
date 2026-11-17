@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar · Caminho dos Direitos</title>
+<meta name="description" content="Demonstração: escolha um cargo e veja a plataforma Caminho dos Direitos como ele veria.">
+<link rel="icon" href="../assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="site.css">
+<style>
+body{background:var(--fundo)}
+.tela{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+@media(max-width:900px){.tela{grid-template-columns:1fr}}
+.esq{background:radial-gradient(800px 500px at 100% 0%,rgba(23,71,166,.6),transparent 60%),radial-gradient(600px 400px at 0% 100%,rgba(1,173,76,.2),transparent 60%),var(--navy);color:#fff;padding:40px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;position:relative;overflow:hidden}
+.esq::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+.esq>*{position:relative}
+.esq .logo{background:#fff;border-radius:14px;padding:8px 12px;display:inline-block;align-self:flex-start}
+.esq .logo img{height:40px}
+.esq h1{font-size:clamp(30px,3.6vw,44px);font-weight:800;margin:14px 0 14px}
+.esq h1 span{color:var(--amarelo)}
+.esq p{color:var(--texto-inv);max-width:460px}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:480px;margin-top:28px}
+.mini div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px}
+.mini b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+.mini span{font-size:12px;color:var(--texto-inv)}
+.esq small{color:var(--texto-inv);font-size:12px}
+@media(max-width:900px){.esq{padding:28px 20px}.mini{display:none}}
+.dir{padding:48px;display:flex;flex-direction:column;justify-content:center;max-width:680px;width:100%;margin:0 auto}
+@media(max-width:560px){.dir{padding:28px 16px}}
+.dir h2{font-size:28px;margin-bottom:4px}
+.dir>p{color:var(--texto-2);margin-bottom:24px}
+.opcoes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.opcoes{grid-template-columns:1fr}}
+.op{display:flex;flex-direction:column;gap:2px;background:#fff;border:2px solid var(--borda);border-radius:18px;padding:18px;text-decoration:none;color:var(--texto);transition:border-color .15s,transform .15s,box-shadow .15s;position:relative}
+.op:hover,.op:focus-visible{border-color:var(--c);transform:translateY(-3px);box-shadow:var(--sombra)}
+.op .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--c);color:#fff;margin-bottom:10px}
+.op small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--texto-2)}
+.op b{font-size:16px}
+.op span{font-size:13px;color:var(--texto-2)}
+.op .ver{position:absolute;right:16px;top:18px;color:var(--c);opacity:0;transition:opacity .15s,transform .15s}
+.op:hover .ver{opacity:1;transform:translateX(3px)}
+details.cpf{margin-top:18px;background:#fff;border:1px solid var(--borda);border-radius:16px;padding:0 18px}
+details.cpf summary{cursor:pointer;padding:14px 0;font-weight:600;font-size:14px;color:var(--azul);list-style:none;display:flex;align-items:center;gap:8px}
+details.cpf summary::-webkit-details-marker{display:none}
+form{display:grid;gap:12px;padding-bottom:18px}
+.campo{display:grid;gap:4px}
+.campo label{font-size:13px;font-weight:600}
+.campo input,.campo select{font:inherit;font-size:15px;padding:11px 14px;border:1.5px solid var(--borda);border-radius:12px;background:#fff;color:var(--texto)}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px var(--azul-claro)}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.aviso{font-size:12px;color:var(--texto-2);background:var(--amarelo-claro);border-radius:10px;padding:8px 12px}
+.voltar{margin-top:22px;text-align:center;font-size:14px}
+.voltar a{color:var(--texto-2);text-decoration:none}
+.voltar a:hover{color:var(--azul)}
+.carregando{position:fixed;inset:0;background:rgba(11,31,77,.85);display:none;place-items:center;z-index:50;color:#fff;text-align:center}
+.carregando.on{display:grid}
+.carregando .roda{width:44px;height:44px;border-radius:50%;border:4px solid rgba(255,255,255,.2);border-top-color:var(--amarelo);animation:gira .8s linear infinite;margin:0 auto 14px}
+@keyframes gira{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="tela">
+  <aside class="esq">
+    <a href="../indexsite.html" class="logo" aria-label="Voltar para o site"><img src="../assets/logo.png" alt="Caminho dos Direitos"></a>
+    <div>
+      <span class="tag">Plataforma demonstrativa</span>
+      <h1>Cada cargo vê <span>o que precisa</span> para decidir.</h1>
+      <p>Da secretaria ao agente de campo: o mesmo dado, recortado pelo território e pela unidade de quem entra. Território real dos 96 distritos, uso do app simulado.</p>
+      <div class="mini">
+        <div><b data-conta="96">96</b><span>distritos</span></div>
+        <div><b data-conta="10">10</b><span>urgentes</span></div>
+        <div><b data-conta="99915">99.915</b><span>pessoas a alcançar</span></div>
+      </div>
+    </div>
+    <small>© 2026 Caminho dos Direitos · projeto acadêmico FIAP</small>
+  </aside>
+
+  <main class="dir">
+    <h2>Entrar na plataforma</h2>
+    <p>Escolha um perfil de demonstração para explorar.</p>
+    <div class="opcoes" id="opcoes"></div>
+
+    <details class="cpf">
+      <summary><svg class="ic"><use href="#i-cadeado"/></svg>Entrar com CPF e PIN (simulação do app)</summary>
+      <form id="form">
+        <p class="aviso">Demonstração: nada é enviado nem guardado. Use qualquer número.</p>
+        <div class="dupla">
+          <div class="campo"><label for="cpf">CPF</label><input id="cpf" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" value="000.000.000-00"></div>
+          <div class="campo"><label for="pin">PIN (6 dígitos)</label><input id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="6" value="123456"></div>
+        </div>
+        <div class="dupla">
+          <div class="campo"><label for="perfil">Cargo</label>
+            <select id="perfil">
+              <option value="sec">Secretaria municipal</option>
+              <option value="sub" selected>Subprefeitura</option>
+              <option value="coord">Coordenação de unidade</option>
+              <option value="agente">Agente de campo</option>
+            </select></div>
+          <div class="campo" id="campo-sub"><label for="sub">Lotação</label><select id="sub"></select></div>
+        </div>
+        <button class="btn btn-azul" type="submit"><svg class="ic"><use href="#i-entrar"/></svg>Entrar</button>
+      </form>
+    </details>
+    <p class="voltar"><a href="../indexsite.html">← Voltar para o site</a></p>
+  </main>
+</div>
+<div class="carregando" id="carregando" role="status" aria-live="polite"><div><div class="roda"></div><b id="msg-carregando">Verificando acesso…</b></div></div>
+
+<script src="dados_site.js"></script>
+<script src="site.js"></script>
+<script>
+(function () {
+  const { ic, esc } = CDS;
+  const PERFIS = [
+    { k: 'sec', c: 'var(--azul)', i: 'predio', s: 'Secretaria municipal', n: 'Assistência Social', d: 'Cidade inteira · 96 distritos', msg: 'Carregando a visão da cidade…' },
+    { k: 'sub', c: 'var(--laranja)', i: 'pin', s: 'Subprefeitura', n: "M'Boi Mirim", d: 'Só o seu território (RLS)', msg: "Aplicando a segurança por linha: M'Boi Mirim…" },
+    { k: 'coord', c: 'var(--verde-esc)', i: 'pessoas', s: 'Coordenação', n: 'UBS Jardim Aracati', d: 'Equipe, casos e aprovações', msg: 'Carregando a sua unidade…' },
+    { k: 'agente', c: '#8A6200', i: 'celular', s: 'Agente de campo', n: 'App do agente', d: 'Visitas do dia e telas do app', msg: 'Abrindo o app do agente…' }
+  ];
+  const op = document.getElementById('opcoes');
+  op.innerHTML = PERFIS.map(p => `<a class="op" style="--c:${p.c}" href="plataforma.html?perfil=${p.k}" data-msg="${esc(p.msg)}">
+      <span class="ico">${ic(p.i)}</span><small>${p.s}</small><b>${esc(p.n)}</b><span>${p.d}</span><span class="ver">${ic('seta')}</span></a>`).join('');
+
+  const car = document.getElementById('carregando'), msg = document.getElementById('msg-carregando');
+  function ir(url, texto) {
+    msg.textContent = texto; car.classList.add('on');
+    setTimeout(() => location.href = url, 650);
+  }
+  addEventListener('pageshow', () => car.classList.remove('on'));
+  op.querySelectorAll('a').forEach(a => a.addEventListener('click', e => { e.preventDefault(); ir(a.href, a.dataset.msg); }));
+
+  /* lotação muda com o cargo */
+  const selP = document.getElementById('perfil'), selS = document.getElementById('sub'), campoS = document.getElementById('campo-sub');
+  const subs = [...new Set(Object.values(CD.distritos).map(d => d.s))].sort((a, b) => a.localeCompare(b, 'pt'));
+  const unis = Object.entries(CD.unidades).sort((a, b) => a[1].n.localeCompare(b[1].n, 'pt'));
+  function lotacao() {
+    const p = selP.value;
+    campoS.style.display = (p === 'sub' || p === 'coord') ? '' : 'none';
+    if (p === 'sub') selS.innerHTML = subs.map(s => `<option${s === "M'Boi Mirim" ? ' selected' : ''}>${esc(s)}</option>`).join('');
+    if (p === 'coord') selS.innerHTML = unis.map(([k, u]) => `<option value="${k}"${k === '410' ? ' selected' : ''}>${esc(u.n)} · ${esc(CD.distritos[u.d].n)}</option>`).join('');
+  }
+  selP.onchange = lotacao; lotacao();
+
+  /* máscara simples de CPF */
+  const cpf = document.getElementById('cpf');
+  cpf.addEventListener('input', () => {
+    const d = cpf.value.replace(/\D/g, '').slice(0, 11);
+    cpf.value = d.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  });
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const p = selP.value;
+    let url = 'plataforma.html?perfil=' + p;
+    if (p === 'sub') url += '&sub=' + encodeURIComponent(selS.value);
+    if (p === 'coord') url += '&uni=' + encodeURIComponent(selS.value);
+    ir(url, 'Verificando CPF e PIN…');
+  });
+})();
+</script>
+</body>
+</html>

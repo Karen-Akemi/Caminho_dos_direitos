@@ -4,164 +4,226 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Caminho dos Direitos | Você leva o direito até a porta</title>
-<meta name="description" content="App para agentes de saúde e assistentes sociais levarem benefícios e documentos até quem mais precisa em São Paulo, com dashboard de monitoramento por território.">
+<meta name="description" content="App para agentes de saúde e assistentes sociais levarem benefícios e documentos até quem mais precisa em São Paulo, com modelo de priorização e painel de monitoramento por território.">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="site/site.css">
 <style>
-/* =========================================================
-   IDENTIDADE VISUAL (cores tiradas do logo e das telas do app)
-   ========================================================= */
-:root{
-  --azul:#1747A6; --azul-esc:#0F3480; --navy:#0B1F4D; --azul-claro:#E8EEFB;
-  --verde:#01AD4C; --verde-esc:#058A3E; --verde-claro:#E3F4EA;
-  --amarelo:#FECA02; --amarelo-claro:#FFF1D2;
-  --laranja:#F37021; --vermelho:#E5382B; --vermelho-claro:#FDE7E5;
-  --lilas:#EFEBFF;
-  --fundo:#F3F5F9; --branco:#fff; --borda:#DBDDE0;
-  --texto:#1B1F2A; --texto-2:#5B6271;
-  --raio:20px; --sombra:0 10px 30px rgba(15,52,128,.10);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{font-family:'Poppins',system-ui,sans-serif;color:var(--texto);background:var(--branco);line-height:1.6}
-img{max-width:100%;display:block}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--amarelo);outline-offset:3px;border-radius:6px}
-.pular{position:absolute;left:-999px;top:8px;background:var(--amarelo);color:var(--navy);padding:8px 14px;border-radius:8px;font-weight:600;z-index:99}
-.pular:focus{left:8px}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-section{padding:96px 0}
-h1,h2,h3{line-height:1.15}
-h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin-bottom:14px}
-.centro{text-align:center}
-.centro .lead{margin:0 auto}
-.lead{font-size:18px;color:var(--texto-2);max-width:640px}
-.sobre-escuro .lead,.sobre-azul .lead{color:#C9D5F0}
-.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--azul);background:var(--azul-claro);padding:5px 14px;border-radius:999px;margin-bottom:16px}
-.sobre-azul .tag,.sobre-escuro .tag{background:rgba(255,255,255,.14);color:#fff}
-.destaque-verde{color:var(--verde)}
-.destaque-amarelo{color:var(--amarelo)}
-
-/* Botões */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .15s,background .15s;border:2px solid transparent;cursor:pointer}
-.btn:hover{transform:translateY(-2px)}
-.btn-azul{background:var(--azul);color:#fff}
-.btn-azul:hover{background:var(--azul-esc)}
-.btn-contorno{border-color:var(--azul);color:var(--azul);background:#fff}
-.btn-amarelo{background:var(--amarelo);color:var(--navy)}
-.btn-branco-contorno{border-color:#fff;color:#fff}
-.btn-sm{padding:9px 18px;font-size:14px}
-
-/* Placeholder de imagem que ainda não existe */
-.ph{display:grid;place-items:center;text-align:center;min-height:240px;padding:20px;border:2px dashed #9FB2DA;border-radius:16px;background:var(--azul-claro);color:var(--azul);font-size:13px;font-weight:500}
-
-/* ===== CABEÇALHO ===== */
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
-nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
-.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;color:var(--azul)}
-.marca img{height:52px;width:auto}
-nav ul{display:flex;gap:28px;list-style:none}
-nav ul a{text-decoration:none;color:var(--texto-2);font-size:14px;font-weight:500}
-nav ul a:hover{color:var(--azul)}
-.nav-btns{display:flex;gap:10px}
-@media(max-width:980px){nav ul{display:none}}
-@media(max-width:560px){.nav-btns .btn-contorno{display:none}}
-
 /* ===== HERO ===== */
-.hero{padding:72px 0 88px;overflow:hidden;position:relative}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(38px,5.4vw,60px);font-weight:800;color:var(--azul);margin-bottom:20px;letter-spacing:-.01em}
-.hero .lead{margin-bottom:32px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
-.numeros{display:flex;gap:32px;flex-wrap:wrap}
-.numeros div{border-left:4px solid var(--amarelo);padding-left:14px}
-.numeros b{display:block;font-size:28px;color:var(--azul);line-height:1.1}
-.numeros span{font-size:13px;color:var(--texto-2)}
-.hero-arte{position:relative;display:grid;place-items:center;min-height:520px}
-.hero-arte::before{content:"";position:absolute;width:440px;height:440px;max-width:90%;aspect-ratio:1;border-radius:50%;background:var(--azul-claro)}
-.hero-arte::after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:var(--amarelo);right:8%;top:6%;opacity:.9}
-.selo{position:absolute;z-index:2;background:#fff;border-radius:16px;box-shadow:var(--sombra);padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600}
-.selo i{font-style:normal;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px}
-.selo.s1{left:0;bottom:22%}
-.selo.s2{right:0;bottom:8%}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-arte{min-height:440px}.selo{display:none}}
+.hero{background:radial-gradient(1200px 600px at 85% 10%,rgba(23,71,166,.55),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(1,173,76,.18),transparent 60%),var(--navy);color:#fff;padding:72px 0 0;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(180deg,#000 40%,transparent);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(40px,6vw,68px);font-weight:800;margin-bottom:22px;letter-spacing:-.02em}
+.hero h1 .sub{display:block;background:linear-gradient(90deg,var(--amarelo),#7BE495);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{color:var(--texto-inv);margin-bottom:26px}
+.ods-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.ods-pills span{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.ods-pills i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.contadores{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.14);padding:26px 0 30px}
+.contadores div{padding:0 18px;border-left:1px solid rgba(255,255,255,.14)}
+.contadores div:first-child{padding-left:0;border-left:0}
+.contadores b{display:block;font-size:clamp(26px,3vw,36px);font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.contadores span{font-size:13px;color:var(--texto-inv)}
+@media(max-width:700px){.contadores{grid-template-columns:1fr 1fr;gap:20px 0}.contadores div:nth-child(3){padding-left:0;border-left:0}}
+/* cartão do mapa */
+.mapa-card{position:relative;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:28px;padding:22px 22px 18px;backdrop-filter:blur(6px);box-shadow:var(--sombra-forte)}
+.mapa-card .cab{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:var(--texto-inv)}
+.mapa-card .cab b{color:#fff;font-size:15px;display:block}
+.ao-vivo{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#7BE495;background:rgba(1,173,76,.15);padding:4px 10px;border-radius:999px}
+.ao-vivo::before{content:"";width:7px;height:7px;border-radius:50%;background:#7BE495;animation:pulso 1.6s infinite}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(123,228,149,.7)}70%{box-shadow:0 0 0 8px rgba(123,228,149,0)}100%{box-shadow:0 0 0 0 rgba(123,228,149,0)}}
+.mapa-card svg path{stroke:var(--navy)}
+#mapa-hero{max-height:440px}
+.mapa-card .legenda{color:var(--texto-inv);margin-top:8px}
+.flutua{position:absolute;z-index:2;background:#fff;color:var(--texto);border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.3);padding:12px 14px;font-size:12.5px;max-width:240px;animation:flutuar 6s ease-in-out infinite}
+.flutua b{display:block;font-size:13px}
+.flutua .lin{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.flutua .bolinha{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.flutua .bolinha .ic{width:17px;height:17px}
+.f1{left:-48px;top:58%}
+.f2{right:-22px;bottom:16%;animation-delay:-3s}
+@keyframes flutuar{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media(max-width:1100px){.f1{left:8px}.f2{right:8px}}
+@media(max-width:560px){.flutua{display:none}}
 
-/* Celulares (mockup em CSS) */
-.celulares{position:relative;width:420px;max-width:100%;height:600px;z-index:1}
-.cel{position:absolute;width:270px;height:560px;border:11px solid #0B1F4D;border-radius:42px;overflow:hidden;background:#fff;box-shadow:0 24px 50px rgba(11,31,77,.28)}
-.cel img{width:100%;height:100%;object-fit:cover;object-position:top}
-.cel.frente{right:0;top:30px}
-.cel.tras{left:0;top:0;transform:rotate(-6deg) scale(.9);opacity:.95}
-@media(max-width:560px){.celulares{height:520px}.cel{width:220px;height:460px}}
-
-/* ===== FAIXA DE PARCEIROS ===== */
-.faixa-azul{background:var(--azul);color:#fff;padding:34px 0}
-.faixa-azul .wrap{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
-.faixa-azul p{font-size:14px;color:#C9D5F0;max-width:260px}
-.faixa-azul p b{color:#fff;display:block;font-size:16px}
-.logos{display:flex;align-items:center;gap:40px;flex-wrap:wrap}
-.logos img{height:34px;width:auto;filter:brightness(0) invert(1);opacity:.9}
-.logos .nome{font-weight:800;font-size:22px;letter-spacing:.04em}
-
-/* ===== FUNCIONALIDADES ===== */
-.func-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-@media(max-width:900px){.func-grid{grid-template-columns:1fr}}
-.func-arte{position:relative;display:grid;place-items:center}
-.func-arte::before{content:"";position:absolute;inset:8% 4%;border-radius:32px;background:var(--azul-claro)}
-.func{list-style:none;display:grid;gap:12px;margin-top:28px}
-.func li{display:flex;align-items:center;gap:14px;background:var(--navy);color:#fff;border-radius:12px;padding:15px 18px;font-weight:600;font-size:15px}
-.func li::before{content:"✓";flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--verde);display:grid;place-items:center;font-size:14px}
+/* ===== TAMANHO DO PROBLEMA ===== */
+.grandes{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+@media(max-width:900px){.grandes{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.grandes{grid-template-columns:1fr}}
+.grande{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:26px 24px;position:relative;overflow:hidden}
+.grande::after{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--cor,var(--azul))}
+.grande b{display:block;font-size:clamp(32px,3.6vw,44px);font-weight:800;color:var(--cor,var(--azul));line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:8px}
+.grande p{font-size:14px;color:var(--texto-2)}
+.grande small{display:block;font-size:11.5px;color:#8A90A0;margin-top:10px}
+.destaque-frase{margin-top:36px;background:var(--navy);color:#fff;border-radius:var(--raio);padding:28px 32px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.destaque-frase p{font-size:19px;font-weight:600;flex:1;min-width:260px;line-height:1.4}
+.destaque-frase p em{font-style:normal;color:var(--amarelo)}
 
 /* ===== PROBLEMA ===== */
-#problema{background:var(--fundo)}
-#problema .pilula{background:#fff}
 .problema-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
 @media(max-width:900px){.problema-grid{grid-template-columns:1fr}}
-.citacao{background:var(--navy);color:#fff;border-radius:var(--raio);padding:44px 40px;position:relative;overflow:hidden}
+.citacao{background:linear-gradient(140deg,var(--azul),var(--navy));color:#fff;border-radius:var(--raio);padding:48px 40px;position:relative;overflow:hidden}
 .citacao::after{content:"";position:absolute;right:-60px;bottom:-60px;width:200px;height:200px;border-radius:50%;background:var(--verde);opacity:.9}
-.citacao p{font-size:24px;font-weight:600;line-height:1.35;position:relative;z-index:1}
-.citacao small{display:block;margin-top:18px;color:#C9D5F0;font-size:14px;position:relative;z-index:1}
-.pilulas{display:grid;gap:14px;margin-top:28px}
-.pilula{display:flex;align-items:center;gap:14px;background:var(--fundo);border-radius:14px;padding:16px 18px}
-.pilula i{font-style:normal;flex-shrink:0;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px}
+.citacao p{font-size:26px;font-weight:600;line-height:1.35;position:relative;z-index:1}
+.citacao small{display:block;margin-top:18px;color:var(--texto-inv);font-size:14px;position:relative;z-index:1;max-width:80%}
+.pilulas{display:grid;gap:12px;margin-top:28px}
+.pilula{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--borda);border-radius:14px;padding:15px 18px;transition:transform .15s,box-shadow .15s}
+.pilula:hover{transform:translateX(4px);box-shadow:var(--sombra)}
+.pilula>i{flex-shrink:0;width:42px;height:42px;border-radius:12px;display:grid;place-items:center}
 .pilula b{display:block;font-size:15px}
 .pilula span{font-size:14px;color:var(--texto-2)}
 
+/* ===== POR QUE ===== */
+.porque-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+@media(max-width:900px){.porque-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.porque-grid{grid-template-columns:1fr}}
+.pq{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:28px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.pq:hover{transform:translateY(-4px);box-shadow:var(--sombra);border-color:transparent}
+.pq .ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px}
+.pq .ico .ic{width:24px;height:24px}
+.pq h3{font-size:18px;margin-bottom:8px}
+.pq p{font-size:14.5px;color:var(--texto-2)}
+.pq .num{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:var(--azul);background:var(--azul-claro);padding:4px 10px;border-radius:999px}
+.diferencial{margin-top:56px;display:grid;grid-template-columns:1fr 1.15fr;gap:0;border-radius:28px;overflow:hidden;box-shadow:var(--sombra)}
+@media(max-width:980px){.diferencial{grid-template-columns:1fr}}
+.dif-esq{background:var(--navy);color:#fff;padding:44px 40px;position:relative;overflow:hidden}
+.dif-esq::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(254,202,2,.35),transparent 70%);right:-80px;top:-80px}
+.dif-esq h3{font-size:clamp(24px,2.6vw,32px);margin-bottom:16px}
+.dif-esq p{color:var(--texto-inv);font-size:15px;margin-bottom:22px}
+.dif-esq ul{list-style:none;display:grid;gap:10px}
+.dif-esq li{display:flex;gap:10px;font-size:14.5px}
+.dif-esq li .ic{color:var(--amarelo);width:20px;height:20px;margin-top:2px}
+.dif-dir{background:#fff;padding:36px 32px}
+.dif-dir h4{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-2);margin-bottom:14px}
+.compara{width:100%;border-collapse:collapse;font-size:14px}
+.compara th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding:0 10px 10px;color:var(--texto-2)}
+.compara th:last-child{color:var(--verde-esc)}
+.compara td{padding:12px 10px;border-top:1px solid var(--borda);vertical-align:top}
+.compara td:first-child{font-weight:600;width:24%}
+.compara td:nth-child(2){color:#8A90A0}
+.compara td:nth-child(2)::before{content:"✕ ";color:var(--vermelho);font-weight:700}
+.compara td:last-child{color:var(--texto)}
+.compara td:last-child::before{content:"✓ ";color:var(--verde);font-weight:700}
+@media(max-width:600px){.compara td:first-child{display:none}.compara th:first-child{display:none}}
+.acessivel{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:900px){.acessivel{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.acessivel{grid-template-columns:1fr}}
+.acessivel div{background:var(--amarelo-claro);border-radius:16px;padding:18px}
+.acessivel b{display:block;font-size:14.5px;margin-bottom:4px;color:#5C4400}
+.acessivel span{font-size:13.5px;color:#6B5A26}
+
 /* ===== COMO FUNCIONA ===== */
-.sobre-azul{background:var(--azul);color:#fff}
-.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;position:relative}
 @media(max-width:900px){.cards3{grid-template-columns:1fr}}
-.card{background:#fff;color:var(--texto);border-radius:var(--raio);padding:30px;box-shadow:var(--sombra)}
+.card{background:#fff;color:var(--texto);border-radius:var(--raio);padding:30px;box-shadow:var(--sombra);position:relative}
 .card-topo{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-.card-topo i{font-style:normal;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:24px;flex-shrink:0}
+.card-topo>i{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;flex-shrink:0}
 .card-topo h3{font-size:19px}
 .card .etapa{font-size:12px;font-weight:600;color:var(--azul);text-transform:uppercase;letter-spacing:.06em}
 .checks{list-style:none;display:grid;gap:12px}
 .checks li{display:flex;gap:10px;font-size:15px;color:var(--texto-2)}
 .checks li::before{content:"✓";flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--verde);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:1px}
 
-/* ===== DASHBOARD ===== */
-.dash-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+/* ===== ARQUITETURA ===== */
+#arquitetura{background:linear-gradient(180deg,var(--navy) 0,var(--navy-2) 100%);color:#fff;overflow:hidden}
+.trilhas{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:34px 0 10px}
+.trilhas button{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s}
+.trilhas button[aria-pressed="true"]{background:#fff;color:var(--navy);font-weight:600}
+.trilha-txt{text-align:center;color:var(--texto-inv);font-size:14.5px;min-height:46px;max-width:760px;margin:0 auto 26px}
+.pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative}
+@media(max-width:1060px){.pipeline{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.pipeline{grid-template-columns:1fr}}
+.fluxo{position:absolute;left:4%;right:4%;top:37px;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 8px,transparent 8px 16px);background-size:32px 2px;animation:corre 1.2s linear infinite;z-index:0}
+@keyframes corre{to{background-position:32px 0}}
+.fluxo::after{content:"";position:absolute;top:-5px;width:12px;height:12px;border-radius:50%;background:var(--amarelo);box-shadow:0 0 18px var(--amarelo);animation:viaja 5s ease-in-out infinite}
+@keyframes viaja{0%{left:0}100%{left:calc(100% - 12px)}}
+@media(max-width:1060px){.fluxo{display:none}}
+.etapa-arq{position:relative;z-index:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:18px 16px 16px;transition:border-color .2s,background .2s}
+.etapa-arq:hover{border-color:rgba(254,202,2,.6);background:rgba(255,255,255,.08)}
+.etapa-arq .topo-e{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.etapa-arq .circ{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--azul);flex-shrink:0;box-shadow:0 0 0 4px var(--navy)}
+.etapa-arq small{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--texto-inv)}
+.etapa-arq h3{font-size:16px}
+.etapa-arq p.desc{font-size:12.5px;color:var(--texto-inv);margin-bottom:12px;line-height:1.5}
+.ferr{list-style:none;display:grid;gap:7px}
+.ferr li{background:rgba(255,255,255,.07);border-radius:10px;padding:8px 10px;font-size:12.5px;line-height:1.35;transition:opacity .25s,background .25s,transform .25s;border-left:3px solid transparent}
+.ferr li b{display:flex;align-items:center;gap:6px;font-size:13px}
+.ferr li b i{width:9px;height:9px;flex-shrink:0;display:inline-block}
+.ferr li b i.az{background:#5B8DEF;border-radius:2px}
+.ferr li b i.ex{background:#7BE495;border-radius:50%}
+.ferr li span{color:var(--texto-inv);font-size:11.5px}
+.ferr li.apaga{opacity:.25}
+.ferr li.acende{background:rgba(254,202,2,.14);border-left-color:var(--amarelo)}
+.governanca{margin-top:16px;border:1px dashed rgba(254,202,2,.5);border-radius:20px;padding:16px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.governanca>b{display:flex;align-items:center;gap:8px;color:var(--amarelo);font-size:14px;white-space:nowrap}
+.governanca div{display:flex;flex-wrap:wrap;gap:8px}
+.governanca span{font-size:12.5px;background:rgba(255,255,255,.08);padding:5px 11px;border-radius:999px}
+.leg-arq{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;font-size:12.5px;color:var(--texto-inv);margin-top:18px}
+.leg-arq span{display:inline-flex;align-items:center;gap:6px}
+.medalhao{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
+@media(max-width:900px){.medalhao{grid-template-columns:1fr}}
+.med{border-radius:20px;padding:24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);position:relative;overflow:hidden}
+.med::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--c)}
+.med small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--texto-inv)}
+.med h3{font-size:22px;margin:2px 0 10px;color:var(--c)}
+.med p{font-size:14px;color:var(--texto-inv)}
+.med code{font-size:12px;background:rgba(255,255,255,.1);padding:1px 6px;border-radius:6px;color:#fff}
+.acao-fluxo{display:flex;align-items:stretch;gap:0;margin-top:56px;flex-wrap:wrap;justify-content:center}
+.acao-fluxo div{flex:1;min-width:150px;text-align:center;padding:0 10px;position:relative}
+.acao-fluxo div:not(:last-child)::after{content:"→";position:absolute;right:-8px;top:14px;color:var(--amarelo);font-size:20px}
+.acao-fluxo i{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
+.acao-fluxo b{display:block;font-size:14px}
+.acao-fluxo span{font-size:12.5px;color:var(--texto-inv)}
+@media(max-width:700px){.acao-fluxo div{min-width:45%;margin-bottom:18px}.acao-fluxo div::after{display:none}}
+.arq-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+dialog.lightbox{border:0;border-radius:18px;padding:0;max-width:min(1200px,94vw);background:#fff;box-shadow:var(--sombra-forte)}
+dialog.lightbox::backdrop{background:rgba(5,12,30,.75)}
+dialog.lightbox img{width:100%;height:auto}
+dialog.lightbox button{position:absolute;right:12px;top:12px;width:40px;height:40px;border-radius:50%;border:0;background:var(--navy);color:#fff;cursor:pointer;display:grid;place-items:center}
+
+/* ===== PAINEL / INSIGHTS ===== */
+.dash-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
 @media(max-width:980px){.dash-grid{grid-template-columns:1fr}}
-.kpis{display:grid;gap:14px;margin:28px 0}
-.kpi{display:flex;align-items:center;gap:16px;background:var(--navy);color:#fff;border-radius:16px;padding:16px 20px}
-.kpi i{font-style:normal;width:46px;height:46px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;font-size:20px;flex-shrink:0}
-.kpi b{font-size:26px;line-height:1.1;display:block}
-.kpi span{font-size:13px;color:#C9D5F0}
-.janela{border-radius:var(--raio);overflow:hidden;box-shadow:0 20px 50px rgba(11,31,77,.18);background:#fff;border:1px solid var(--borda)}
+.insights{display:grid;gap:14px;margin:26px 0 28px}
+.insight{display:flex;gap:16px;background:var(--fundo);border-radius:16px;padding:18px 20px}
+.insight .n{font-size:28px;font-weight:800;color:var(--azul);line-height:1;min-width:84px;font-variant-numeric:tabular-nums}
+.insight p{font-size:14.5px;color:var(--texto-2)}
+.insight p b{color:var(--texto)}
+.janela{border-radius:var(--raio);overflow:hidden;box-shadow:0 24px 60px rgba(11,31,77,.18);background:#fff;border:1px solid var(--borda)}
 .janela-barra{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--fundo);border-bottom:1px solid var(--borda);font-size:12px;color:var(--texto-2)}
 .janela-barra s{width:10px;height:10px;border-radius:50%;background:#D4D8E0;display:inline-block}
 .janela-barra s:nth-child(1){background:#F26B5B}.janela-barra s:nth-child(2){background:var(--amarelo)}.janela-barra s:nth-child(3){background:var(--verde)}
 .janela-barra em{margin-left:10px;font-style:normal}
-.janela iframe{width:100%;height:560px;border:0;display:block}
+.janela iframe{width:100%;height:600px;border:0;display:block}
 .nota{font-size:13px;color:var(--texto-2);margin-top:14px}
 
-/* ===== JORNADA DONA CIDA ===== */
-.sobre-claro{background:var(--azul-claro)}
-.jornada{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px;position:relative}
+/* ===== PERFIS (login) ===== */
+.perfis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+@media(max-width:1000px){.perfis{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.perfis{grid-template-columns:1fr}}
+.perfil{display:flex;flex-direction:column;background:#fff;color:var(--texto);border-radius:var(--raio);padding:26px 24px;text-decoration:none;border:2px solid transparent;transition:transform .2s,border-color .2s,box-shadow .2s}
+.perfil:hover{transform:translateY(-6px);border-color:var(--amarelo);box-shadow:0 24px 50px rgba(0,0,0,.25)}
+.perfil .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:16px;color:#fff}
+.perfil small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--texto-2)}
+.perfil h3{font-size:19px;margin:2px 0 6px}
+.perfil p{font-size:14px;color:var(--texto-2);flex:1}
+.perfil ul{list-style:none;margin:14px 0 18px;display:grid;gap:6px}
+.perfil li{font-size:13px;display:flex;gap:8px;color:var(--texto)}
+.perfil li::before{content:"✓";color:var(--verde);font-weight:700}
+.perfil .ir{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:var(--azul)}
+.perfil .ir .ic{width:16px;height:16px;transition:transform .2s}
+.perfil:hover .ir .ic{transform:translateX(4px)}
+
+/* ===== JORNADA ===== */
+.persona{display:flex;align-items:center;gap:18px;background:#fff;border-radius:var(--raio);padding:18px 22px;margin-top:36px;box-shadow:var(--sombra);flex-wrap:wrap}
+.persona .av{width:58px;height:58px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;font-size:26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.jornada{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:28px;position:relative}
 @media(max-width:980px){.jornada{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.jornada{grid-template-columns:1fr}}
 .passo{background:#fff;border-radius:var(--raio);padding:26px;box-shadow:var(--sombra);position:relative}
@@ -169,39 +231,66 @@ nav ul a:hover{color:var(--azul)}
 .passo:last-child .num{background:var(--verde)}
 .passo h3{font-size:17px;margin-bottom:6px}
 .passo p{font-size:14px;color:var(--texto-2)}
-.persona{display:flex;align-items:center;gap:18px;background:#fff;border-radius:var(--raio);padding:18px 22px;margin-top:36px;box-shadow:var(--sombra);flex-wrap:wrap}
-.persona .av{width:58px;height:58px;border-radius:50%;background:var(--amarelo);display:grid;place-items:center;font-size:26px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:13px;font-weight:500;padding:5px 12px;border-radius:999px;background:var(--fundo)}
-.chip.az{background:var(--azul-claro);color:var(--azul)}
-.chip.am{background:var(--amarelo-claro);color:#8A6200}
-.chip.vd{background:var(--verde-claro);color:#106B37}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px}
+@media(max-width:800px){.videos{grid-template-columns:1fr}}
+.video-card{background:var(--navy);color:#fff;border-radius:24px;padding:24px;display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:center}
+@media(max-width:520px){.video-card{grid-template-columns:1fr}}
+.video-card video{width:100%;border-radius:18px;background:#000;aspect-ratio:9/16;object-fit:cover;border:6px solid #1b2c5c}
+.video-card h3{font-size:18px;margin-bottom:8px}
+.video-card p{font-size:14px;color:var(--texto-inv)}
 
-/* ===== PARA QUEM É ===== */
-.perfis{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;align-items:stretch}
-@media(max-width:900px){.perfis{grid-template-columns:1fr}}
-.perfil{background:var(--navy);color:#fff;border-radius:var(--raio);padding:34px 30px;display:flex;flex-direction:column}
-.perfil.meio{background:var(--azul);transform:translateY(-12px);box-shadow:0 20px 40px rgba(23,71,166,.35)}
-@media(max-width:900px){.perfil.meio{transform:none}}
-.perfil .ic{font-size:30px;margin-bottom:14px}
-.perfil h3{font-size:22px}
-.perfil .sub{color:#C9D5F0;font-size:14px;margin:6px 0 22px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.18)}
-.perfil .checks li{color:#E5EBF8}
-.perfil .checks li::before{background:var(--amarelo);color:var(--navy)}
+/* ===== IMPACTO E ODS ===== */
+.ods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+@media(max-width:900px){.ods-grid{grid-template-columns:1fr}}
+.ods{border-radius:var(--raio);padding:28px;color:#fff;background:var(--c);position:relative;overflow:hidden}
+.ods .n{font-size:64px;font-weight:800;line-height:1;opacity:.9}
+.ods h3{font-size:19px;margin:8px 0 10px}
+.ods p{font-size:14.5px;opacity:.95}
+.ods .meta{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:999px}
+.indicadores{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+@media(max-width:900px){.indicadores{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.indicadores{grid-template-columns:1fr}}
+.indicador{background:#fff;border:1px solid var(--borda);border-radius:16px;padding:20px}
+.indicador .ic{color:var(--azul);margin-bottom:10px}
+.indicador b{display:block;font-size:15px;margin-bottom:4px}
+.indicador span{font-size:13.5px;color:var(--texto-2)}
+
+/* ===== LGPD ===== */
+.lgpd{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media(max-width:900px){.lgpd{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.lgpd{grid-template-columns:1fr}}
+.lg{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px}
+.lg .ic{color:var(--amarelo);margin-bottom:12px;width:26px;height:26px}
+.lg b{display:block;font-size:16px;margin-bottom:6px}
+.lg p{font-size:14px;color:var(--texto-inv)}
 
 /* ===== PROTÓTIPO ===== */
-.sobre-escuro{background:var(--navy);color:#fff}
 .telas{display:flex;gap:22px;overflow-x:auto;padding:40px 4px 20px;scroll-snap-type:x mandatory}
 .telas::-webkit-scrollbar{height:8px}.telas::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:8px}
 .telas figure{flex:0 0 230px;scroll-snap-align:start}
-.telas img,.telas .ph{border-radius:22px;height:480px;width:100%;object-fit:cover;object-position:top;box-shadow:0 14px 30px rgba(0,0,0,.3)}
-.telas .ph{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);color:#C9D5F0}
-.telas figcaption{font-size:14px;text-align:center;margin-top:12px;color:#C9D5F0}
+.telas img{border-radius:22px;height:480px;width:100%;object-fit:cover;object-position:top;box-shadow:0 14px 30px rgba(0,0,0,.3);transition:transform .2s}
+.telas figure:hover img{transform:translateY(-6px)}
+.telas figcaption{font-size:14px;text-align:center;margin-top:12px;color:var(--texto-inv)}
 .embed{margin-top:28px;border-radius:var(--raio);overflow:hidden;background:#fff}
-.embed iframe{width:100%;height:760px;border:0;display:block}
-.dica-arraste{font-size:13px;color:#C9D5F0;margin-top:6px}
+.embed iframe{width:100%;height:720px;border:0;display:block}
+.dica-arraste{font-size:13px;color:var(--texto-inv);margin-top:6px}
+@media(max-width:600px){.embed iframe{height:520px}}
 
-/* ===== FAQ ===== */
+/* ===== DADOS E MODELO ===== */
+.dados-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+@media(max-width:900px){.dados-grid{grid-template-columns:1fr}}
+.dado{border:1px solid var(--borda);border-radius:var(--raio);padding:28px;display:flex;flex-direction:column}
+.dado .ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px}
+.dado h3{font-size:18px;margin-bottom:8px}
+.dado p{font-size:14.5px;color:var(--texto-2);flex:1;margin-bottom:16px}
+.dado .met{display:flex;gap:16px;margin-bottom:16px}
+.dado .met b{display:block;font-size:22px;color:var(--azul);line-height:1.1}
+.dado .met span{font-size:12px;color:var(--texto-2)}
+.dado a{font-size:14px;font-weight:600;color:var(--azul);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.dado a .ic{width:16px;height:16px}
+.fontes{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:36px}
+
+/* ===== FAQ / PITCH / EQUIPE / CTA ===== */
 .faq{max-width:860px;margin:44px auto 0;display:grid;gap:14px}
 .faq details{background:var(--fundo);border-radius:16px;padding:0 24px;border:1px solid transparent}
 .faq details[open]{background:#fff;border-color:var(--azul);box-shadow:var(--sombra)}
@@ -210,67 +299,47 @@ nav ul a:hover{color:var(--azul)}
 .faq summary::after{content:"+";font-size:24px;line-height:1;color:var(--azul);transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{padding-bottom:22px;color:var(--texto-2);font-size:15px}
-
-/* ===== PITCH ===== */
 .pitch-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
 @media(max-width:900px){.pitch-grid{grid-template-columns:1fr}}
-.video{position:relative;padding-top:56.25%;border-radius:var(--raio);overflow:hidden;background:rgba(255,255,255,.08)}
-.video iframe,.video .ph{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0}
-.video .ph{background:transparent;border-color:rgba(255,255,255,.3);color:#C9D5F0;border-radius:var(--raio)}
-
-/* ===== DADOS ===== */
-.dados .card{display:flex;flex-direction:column;text-align:center;align-items:center;border:1px solid var(--borda);box-shadow:none}
-.dados .card i{font-style:normal;width:88px;height:88px;border-radius:50%;display:grid;place-items:center;font-size:38px;margin-bottom:20px}
-.dados .card h3{font-size:19px;margin-bottom:10px}
-.dados .card p{font-size:15px;color:var(--texto-2);margin-bottom:20px;flex:1}
-.dados .card a{font-size:14px;font-weight:600;color:var(--azul);text-decoration:none;letter-spacing:.04em}
-.dados .card a:hover{text-decoration:underline}
-.fontes{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:36px}
-
-/* ===== EQUIPE ===== */
+.video{position:relative;padding-top:56.25%;border-radius:var(--raio);overflow:hidden;background:rgba(255,255,255,.06);border:2px dashed rgba(255,255,255,.25)}
+.video>*{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .ph{display:grid;place-items:center;text-align:center;color:var(--texto-inv);font-size:14px}
 .equipe{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;max-width:900px;margin-left:auto;margin-right:auto}
 @media(max-width:700px){.equipe{grid-template-columns:1fr}}
-.pessoa{text-align:center;background:var(--fundo);border-radius:var(--raio);padding:28px 18px}
-.pessoa .av{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-weight:700;font-size:26px;color:#fff;overflow:hidden}
-.pessoa .av img{width:100%;height:100%;object-fit:cover}
+.pessoa{text-align:center;background:var(--fundo);border-radius:var(--raio);padding:28px 18px;transition:transform .2s}
+.pessoa:hover{transform:translateY(-4px)}
+.pessoa .av{width:76px;height:76px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-weight:700;font-size:28px;color:#fff;overflow:hidden}
 .pessoa h3{font-size:16px}
 .pessoa p{font-size:13px;color:var(--texto-2)}
-
-/* ===== RODAPÉ ===== */
-footer{background:var(--navy);color:#C9D5F0;padding:64px 0 0;font-size:14px}
-.rodape{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:48px}
-@media(max-width:800px){.rodape{grid-template-columns:1fr 1fr}}
-.rodape h4{color:#fff;font-size:15px;margin-bottom:14px}
-.rodape ul{list-style:none;display:grid;gap:8px}
-.rodape a{text-decoration:none}
-.rodape a:hover{color:#fff;text-decoration:underline}
-.rodape .logo-branco{background:#fff;border-radius:14px;padding:10px 14px;display:inline-block;margin-bottom:14px}
-.rodape .logo-branco img{height:48px}
-.copy{border-top:1px solid rgba(255,255,255,.12);padding:20px 0;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.faixa-cores{height:6px;background:linear-gradient(90deg,var(--amarelo) 0 25%,var(--azul) 25% 50%,var(--verde) 50% 75%,var(--laranja) 75%)}
+.pessoa a{font-size:13px;font-weight:600;color:var(--azul);text-decoration:none}
+.cta-final{background:linear-gradient(120deg,var(--azul),var(--navy));color:#fff;border-radius:32px;padding:56px 48px;display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center;position:relative;overflow:hidden}
+.cta-final::after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:var(--amarelo);opacity:.18;right:-90px;bottom:-140px}
+.cta-final h2{color:#fff}
+.cta-final p{color:var(--texto-inv)}
+.cta-final .btns{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+@media(max-width:800px){.cta-final{grid-template-columns:1fr;padding:40px 26px}}
 </style>
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
 <!-- =================== CABEÇALHO =================== -->
-<header>
+<header class="topo">
   <div class="wrap">
     <nav aria-label="Principal">
-      <a href="#" class="marca" aria-label="Caminho dos Direitos, início">
-        <img src="assets/logo.png" alt="Logo Caminho dos Direitos" onerror="this.replaceWith(document.createTextNode('Caminho dos Direitos'))">
-      </a>
+      <a href="#" class="marca" aria-label="Caminho dos Direitos, início"><img src="assets/logo.png" alt="Caminho dos Direitos"></a>
       <ul>
         <li><a href="#problema">O problema</a></li>
-        <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#por-que">Por que nós</a></li>
+        <li><a href="#arquitetura">Arquitetura</a></li>
+        <li><a href="#painel">Painel</a></li>
+        <li><a href="#impacto">Impacto</a></li>
         <li><a href="#prototipo">Protótipo</a></li>
-        <li><a href="#faq">Dúvidas</a></li>
         <li><a href="#equipe">Equipe</a></li>
       </ul>
       <div class="nav-btns">
-        <a class="btn btn-contorno btn-sm" href="#prototipo">Protótipo</a>
-        <a class="btn btn-azul btn-sm" href="dashboard/">Abrir dashboard</a>
+        <a class="btn btn-contorno btn-sm so-desk" href="dashboard/">Painel</a>
+        <a class="btn btn-azul btn-sm" href="site/entrar.html"><svg class="ic"><use href="#i-entrar"/></svg>Entrar na demo</a>
       </div>
     </nav>
   </div>
@@ -280,388 +349,560 @@ footer{background:var(--navy);color:#C9D5F0;padding:64px 0 0;font-size:14px}
 
 <!-- =================== 1. HERO =================== -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="tag">Global Solution FIAP 2026 · CitizenTech</span>
-      <h1>Você leva o direito <span class="destaque-verde">até a porta.</span></h1>
-      <p class="lead">O Caminho dos Direitos ajuda agentes de saúde e assistentes sociais a descobrir, na própria visita, quais benefícios e documentos cada pessoa precisa, e mostra para a gestão onde agir primeiro em São Paulo.</p>
-      <div class="hero-btns">
-        <a class="btn btn-azul" href="#como-funciona">Entenda como funciona</a>
-        <a class="btn btn-contorno" href="#prototipo">Ver o protótipo</a>
-      </div>
-      <div class="numeros">
-        <div><b>96</b><span>distritos de São Paulo</span></div>
-        <div><b>14</b><span>bases de dados públicas</span></div>
-        <div><b>1</b><span>visita para começar</span></div>
-      </div>
-    </div>
-    <div class="hero-arte">
-      <!-- Mockup em código: celulares com as telas exportadas do Figma -->
-      <div class="celulares">
-        <div class="cel tras"><img src="assets/telas/casos.png" alt=""></div>
-        <div class="cel frente"><img src="assets/telas/plano.png" alt="Tela do plano de direitos no app"></div>
-      </div>
-      <div class="selo s1"><i style="background:var(--verde-claro)">✓</i>Plano de direitos gerado</div>
-      <div class="selo s2"><i style="background:var(--amarelo-claro)">💬</i>Lembrete enviado no WhatsApp</div>
-    </div>
-  </div>
-</section>
-
-<!-- =================== 2. FAIXA / PARCEIROS =================== -->
-<div class="faixa-azul">
   <div class="wrap">
-    <p><b>Projeto acadêmico</b>Desenvolvido para a Global Solution 2026 da FIAP.</p>
-    <div class="logos">
-      <span class="nome">FIAP</span>
-      <!-- Logos dos parceiros da Global Solution: salve em assets/parceiros/ e repita a linha abaixo.
-           Logos que não existirem somem sozinhos. -->
-      <img src="assets/parceiros/parceiro-1.png" alt="Parceiro 1" onerror="this.remove()">
-      <img src="assets/parceiros/parceiro-2.png" alt="Parceiro 2" onerror="this.remove()">
-      <img src="assets/parceiros/parceiro-3.png" alt="Parceiro 3" onerror="this.remove()">
-      <img src="assets/parceiros/parceiro-4.png" alt="Parceiro 4" onerror="this.remove()">
-    </div>
-  </div>
-</div>
-
-<!-- =================== 3. FUNCIONALIDADES (ao lado do mockup) =================== -->
-<section id="funcionalidades">
-  <div class="wrap func-grid">
-    <div class="func-arte">
-      <div class="celulares">
-        <div class="cel tras"><img src="assets/telas/anotacao-ia.png" alt=""></div>
-        <div class="cel frente"><img src="assets/telas/encaminhamento.png" alt="Tela de encaminhamento com lembrete no WhatsApp"></div>
+    <div class="hero-grid">
+      <div>
+        <span class="tag rv">Global Solution FIAP 2026.2 · CitizenTech</span>
+        <h1 class="rv d1">Você leva o direito <span class="sub">até a porta.</span></h1>
+        <p class="lead rv d2">O Caminho dos Direitos transforma a visita do agente de saúde ou do assistente social em um <b style="color:#fff">plano de direitos</b>, encaminha a pessoa com lembrete no WhatsApp e mostra para a gestão <b style="color:#fff">onde agir primeiro</b> nos 96 distritos de São Paulo.</p>
+        <div class="ods-pills rv d3">
+          <span><i style="background:#E5243B"></i>ODS 1 · Erradicação da pobreza</span>
+          <span><i style="background:#DD1367"></i>ODS 10 · Menos desigualdade</span>
+          <span><i style="background:#00689D"></i>ODS 16 · Instituições eficazes</span>
+        </div>
+        <div class="hero-btns rv d4">
+          <a class="btn btn-amarelo" href="site/entrar.html"><svg class="ic"><use href="#i-entrar"/></svg>Entrar na demo</a>
+          <a class="btn btn-vidro" href="#arquitetura">Ver arquitetura</a>
+        </div>
+      </div>
+      <div class="rv d2" style="position:relative">
+        <div class="mapa-card">
+          <div class="cab">
+            <div><b>Onde agir primeiro</b>Índice de prioridade · 96 distritos</div>
+            <span class="ao-vivo">Modelo v4</span>
+          </div>
+          <svg id="mapa-hero" aria-label="Mapa de prioridade dos 96 distritos de São Paulo"></svg>
+          <div class="legenda" id="leg-hero"></div>
+        </div>
+        <div class="flutua f1">
+          <div class="lin"><span class="bolinha" style="background:var(--vermelho-claro);color:var(--p-urgente)"><svg class="ic"><use href="#i-alerta"/></svg></span><b>Jardim Ângela · urgente</b></div>
+          Índice 79 · 7.702 pessoas com direito provável sem BPC ou Bolsa Família
+        </div>
+        <div class="flutua f2">
+          <div class="lin"><span class="bolinha" style="background:var(--verde-claro);color:var(--verde-esc)"><svg class="ic"><use href="#i-msg"/></svg></span><b>Lembrete no WhatsApp</b></div>
+          Dona Cida: Poupatempo M'Boi Mirim, 18/11 às 9h. Levar certidão, RG e comprovante. 🔊 Ouvir em áudio
+        </div>
       </div>
     </div>
-    <div>
-      <span class="tag">Funcionalidades</span>
-      <h2>Tudo o que o agente precisa <span class="destaque-verde">na palma da mão</span></h2>
-      <p class="lead">Do primeiro contato até o atendimento, o caso fica registrado e acompanhado.</p>
-      <ul class="func">
-        <li>Plano de direitos gerado na visita</li>
-        <li>Encaminhamento com lembrete no WhatsApp, em texto ou áudio</li>
-        <li>Anotação por voz organizada por IA</li>
-        <li>Acesso com CPF e PIN, aprovado pelo coordenador</li>
-        <li>Acompanhamento dos casos da unidade</li>
-        <li>Dados que alimentam o dashboard por subprefeitura</li>
-      </ul>
+    <div class="contadores">
+      <div><b data-conta="96">96</b><span>distritos analisados</span></div>
+      <div><b data-conta="14">14</b><span>bases públicas cruzadas</span></div>
+      <div><b data-conta="7">7</b><span>programas no Plano de Direitos</span></div>
+      <div><b data-conta="99915" style="color:var(--amarelo)">99.915</b><span>pessoas com direito provável sem benefício</span></div>
     </div>
   </div>
 </section>
 
-<!-- =================== 4. PROBLEMA =================== -->
+<!-- =================== 2. O TAMANHO DO PROBLEMA =================== -->
+<section class="cinza" id="tamanho">
+  <div class="wrap">
+    <div class="centro">
+      <span class="tag rv">O tamanho do problema</span>
+      <h2 class="rv d1">Os dados públicos mostram <span class="verde-t">quem está ficando de fora</span></h2>
+      <p class="lead rv d2">Cruzamos Censo 2022, CadÚnico, Bolsa Família, BPC, CRAS, UBS e áreas de risco, distrito por distrito.</p>
+    </div>
+    <div class="grandes">
+      <div class="grande rv" style="--cor:var(--azul)"><b data-conta="1708846">1.708.846</b><p>famílias no CadÚnico em São Paulo</p><small>SMADS · jan/2026</small></div>
+      <div class="grande rv d1" style="--cor:var(--laranja)"><b data-conta="31645">31.645</b><p>famílias do CadÚnico para cada CRAS (são só 54 na cidade)</p><small>SMADS + Geoportal</small></div>
+      <div class="grande rv d2" style="--cor:var(--vermelho)"><b data-conta="99915">99.915</b><p>pessoas com direito provável a BPC idoso ou Bolsa Família que não recebem</p><small>Estimativa do modelo</small></div>
+      <div class="grande rv d3" style="--cor:var(--verde-esc)"><b data-conta="55" data-suf="%">55%</b><p>delas estão em só 10 distritos, os de prioridade urgente</p><small>Cerca de 54.947 pessoas</small></div>
+    </div>
+    <div class="destaque-frase rv">
+      <p>Nos distritos com área de risco R3/R4, <em>2 pontos a menos</em> das famílias do CadÚnico recebem Bolsa Família. Quem já vive em risco também tem menos acesso.</p>
+      <a class="btn btn-amarelo" href="#painel">Ver os insights</a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 3. PROBLEMA =================== -->
 <section id="problema">
   <div class="wrap problema-grid">
-    <div class="citacao">
+    <div class="citacao rv">
       <p>O direito existe. O que falta, muitas vezes, é o caminho até ele.</p>
       <small>Quem mais precisa de um benefício costuma ser quem tem mais dificuldade de chegar até ele.</small>
     </div>
     <div>
-      <span class="tag">O problema</span>
-      <h2>Por que tanta gente fica de fora?</h2>
-      <p class="lead">Pessoas em situação de vulnerabilidade têm direito a benefícios, mas travam em barreiras pequenas que se acumulam.</p>
+      <span class="tag rv">O problema</span>
+      <h2 class="rv d1">Por que tanta gente fica de fora?</h2>
+      <p class="lead rv d2">Pessoas em situação de vulnerabilidade têm direito a benefícios, mas travam em barreiras pequenas que se acumulam.</p>
       <div class="pilulas">
-        <div class="pilula"><i style="background:var(--amarelo-claro)">🪪</i><div><b>Falta um documento</b><span>Sem CPF, RG ou título, o pedido nem começa.</span></div></div>
-        <div class="pilula"><i style="background:var(--azul-claro)">📋</i><div><b>O cadastro está desatualizado</b><span>Um CadÚnico vencido bloqueia vários benefícios de uma vez.</span></div></div>
-        <div class="pilula"><i style="background:var(--verde-claro)">🚌</i><div><b>Os serviços ficam longe</b><span>CRAS, Poupatempo e cartórios estão distantes de quem mais precisa.</span></div></div>
-        <div class="pilula"><i style="background:var(--lilas)">🧭</i><div><b>Ninguém explica o caminho</b><span>Sem orientação, a pessoa não sabe por onde começar.</span></div></div>
+        <div class="pilula rv d1"><i style="background:var(--amarelo-claro);color:#8A6200"><svg class="ic"><use href="#i-doc"/></svg></i><div><b>Falta um documento</b><span>Sem certidão, CPF ou RG, o pedido nem começa.</span></div></div>
+        <div class="pilula rv d2"><i style="background:var(--azul-claro);color:var(--azul)"><svg class="ic"><use href="#i-lista"/></svg></i><div><b>O cadastro está desatualizado</b><span>Um CadÚnico vencido bloqueia vários benefícios de uma vez.</span></div></div>
+        <div class="pilula rv d3"><i style="background:var(--verde-claro);color:var(--verde-esc)"><svg class="ic"><use href="#i-pin"/></svg></i><div><b>Os serviços ficam longe</b><span>CRAS, Poupatempo e cartórios estão distantes de quem mais precisa.</span></div></div>
+        <div class="pilula rv d4"><i style="background:var(--lilas);color:#5B3FD1"><svg class="ic"><use href="#i-pessoas"/></svg></i><div><b>Ninguém explica o caminho</b><span>Sem orientação, a pessoa não sabe por onde começar, e a rede não sabe quem ficou para trás.</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =================== 4. COMO FUNCIONA =================== -->
-<section id="como-funciona" class="sobre-azul">
+<!-- =================== 4. POR QUE O CAMINHO DOS DIREITOS =================== -->
+<section id="por-que" class="cinza">
   <div class="wrap">
     <div class="centro">
-      <span class="tag">Como funciona</span>
-      <h2>Quem já bate na porta leva o direito junto</h2>
-      <p class="lead">Agentes de saúde e assistentes sociais já visitam as famílias. O app transforma essa visita em um plano de ação.</p>
+      <span class="tag rv">Por que o Caminho dos Direitos?</span>
+      <h2 class="rv d1">Dados públicos e IA que viram <span class="verde-t">ação na porta da casa</span></h2>
+      <p class="lead rv d2">Não criamos um novo cadastro nem um novo benefício. Usamos quem já está em campo e os dados que já existem para fechar o caminho entre o direito e a pessoa.</p>
+    </div>
+    <div class="porque-grid">
+      <div class="pq rv"><div class="ico" style="background:var(--azul-claro);color:var(--azul)"><svg class="ic"><use href="#i-doc"/></svg></div><h3>Plano de Direitos na visita</h3><p>Um formulário curto vira a lista de benefícios possíveis entre 7 programas, com o que falta para cada um. A IA explica em linguagem simples, citando a fonte.</p><span class="num">7 programas · motor de regras + RAG</span></div>
+      <div class="pq rv d1"><div class="ico" style="background:var(--verde-claro);color:var(--verde-esc)"><svg class="ic"><use href="#i-msg"/></svg></div><h3>Encaminhamento com lembrete</h3><p>A pessoa sai com o serviço certo, o dia e os documentos. O lembrete chega no WhatsApp em texto e em áudio, dela ou de um familiar.</p><span class="num">WhatsApp Cloud API · texto e voz</span></div>
+      <div class="pq rv d2"><div class="ico" style="background:var(--amarelo-claro);color:#8A6200"><svg class="ic"><use href="#i-mic"/></svg></div><h3>Anotação por voz com IA</h3><p>O agente fala, a IA transcreve, remove o dado clínico e sugere marcações. O agente confirma. O áudio é apagado.</p><span class="num">faster-whisper local + Claude</span></div>
+      <div class="pq rv"><div class="ico" style="background:var(--vermelho-claro);color:var(--p-urgente)"><svg class="ic"><use href="#i-alvo"/></svg></div><h3>Modelo de priorização</h3><p>Compara cada distrito com os de perfil social parecido, estima quem tem direito e não recebe e gera um índice de 0 a 100 com campanhas recomendadas.</p><span class="num">Random Forest · R² 0,81 (BPC)</span></div>
+      <div class="pq rv d1"><div class="ico" style="background:var(--lilas);color:#5B3FD1"><svg class="ic"><use href="#i-cadeado"/></svg></div><h3>Cada cargo vê o que precisa</h3><p>Secretaria vê a cidade, subprefeitura vê só o seu território, coordenação vê a sua unidade. Segurança por linha no Power BI.</p><span class="num">Entra ID + RLS por subprefeitura</span></div>
+      <div class="pq rv d2"><div class="ico" style="background:var(--azul-claro);color:var(--azul)"><svg class="ic"><use href="#i-celular"/></svg></div><h3>Feito para quem está em campo</h3><p>Entrada com CPF e PIN, sem gov.br, aprovada pelo coordenador. Um diferencial em relação ao e-SUS para o dia a dia do agente.</p><span class="num">CPF + unidade + PIN de 6 dígitos</span></div>
+    </div>
+
+    <div class="diferencial rv">
+      <div class="dif-esq">
+        <span class="tag">O diferencial</span>
+        <h3>Da base pública até a porta da casa, no mesmo fluxo</h3>
+        <p>Ferramentas de monitoramento costumam parar no painel. Apps de campo costumam parar no cadastro. O Caminho dos Direitos liga as duas pontas: o modelo diz onde agir, o agente age, e o que ele registra volta para o painel.</p>
+        <ul>
+          <li><svg class="ic"><use href="#i-check"/></svg>14 bases públicas reais, conferidas distrito a distrito</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Campanhas só onde a prioridade é urgente ou alta</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Alertas cruzados entre território e o que o app registrou</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>LGPD desde o desenho: renda só em faixa, sem dado clínico</li>
+        </ul>
+      </div>
+      <div class="dif-dir">
+        <h4>Hoje × com o Caminho dos Direitos</h4>
+        <table class="compara">
+          <thead><tr><th></th><th>Hoje</th><th>Com o Caminho</th></tr></thead>
+          <tbody>
+            <tr><td>Descobrir direitos</td><td>Depende do que o agente lembra de cada programa</td><td>Plano com 7 programas gerado na visita</td></tr>
+            <tr><td>Documentos</td><td>A pessoa descobre no balcão que falta um papel</td><td>Lista do que falta e do que levar, antes de sair</td></tr>
+            <tr><td>Encaminhamento</td><td>Boca a boca, ninguém sabe se ela foi</td><td>Registrado, com resultado: compareceu, concluiu, faltou</td></tr>
+            <tr><td>Lembrete</td><td>Nenhum</td><td>WhatsApp em texto e áudio, com dia, local e documentos</td></tr>
+            <tr><td>Onde agir</td><td>Campanhas sem comparar territórios</td><td>Índice de prioridade dos 96 distritos</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="acessivel">
+      <div class="rv"><b>Sem app para o cidadão</b><span>Quem usa o app é o agente. A pessoa só precisa receber uma mensagem.</span></div>
+      <div class="rv d1"><b>Áudio no WhatsApp</b><span>Para quem lê com dificuldade ou tem baixa visão.</span></div>
+      <div class="rv d2"><b>WhatsApp de familiar</b><span>Quem não tem celular recebe pelo número de alguém de confiança.</span></div>
+      <div class="rv d3"><b>Linguagem simples</b><span>A IA explica cada direito sem jargão, com a fonte citada.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 5. COMO FUNCIONA =================== -->
+<section id="como-funciona" class="azul">
+  <div class="wrap">
+    <div class="centro">
+      <span class="tag rv">Como funciona</span>
+      <h2 class="rv d1">Quem já bate na porta leva o direito junto</h2>
+      <p class="lead rv d2">Agentes de saúde e assistentes sociais já visitam as famílias. O app transforma essa visita em um plano de ação.</p>
     </div>
     <div class="cards3">
-      <div class="card">
-        <div class="card-topo"><i style="background:var(--azul-claro)">📝</i><div><span class="etapa">Etapa 1</span><h3>Na visita</h3></div></div>
-        <ul class="checks">
-          <li>O agente preenche um formulário curto com a pessoa.</li>
-          <li>A renda é calculada por pessoa da casa, sem constranger.</li>
-          <li>Anotações podem ser ditadas e a IA organiza.</li>
-        </ul>
+      <div class="card rv">
+        <div class="card-topo"><i style="background:var(--azul-claro);color:var(--azul)"><svg class="ic"><use href="#i-casa"/></svg></i><div><span class="etapa">Etapa 1</span><h3>Na visita</h3></div></div>
+        <ul class="checks"><li>O agente preenche um formulário curto com a pessoa.</li><li>A renda é calculada por pessoa da casa, sem constranger.</li><li>Anotações podem ser ditadas e a IA organiza.</li></ul>
       </div>
-      <div class="card">
-        <div class="card-topo"><i style="background:var(--verde-claro)">🗺️</i><div><span class="etapa">Etapa 2</span><h3>Plano e encaminhamento</h3></div></div>
-        <ul class="checks">
-          <li>O app sugere os benefícios possíveis e as pendências de cada um.</li>
-          <li>O agente encaminha a pessoa ao serviço certo.</li>
-          <li>Lembrete no WhatsApp em texto ou áudio, com dia, local e documentos.</li>
-        </ul>
+      <div class="card rv d1">
+        <div class="card-topo"><i style="background:var(--verde-claro);color:var(--verde-esc)"><svg class="ic"><use href="#i-pin"/></svg></i><div><span class="etapa">Etapa 2</span><h3>Plano e encaminhamento</h3></div></div>
+        <ul class="checks"><li>O app sugere os benefícios possíveis e as pendências de cada um.</li><li>O agente encaminha a pessoa ao serviço certo.</li><li>Lembrete no WhatsApp com dia, local e documentos.</li></ul>
       </div>
-      <div class="card">
-        <div class="card-topo"><i style="background:var(--amarelo-claro)">📊</i><div><span class="etapa">Etapa 3</span><h3>Monitoramento</h3></div></div>
-        <ul class="checks">
-          <li>Os dados viram um dashboard por subprefeitura.</li>
-          <li>A gestão vê onde há mais pessoas sem documento ou benefício.</li>
-          <li>Um modelo indica quais distritos priorizar em campanhas.</li>
-        </ul>
+      <div class="card rv d2">
+        <div class="card-topo"><i style="background:var(--amarelo-claro);color:#8A6200"><svg class="ic"><use href="#i-grafico"/></svg></i><div><span class="etapa">Etapa 3</span><h3>Monitoramento</h3></div></div>
+        <ul class="checks"><li>Os dados viram um painel por subprefeitura.</li><li>A gestão vê onde há mais pessoas sem documento ou benefício.</li><li>O modelo indica quais distritos priorizar em campanhas.</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =================== 5. DASHBOARD =================== -->
-<section id="dashboard">
-  <div class="wrap dash-grid">
-    <div>
-      <span class="tag">Dashboard</span>
-      <h2>Onde agir primeiro, em um só painel</h2>
-      <p class="lead">O painel cruza dados públicos do território com os dados que o app gera, para orientar campanhas e equipes.</p>
-      <div class="kpis">
-        <div class="kpi"><i>📍</i><div><b>96 distritos</b><span>de São Paulo analisados</span></div></div>
-        <div class="kpi"><i>🗂️</i><div><b>14 bases públicas</b><span>CadÚnico, IBGE, CNES, GeoSampa e outras</span></div></div>
-        <div class="kpi"><i>🎯</i><div><b>Prioridade por distrito</b><span>campanhas só onde a prioridade é urgente ou alta</span></div></div>
-      </div>
-      <a class="btn btn-azul" href="dashboard/">Abrir em tela cheia</a>
-    </div>
-    <div>
-      <div class="janela">
-        <div class="janela-barra"><s></s><s></s><s></s><em>Dashboard de monitoramento</em></div>
-        <iframe src="dashboard/index.html" title="Dashboard de monitoramento Caminho dos Direitos" loading="lazy"></iframe>
-      </div>
-      <p class="nota">Dados de território reais e públicos. Os dados de uso do app são simulados, porque o app ainda é um protótipo. A versão em Power BI está no <a href="dashboard/Caminho-dos-direitos.pbix">arquivo .pbix</a>.</p>
-    </div>
-  </div>
-</section>
-
-<!-- =================== 6. JORNADA =================== -->
-<section class="sobre-claro">
+<!-- =================== 6. ARQUITETURA =================== -->
+<section id="arquitetura">
   <div class="wrap">
     <div class="centro">
-      <span class="tag">Na prática</span>
-      <h2>A jornada da Dona Cida</h2>
-      <p class="lead">Um caso da nossa base acompanhado do primeiro contato até o atendimento.</p>
+      <span class="tag rv">Arquitetura</span>
+      <h2 class="rv d1">Como o Caminho dos Direitos funciona <span class="amarelo-t">por dentro</span></h2>
+      <p class="lead rv d2">Arquitetura híbrida na Microsoft Azure com Databricks e camadas medalhão. O processamento e os modelos são em Python, e a solução usa APIs externas onde elas são a melhor opção.</p>
     </div>
-    <div class="persona">
+    <div class="trilhas rv" role="group" aria-label="Escolha a trilha de dados">
+      <button type="button" data-trilha="todas" aria-pressed="true">Visão completa</button>
+      <button type="button" data-trilha="p" aria-pressed="false">Trilha do painel · lote mensal</button>
+      <button type="button" data-trilha="a" aria-pressed="false">Trilha do app · tempo real</button>
+    </div>
+    <p class="trilha-txt" id="trilha-txt" aria-live="polite"></p>
+    <div class="pipeline" id="pipeline"><div class="fluxo" aria-hidden="true"></div></div>
+    <div class="governanca rv">
+      <b><svg class="ic"><use href="#i-escudo"/></svg>Governança e segurança · todas as camadas</b>
+      <div>
+        <span>Microsoft Entra ID · RLS por subprefeitura</span><span>Azure Key Vault · segredos</span><span>Azure Monitor · logs e alertas</span>
+        <span>Oracle Data Modeler · modelagem</span><span>GitHub · versão e dicionário de dados</span><span>LGPD by design</span>
+      </div>
+    </div>
+    <div class="leg-arq"><span><i style="width:10px;height:10px;background:#5B8DEF;border-radius:2px;display:inline-block"></i>Serviço Microsoft Azure</span><span><i style="width:10px;height:10px;background:#7BE495;border-radius:50%;display:inline-block"></i>Ferramenta externa ou open source</span><span>Passe o mouse ou escolha uma trilha para destacar</span></div>
+
+    <div class="medalhao">
+      <div class="med rv" style="--c:#D9925B"><small>Camada</small><h3>Bronze</h3><p>As 14 bases públicas do jeito que chegaram e a cópia diária do banco do app.</p></div>
+      <div class="med rv d1" style="--c:#C9D1DE"><small>Camada</small><h3>Prata</h3><p>Território tratado e conferido: 96 distritos sem repetição, população somada igual ao Censo. Dado que não passa nas conferências não sobe de camada.</p></div>
+      <div class="med rv d2" style="--c:#FECA02"><small>Camada</small><h3>Ouro</h3><p>Modelo dimensional <b>Snowflake + Galaxy</b>: 7 fatos e 6 dimensões, prontos para o Power BI e para o painel HTML.</p></div>
+    </div>
+
+    <div class="acao-fluxo">
+      <div class="rv"><i><svg class="ic"><use href="#i-banco"/></svg></i><b>Dados públicos</b><span>Censo, CadÚnico, BPC, CRAS</span></div>
+      <div class="rv d1"><i><svg class="ic"><use href="#i-camadas"/></svg></i><b>Lakehouse</b><span>Bronze, Prata e Ouro</span></div>
+      <div class="rv d2"><i><svg class="ic"><use href="#i-alvo"/></svg></i><b>Priorização</b><span>Índice 0–100 por distrito</span></div>
+      <div class="rv d3"><i><svg class="ic"><use href="#i-sino"/></svg></i><b>Campanhas e alertas</b><span>Para cada cargo da rede</span></div>
+      <div class="rv d4"><i><svg class="ic"><use href="#i-casa"/></svg></i><b>Na porta da casa</b><span>Agente, plano e lembrete</span></div>
+    </div>
+    <div class="arq-links">
+      <button class="btn btn-amarelo" type="button" id="abrir-diagrama"><svg class="ic"><use href="#i-olho"/></svg>Ver o diagrama completo</button>
+      <a class="btn btn-vidro" href="https://github.com/Karen-Akemi/Caminho_dos_direitos/tree/main/arquitetura">Documentação da arquitetura</a>
+    </div>
+  </div>
+  <dialog class="lightbox" id="diagrama" aria-label="Diagrama da arquitetura de dados">
+    <button type="button" aria-label="Fechar" onclick="this.closest('dialog').close()"><svg class="ic"><use href="#i-x"/></svg></button>
+    <img src="arquitetura/arquitetura_dados.png" alt="Diagrama: origem, ingestão, armazenamento, processamento e consumo, com governança atravessando todas as camadas" loading="lazy">
+  </dialog>
+</section>
+
+<!-- =================== 7. PAINEL + INSIGHTS =================== -->
+<section id="painel">
+  <div class="wrap dash-grid">
+    <div>
+      <span class="tag rv">Painel do monitoramento</span>
+      <h2 class="rv d1">Onde agir primeiro, em um só painel</h2>
+      <p class="lead rv d2">O painel cruza o território real com o que o app registra. Estes são os insights que ele sustenta:</p>
+      <div class="insights">
+        <div class="insight rv"><div class="n" data-conta="55" data-suf="%">55%</div><p>das pessoas com direito provável sem benefício estão nos <b>10 distritos urgentes</b>. Jardim Ângela, Tremembé e Grajaú lideram.</p></div>
+        <div class="insight rv d1"><div class="n" data-conta="2" data-dec="1" data-suf=" p.p.">2,0 p.p.</div><p>a menos de cobertura do Bolsa Família nos distritos com <b>área de risco R3/R4</b> (38,2% contra 40,1%), diferença significativa a 5%.</p></div>
+        <div class="insight rv d2"><div class="n" data-conta="0.23" data-dec="2">0,23</div><p>de correlação entre setores de risco e falta de acesso por habitante: <b>a área de risco agrava o problema</b>. Já a distância ao CRAS não explica (0,06).</p></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn btn-azul" href="dashboard/">Abrir em tela cheia</a>
+        <a class="btn btn-contorno" href="site/entrar.html">Ver como gestor</a>
+      </div>
+    </div>
+    <div class="rv d1">
+      <div class="janela">
+        <div class="janela-barra"><s></s><s></s><s></s><em>Painel do monitoramento · 96 distritos</em></div>
+        <iframe src="dashboard/index.html" title="Painel do monitoramento Caminho dos Direitos" loading="lazy"></iframe>
+      </div>
+      <p class="nota">Território: dados públicos reais. Uso do app: simulado, calibrado nos dados reais, porque o app ainda é um protótipo. Versão Power BI no <a href="dashboard/Caminho-dos-direitos.pbix">arquivo .pbix</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 8. PERFIS / DEMO =================== -->
+<section id="demo" class="escuro">
+  <div class="wrap">
+    <div class="centro">
+      <span class="tag rv">Demonstração</span>
+      <h2 class="rv d1">Entre no lugar de quem <span class="amarelo-t">decide</span></h2>
+      <p class="lead rv d2">Escolha um cargo e veja a plataforma como ele veria. Cada perfil enxerga só o que precisa, como na segurança por linha do Power BI.</p>
+    </div>
+    <div class="perfis">
+      <a class="perfil rv" href="site/plataforma.html?perfil=sec">
+        <div class="ico" style="background:var(--azul)"><svg class="ic"><use href="#i-predio"/></svg></div>
+        <small>Secretaria municipal</small><h3>Visão da cidade</h3>
+        <p>Assistência Social: decide onde investir campanhas e equipes.</p>
+        <ul><li>Mapa dos 96 distritos</li><li>Ranking de prioridade</li><li>Aprovar campanhas</li></ul>
+        <span class="ir">Entrar como secretaria <svg class="ic"><use href="#i-seta"/></svg></span>
+      </a>
+      <a class="perfil rv d1" href="site/plataforma.html?perfil=sub">
+        <div class="ico" style="background:var(--laranja)"><svg class="ic"><use href="#i-pin"/></svg></div>
+        <small>Subprefeitura</small><h3>M'Boi Mirim</h3>
+        <p>Gestão local: vê só o próprio território, com o distrito mais prioritário da cidade.</p>
+        <ul><li>Distritos e unidades</li><li>Alertas cruzados</li><li>Painel com RLS</li></ul>
+        <span class="ir">Entrar como subprefeitura <svg class="ic"><use href="#i-seta"/></svg></span>
+      </a>
+      <a class="perfil rv d2" href="site/plataforma.html?perfil=coord">
+        <div class="ico" style="background:var(--verde-esc)"><svg class="ic"><use href="#i-pessoas"/></svg></div>
+        <small>Coordenação de unidade</small><h3>UBS Jardim Aracati</h3>
+        <p>Coordena a equipe que atende a Dona Cida.</p>
+        <ul><li>Aprovar acessos</li><li>Casos da unidade</li><li>Transferir casos</li></ul>
+        <span class="ir">Entrar como coordenação <svg class="ic"><use href="#i-seta"/></svg></span>
+      </a>
+      <a class="perfil rv d3" href="site/plataforma.html?perfil=agente">
+        <div class="ico" style="background:#8A6200"><svg class="ic"><use href="#i-celular"/></svg></div>
+        <small>Agente de campo</small><h3>App do agente</h3>
+        <p>Quem bate na porta: visitas do dia, plano e lembretes.</p>
+        <ul><li>Agenda de visitas</li><li>Telas do app</li><li>Vídeos das funções de IA</li></ul>
+        <span class="ir">Entrar como agente <svg class="ic"><use href="#i-seta"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 9. JORNADA =================== -->
+<section class="claro">
+  <div class="wrap">
+    <div class="centro">
+      <span class="tag rv">Na prática</span>
+      <h2 class="rv d1">A jornada da Dona Cida</h2>
+      <p class="lead rv d2">Um caso acompanhado do primeiro contato até o atendimento.</p>
+    </div>
+    <div class="persona rv">
       <div class="av" aria-hidden="true">👵</div>
       <div><b>Dona Cida</b><div class="chips" style="margin-top:6px">
         <span class="chip az">65+ anos</span><span class="chip az">Jardim Ângela</span><span class="chip az">UBS Jardim Aracati</span>
-        <span class="chip am">Tem RG, falta CPF e título</span><span class="chip vd">WhatsApp próprio</span>
+        <span class="chip am">Tem RG, falta CPF</span><span class="chip vd">WhatsApp próprio</span>
       </div></div>
     </div>
     <div class="jornada">
-      <div class="passo"><div class="num">1</div><h3>A visita</h3><p>A agente da UBS preenche o formulário com a Dona Cida, na casa dela.</p></div>
-      <div class="passo"><div class="num">2</div><h3>O plano</h3><p>O app mostra que, para seguir com os benefícios, ela precisa tirar o CPF e o título de eleitor.</p></div>
-      <div class="passo"><div class="num">3</div><h3>O encaminhamento</h3><p>A agente agenda o atendimento no Poupatempo e registra no caso.</p></div>
-      <div class="passo"><div class="num">4</div><h3>O lembrete</h3><p>Ela recebe no WhatsApp, em texto e áudio, o dia, o local e o que levar.</p></div>
+      <div class="passo rv"><div class="num">1</div><h3>A visita</h3><p>A agente da UBS preenche o formulário com a Dona Cida, na casa dela.</p></div>
+      <div class="passo rv d1"><div class="num">2</div><h3>O plano</h3><p>O app mostra que, para seguir com os benefícios, ela precisa tirar o CPF.</p></div>
+      <div class="passo rv d2"><div class="num">3</div><h3>O encaminhamento</h3><p>A agente agenda o atendimento no Poupatempo e registra no caso.</p></div>
+      <div class="passo rv d3"><div class="num">4</div><h3>O lembrete</h3><p>Ela recebe no WhatsApp, em texto e áudio, o dia, o local e o que levar.</p></div>
+    </div>
+    <div class="videos">
+      <div class="video-card rv">
+        <video controls preload="none" poster="assets/videos/anotacao_app.jpg"><source src="assets/videos/anotacao_app.mp4" type="video/mp4"></video>
+        <div><span class="chip am" style="margin-bottom:10px">29 s · funcionando</span><h3>Anotação por voz com IA</h3><p>A IA transcreve, remove o trecho de saúde e sugere marcações (dificuldade de locomoção, melhor horário à tarde). Ao salvar, fica só a marcação: o áudio é apagado.</p></div>
+      </div>
+      <div class="video-card rv d1">
+        <video controls preload="none" poster="assets/videos/lembrete_whatsapp.jpg"><source src="assets/videos/lembrete_whatsapp.mp4" type="video/mp4"></video>
+        <div><span class="chip vd" style="margin-bottom:10px">36 s · celular de verdade</span><h3>Lembrete por WhatsApp</h3><p>Enviado pela Cloud API da Meta: Poupatempo M'Boi Mirim, 18/11, 9h, com os documentos. Depois, a mensagem de voz com o mesmo lembrete.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- =================== 7. PARA QUEM É =================== -->
-<section>
+<!-- =================== 10. IMPACTO E ODS =================== -->
+<section id="impacto">
   <div class="wrap">
     <div class="centro">
-      <span class="tag">Para quem é</span>
-      <h2>Um app, três olhares</h2>
-      <p class="lead">Cada pessoa da rede vê o que precisa para tomar a próxima decisão.</p>
+      <span class="tag rv">Impacto e ODS</span>
+      <h2 class="rv d1">Poucos ODS, com relação direta ao problema</h2>
+      <p class="lead rv d2">A Agenda 2030 da ONU no nível do distrito e da visita.</p>
     </div>
-    <div class="perfis">
-      <div class="perfil">
-        <div class="ic">🎒</div><h3>Agente de campo</h3>
-        <p class="sub">Agentes de saúde e assistentes sociais</p>
-        <ul class="checks">
-          <li>Entra com CPF e PIN, sem gov.br</li>
-          <li>Cria o plano de direitos na visita</li>
-          <li>Registra encaminhamentos e resultados</li>
-          <li>Faz anotações por voz com IA</li>
-        </ul>
-      </div>
-      <div class="perfil meio">
-        <div class="ic">🧑‍💼</div><h3>Coordenador</h3>
-        <p class="sub">Responsável pela UBS ou pelo CRAS</p>
-        <ul class="checks">
-          <li>Aprova os pedidos de acesso da equipe</li>
-          <li>Acompanha todos os casos da unidade</li>
-          <li>Transfere casos quando um agente sai</li>
-          <li>Confirma indicações para campanhas</li>
-        </ul>
-      </div>
-      <div class="perfil">
-        <div class="ic">🏛️</div><h3>Gestão</h3>
-        <p class="sub">Por subprefeitura</p>
-        <ul class="checks">
-          <li>Vê só os dados da sua subprefeitura</li>
-          <li>Identifica distritos prioritários</li>
-          <li>Planeja campanhas e mutirões</li>
-          <li>Acompanha a efetividade dos lembretes</li>
-        </ul>
-      </div>
+    <div class="ods-grid">
+      <div class="ods rv" style="--c:#E5243B"><div class="n">1</div><h3>Erradicação da pobreza</h3><p>Leva BPC, Bolsa Família e Tarifa Social a quem tem direito e não recebe, começando pelos distritos com maior lacuna.</p><span class="meta">Meta 1.3 · proteção social</span></div>
+      <div class="ods rv d1" style="--c:#DD1367"><div class="n">10</div><h3>Redução das desigualdades</h3><p>Prioriza onde o acesso é menor do que o esperado para o perfil do distrito, como as áreas de risco R3/R4.</p><span class="meta">Meta 10.2 · inclusão social</span></div>
+      <div class="ods rv d2" style="--c:#00689D"><div class="n">16</div><h3>Instituições eficazes</h3><p>Documentação básica (certidão, CPF, RG) é a porta de entrada de todos os outros direitos.</p><span class="meta">Meta 16.9 · identidade civil para todos</span></div>
+    </div>
+    <h3 class="rv" style="text-align:center;margin-top:56px;font-size:22px">Como vamos medir</h3>
+    <div class="indicadores">
+      <div class="indicador rv"><svg class="ic"><use href="#i-pessoas"/></svg><b>Pessoas alcançadas</b><span>Casos com Plano de Direitos por distrito e unidade.</span></div>
+      <div class="indicador rv d1"><svg class="ic"><use href="#i-check"/></svg><b>Encaminhamentos concluídos</b><span>Compareceu e concluiu, por serviço e programa.</span></div>
+      <div class="indicador rv d2"><svg class="ic"><use href="#i-msg"/></svg><b>Efeito do lembrete</b><span>Comparecimento com e sem lembrete no WhatsApp.</span></div>
+      <div class="indicador rv d3"><svg class="ic"><use href="#i-alvo"/></svg><b>Lacuna que diminui</b><span>Pessoas com direito provável sem benefício nos distritos urgentes.</span></div>
     </div>
   </div>
 </section>
 
-<!-- =================== 8. PROTÓTIPO =================== -->
-<section id="prototipo" class="sobre-escuro">
+<!-- =================== 11. USO RESPONSÁVEL =================== -->
+<section id="lgpd" class="escuro">
   <div class="wrap">
-    <span class="tag">Protótipo</span>
-    <h2>Conheça as telas do app</h2>
-    <p class="lead">Arraste para o lado para ver as principais telas ou navegue pelo protótipo completo logo abaixo.</p>
+    <div class="centro">
+      <span class="tag rv">Uso responsável dos dados</span>
+      <h2 class="rv d1">LGPD desde o desenho, não depois</h2>
+      <p class="lead rv d2">Quem mais precisa do serviço público não pode pagar com a própria privacidade.</p>
+    </div>
+    <div class="lgpd">
+      <div class="lg rv"><svg class="ic"><use href="#i-mic"/></svg><b>Sem dado clínico</b><p>A IA remove o trecho de saúde da anotação. O áudio do agente é transcrito no próprio servidor e apagado.</p></div>
+      <div class="lg rv d1"><svg class="ic"><use href="#i-cadeado"/></svg><b>Renda só em faixa</b><p>A calculadora chega à renda por pessoa, mas o app guarda só a faixa, nunca o valor.</p></div>
+      <div class="lg rv d2"><svg class="ic"><use href="#i-msg"/></svg><b>Consentimento no WhatsApp</b><p>Opt-in registrado, PARAR e VOLTAR, telefone guardado como hash, conversas apagadas em 30 dias.</p></div>
+      <div class="lg rv"><svg class="ic"><use href="#i-olho"/></svg><b>Mínimo privilégio</b><p>Cada gestor vê só a sua subprefeitura. O coordenador aprova cada acesso. O painel não mostra nome nem CPF.</p></div>
+      <div class="lg rv d1"><svg class="ic"><use href="#i-alvo"/></svg><b>Contra o viés</b><p>O modelo compara cada distrito com os de perfil parecido, e não com a média da cidade, para não esconder periferias.</p></div>
+      <div class="lg rv d2"><svg class="ic"><use href="#i-escudo"/></svg><b>Transparência</b><p>Todo dado diz a origem: REAL, ESTIMATIVA DO MODELO ou SIMULADO. A IA sugere, o agente confirma.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 12. PROTÓTIPO =================== -->
+<section id="prototipo" style="background:var(--navy-2);color:#fff" class="escuro">
+  <div class="wrap">
+    <span class="tag rv">Protótipo</span>
+    <h2 class="rv d1">Conheça as telas do app</h2>
+    <p class="lead rv d2">Arraste para o lado para ver as principais telas do app.</p>
     <p class="dica-arraste">← arraste →</p>
-    <!-- Exporte as telas do Figma em PNG 2x e salve em assets/telas/ com estes nomes -->
     <div class="telas" tabindex="0" aria-label="Telas do app">
-      <figure><img src="assets/telas/login.png" alt="Tela de login" loading="lazy" onerror="this.outerHTML='<div class=ph>assets/telas/login.png</div>'"><figcaption>Login do agente</figcaption></figure>
-      <figure><img src="assets/telas/casos.png" alt="Tela de casos" loading="lazy" onerror="this.outerHTML='<div class=ph>assets/telas/casos.png</div>'"><figcaption>Meus casos</figcaption></figure>
-      <figure><img src="assets/telas/formulario.png" alt="Tela de novo atendimento" loading="lazy" onerror="this.outerHTML='<div class=ph>assets/telas/formulario.png</div>'"><figcaption>Novo atendimento</figcaption></figure>
-      <figure><img src="assets/telas/plano.png" alt="Tela do plano de direitos" loading="lazy" onerror="this.outerHTML='<div class=ph>assets/telas/plano.png</div>'"><figcaption>Plano de direitos</figcaption></figure>
-      <figure><img src="assets/telas/encaminhamento.png" alt="Tela de encaminhamento" loading="lazy" onerror="this.outerHTML='<div class=ph>assets/telas/encaminhamento.png</div>'"><figcaption>Encaminhamento</figcaption></figure>
-      <figure><img src="assets/telas/dona-cida.png" alt="Tela do caso da Dona Cida" loading="lazy" onerror="this.outerHTML='<div class=ph>assets/telas/dona-cida.png</div>'"><figcaption>Acompanhamento do caso</figcaption></figure>
-      <figure><img src="assets/telas/anotacao-ia.png" alt="Tela de anotação por voz" loading="lazy" onerror="this.outerHTML='<div class=ph>assets/telas/anotacao-ia.png</div>'"><figcaption>Anotação por voz com IA</figcaption></figure>
-      <figure><img src="assets/telas/equipe.png" alt="Tela da equipe do coordenador" loading="lazy" onerror="this.outerHTML='<div class=ph>assets/telas/equipe.png</div>'"><figcaption>Equipe do coordenador</figcaption></figure>
-    </div>
-    <div class="embed">
-      <!-- Figma: Share > Get embed code -->
-      <iframe src="https://embed.figma.com/design/1eyGN1dPpd0AkRcqTDco4B/Projeto-Global-Solutions---Caminhos?node-id=175-5995&embed-host=share" title="Telas do app Caminho dos Direitos no Figma" allowfullscreen loading="lazy"></iframe>
+      <figure><img src="assets/telas/login.png" alt="Tela de login" loading="lazy"><figcaption>Login do agente</figcaption></figure>
+      <figure><img src="assets/telas/casos.png" alt="Tela de casos" loading="lazy"><figcaption>Meus casos</figcaption></figure>
+      <figure><img src="assets/telas/formulario.png" alt="Tela de novo atendimento" loading="lazy"><figcaption>Novo atendimento</figcaption></figure>
+      <figure><img src="assets/telas/plano.png" alt="Tela do plano de direitos" loading="lazy"><figcaption>Plano de direitos</figcaption></figure>
+      <figure><img src="assets/telas/encaminhamento.png" alt="Tela de encaminhamento" loading="lazy"><figcaption>Encaminhamento</figcaption></figure>
+      <figure><img src="assets/telas/dona-cida.png" alt="Tela do caso da Dona Cida" loading="lazy"><figcaption>Acompanhamento do caso</figcaption></figure>
+      <figure><img src="assets/telas/anotacao-ia.png" alt="Tela de anotação por voz" loading="lazy"><figcaption>Anotação por voz com IA</figcaption></figure>
+      <figure><img src="assets/telas/equipe.png" alt="Tela da equipe do coordenador" loading="lazy"><figcaption>Equipe do coordenador</figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- =================== 9. FAQ =================== -->
-<section id="faq">
+<!-- =================== 13. DADOS E MODELO =================== -->
+<section id="dados">
   <div class="wrap">
     <div class="centro">
-      <span class="tag">Dúvidas</span>
-      <h2>Perguntas frequentes</h2>
+      <span class="tag rv">Por trás dos números</span>
+      <h2 class="rv d1">Dados e modelo, com código aberto</h2>
+      <p class="lead rv d2">Todo o tratamento foi feito em Python, nos notebooks deste repositório.</p>
     </div>
-    <div class="faq">
-      <details open>
-        <summary>O app já está funcionando?</summary>
-        <p>Ainda não. O app é um protótipo navegável feito no Figma, para validar a ideia e a experiência dos agentes. O dashboard e o modelo de prioridade já funcionam com dados públicos reais.</p>
-      </details>
-      <details>
-        <summary>Os dados do dashboard são reais?</summary>
-        <p>Os dados de território são públicos e reais (CadÚnico, IBGE, CNES, GeoSampa, entre outros). Os dados de uso do app, como casos e encaminhamentos, são simulados para mostrar como o painel funcionaria com o app em uso. O rodapé do painel indica o que é dado público e o que é simulado.</p>
-      </details>
-      <details>
-        <summary>Por que o app não usa login do gov.br?</summary>
-        <p>Muitos agentes têm dificuldade com o gov.br. O acesso é feito com CPF, unidade de trabalho e um PIN, e o coordenador da UBS ou do CRAS aprova o pedido.</p>
-      </details>
-      <details>
-        <summary>Como funcionam os lembretes no WhatsApp?</summary>
-        <p>Depois do encaminhamento, a pessoa recebe no número cadastrado (dela ou de um familiar) o dia, o horário, o local e os documentos que precisa levar, em texto, em áudio ou nos dois formatos.</p>
-      </details>
-      <details>
-        <summary>O que o modelo de prioridade faz?</summary>
-        <p>Ele estima, por distrito, onde há mais pessoas com direito a benefícios que ainda não recebem, e recomenda campanhas apenas para os distritos de prioridade urgente ou alta.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- =================== 10. PITCH =================== -->
-<section class="sobre-escuro">
-  <div class="wrap pitch-grid">
-    <div>
-      <span class="tag">Pitch</span>
-      <h2>Veja o Caminho dos Direitos <span class="destaque-amarelo">em poucos minutos</span></h2>
-      <p class="lead">A apresentação do problema, da solução e do impacto que o projeto pode gerar.</p>
-    </div>
-    <div class="video">
-      <!-- COLE AQUI o <iframe> do YouTube (Compartilhar > Incorporar) e apague a linha .ph -->
-      <div class="ph">Vídeo do pitch<br>em breve</div>
-    </div>
-  </div>
-</section>
-
-<!-- =================== 11. DADOS E MODELO =================== -->
-<section class="dados">
-  <div class="wrap">
-    <div class="centro">
-      <span class="tag">Por trás dos números</span>
-      <h2>Dados e modelo</h2>
-      <p class="lead">Todo o tratamento foi feito em Python, com o código aberto neste repositório.</p>
-    </div>
-    <div class="cards3">
-      <div class="card">
-        <i style="background:var(--azul-claro)">🧹</i>
+    <div class="dados-grid">
+      <div class="dado rv">
+        <div class="ico" style="background:var(--azul-claro);color:var(--azul)"><svg class="ic"><use href="#i-banco"/></svg></div>
         <h3>Tratamento dos dados</h3>
-        <p>Limpeza e união das bases públicas por distrito e subprefeitura de São Paulo.</p>
-        <a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/blob/main/notebooks/Tratamento_GS_v6.ipynb">VER NOTEBOOK →</a>
+        <div class="met"><div><b data-conta="14">14</b><span>bases públicas</span></div><div><b data-conta="96">96</b><span>distritos conferidos</span></div></div>
+        <p>Padroniza os distritos, faz o join espacial e confere a população somada contra o Censo.</p>
+        <a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/blob/main/notebooks/Tratamento_GS_v6.ipynb">Ver notebook <svg class="ic"><use href="#i-seta"/></svg></a>
       </div>
-      <div class="card">
-        <i style="background:var(--verde-claro)">🎯</i>
+      <div class="dado rv d1">
+        <div class="ico" style="background:var(--verde-claro);color:var(--verde-esc)"><svg class="ic"><use href="#i-alvo"/></svg></div>
         <h3>Modelo de prioridade</h3>
-        <p>Estima onde estão os direitos não acessados e recomenda campanhas por distrito.</p>
-        <a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/blob/main/notebooks/Modelo_GS_v4.ipynb">VER NOTEBOOK →</a>
+        <div class="met"><div><b data-conta="0.81" data-dec="2">0,81</b><span>R² (BPC idoso)</span></div><div><b data-conta="10">10</b><span>distritos urgentes</span></div></div>
+        <p>Random Forest, Gradient Boosting e Ridge comparados por validação cruzada. Estima a cobertura esperada e a lacuna.</p>
+        <a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/blob/main/notebooks/Modelo_GS_v4.ipynb">Ver notebook <svg class="ic"><use href="#i-seta"/></svg></a>
       </div>
-      <div class="card">
-        <i style="background:var(--amarelo-claro)">⭐</i>
+      <div class="dado rv d2">
+        <div class="ico" style="background:var(--amarelo-claro);color:#8A6200"><svg class="ic"><use href="#i-camadas"/></svg></div>
         <h3>Snowflake + Galaxy</h3>
-        <p>O modelo dimensional (constelação de fatos) que liga o app, os dados públicos e o dashboard.</p>
-        <a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/tree/main/modelagem">VER MODELAGEM →</a>
+        <div class="met"><div><b data-conta="7">7</b><span>fatos</span></div><div><b data-conta="6">6</b><span>dimensões</span></div></div>
+        <p>Modelos conceitual, lógico e dimensional que ligam o app, os dados públicos e o painel.</p>
+        <a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/tree/main/modelagem">Ver modelagem <svg class="ic"><use href="#i-seta"/></svg></a>
       </div>
     </div>
     <div class="fontes">
-      <span class="chip az">CadÚnico · SMADS</span>
-      <span class="chip az">População · Censo 2022/IBGE</span>
-      <span class="chip az">Equipamentos · CNES</span>
-      <span class="chip az">Áreas de risco · GeoSampa</span>
+      <span class="chip az">Censo 2022 · IBGE</span><span class="chip az">CadÚnico · SMADS</span><span class="chip az">Bolsa Família e BPC · Dados Abertos SP</span>
+      <span class="chip az">UBS · CNES</span><span class="chip az">Distritos e risco R1–R4 · GeoSampa</span>
       <a class="chip vd" href="documentacao/Notebooks_e_bases_de_dados.pdf" style="text-decoration:none">Guia completo das bases (PDF)</a>
     </div>
   </div>
 </section>
 
-<!-- =================== 12. EQUIPE =================== -->
-<section id="equipe" style="padding-top:0">
-  <div class="wrap">
-    <div class="centro">
-      <span class="tag">Equipe</span>
-      <h2>Quem fez</h2>
+<!-- =================== 14. PITCH =================== -->
+<section class="escuro">
+  <div class="wrap pitch-grid">
+    <div>
+      <span class="tag rv">Pitch</span>
+      <h2 class="rv d1">Veja o Caminho dos Direitos <span class="amarelo-t">em 5 minutos</span></h2>
+      <p class="lead rv d2">O problema, a solução e o impacto que o projeto pode gerar.</p>
     </div>
-    <!-- Para usar foto: troque a letra por <img src="assets/equipe/nome.jpg" alt=""> -->
+    <div class="video rv d1">
+      <!-- COLE AQUI o <iframe> do YouTube (Compartilhar > Incorporar) no lugar do .ph -->
+      <div class="ph"><div><svg class="ic" style="width:40px;height:40px;margin:0 auto 10px"><use href="#i-play"/></svg>Vídeo do pitch em breve</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 15. FAQ =================== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="centro"><span class="tag rv">Dúvidas</span><h2 class="rv d1">Perguntas frequentes</h2></div>
+    <div class="faq">
+      <details open><summary>O app já está funcionando?</summary><p>O app é um protótipo navegável no Figma. O motor de regras do Plano de Direitos, a anotação por voz com IA e o lembrete por WhatsApp já funcionam em Python (veja os vídeos). O painel e o modelo de prioridade rodam com dados públicos reais.</p></details>
+      <details><summary>Os dados do painel são reais?</summary><p>Os dados de território são públicos e reais (Censo, CadÚnico, BPC, CNES, GeoSampa, entre outros). Os dados de uso do app, como casos e encaminhamentos, são simulados e calibrados nos dados reais, para mostrar como o painel funcionaria com o app em uso. Cada número diz a sua origem.</p></details>
+      <details><summary>O login da demonstração é real?</summary><p>Não. Ele simula o que cada cargo veria. Na operação, os gestores entram pelo Microsoft Entra ID e o Power BI aplica a segurança por linha; os agentes entram com CPF, unidade e PIN, aprovados pelo coordenador.</p></details>
+      <details><summary>Por que o app não usa login do gov.br?</summary><p>Muitos cidadãos têm grande dificuldade para acessar o gov.br. Por isso mantemos um sistema de login interno: o acesso é feito com CPF, unidade de trabalho e um PIN, e o coordenador da UBS ou do CRAS aprova o pedido.</p></details>
+      <details><summary>O que o modelo de prioridade faz?</summary><p>Ele estima, por distrito, quantas pessoas têm direito provável a BPC idoso ou Bolsa Família e não recebem, comparando com distritos de perfil parecido. Daí sai um índice de 0 a 100 e campanhas só para os distritos de prioridade urgente ou alta.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 16. EQUIPE + CTA =================== -->
+<section id="equipe" class="cinza">
+  <div class="wrap">
+    <div class="centro"><span class="tag rv">Equipe</span><h2 class="rv d1">Quem fez</h2></div>
     <div class="equipe">
-      <div class="pessoa"><div class="av" style="background:var(--azul)">A</div><h3>Angelo Rabello</h3><p>Apresentação e site</p><p>RM 564338</p></div>
-      <div class="pessoa"><div class="av" style="background:var(--verde)">K</div><h3>Karen Akemi</h3><p>Dados e dashboard</p><p>RM 562733</p></div>
-      <div class="pessoa"><div class="av" style="background:var(--laranja)">M</div><h3>Milena Barbosa</h3><p>Protótipo do app</p><p>RM 558913</p></div>
+      <div class="pessoa rv"><div class="av" style="background:var(--azul)">A</div><h3>Angelo Rabello</h3><p>Apresentação e site</p><p>RM 564338</p><a href="https://github.com/AngeloRBLL0">GitHub</a></div>
+      <div class="pessoa rv d1"><div class="av" style="background:var(--verde)">K</div><h3>Karen Akemi de Oliveira</h3><p>Dados e dashboard</p><p>RM 562733</p><a href="https://github.com/Karen-Akemi">GitHub</a></div>
+      <div class="pessoa rv d2"><div class="av" style="background:var(--laranja)">M</div><h3>Milena Barbosa</h3><p>Protótipo do app</p><p>RM 558913</p><a href="https://github.com/MiihDev">GitHub</a></div>
+    </div>
+    <div class="cta-final rv" style="margin-top:72px">
+      <div>
+        <h2>Veja o território pelos olhos de quem decide</h2>
+        <p>Entre como secretaria, subprefeitura, coordenação ou agente e explore a plataforma com os dados reais dos 96 distritos.</p>
+      </div>
+      <div class="btns">
+        <a class="btn btn-amarelo" href="site/entrar.html"><svg class="ic"><use href="#i-entrar"/></svg>Entrar na demo</a>
+        <a class="btn btn-vidro" href="https://github.com/Karen-Akemi/Caminho_dos_direitos">Repositório no GitHub</a>
+      </div>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- =================== RODAPÉ =================== -->
-<footer>
+<footer class="rodape-site">
   <div class="wrap rodape">
     <div>
-      <span class="logo-branco"><img src="assets/logo.png" alt="Caminho dos Direitos" onerror="this.parentNode.remove()"></span>
-      <p>Você leva o direito até a porta.<br>Global Solution 2026 · FIAP · Tecnologia em Data Science.</p>
+      <span class="logo-branco"><img src="assets/logo.png" alt="Caminho dos Direitos"></span>
+      <p>Você leva o direito até a porta.<br>Global Solution 2026.2 · FIAP · Tecnologia em Data Science.</p>
     </div>
-    <div>
-      <h4>Projeto</h4>
-      <ul>
-        <li><a href="#problema">O problema</a></li>
-        <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#prototipo">Protótipo</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Dados</h4>
-      <ul>
-        <li><a href="dashboard/">Dashboard</a></li>
-        <li><a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/tree/main/notebooks">Notebooks</a></li>
-        <li><a href="documentacao/Notebooks_e_bases_de_dados.pdf">Guia das bases</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Código</h4>
-      <ul>
-        <li><a href="https://github.com/Karen-Akemi/Caminho_dos_direitos">Repositório no GitHub</a></li>
-        <li><a href="#equipe">Equipe</a></li>
-      </ul>
-    </div>
+    <div><h4>Projeto</h4><ul><li><a href="#problema">O problema</a></li><li><a href="#por-que">Por que nós</a></li><li><a href="#arquitetura">Arquitetura</a></li><li><a href="#prototipo">Protótipo</a></li></ul></div>
+    <div><h4>Dados</h4><ul><li><a href="dashboard/">Painel</a></li><li><a href="site/entrar.html">Demo por perfil</a></li><li><a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/tree/main/notebooks">Notebooks</a></li><li><a href="documentacao/Notebooks_e_bases_de_dados.pdf">Guia das bases</a></li></ul></div>
+    <div><h4>Código</h4><ul><li><a href="https://github.com/Karen-Akemi/Caminho_dos_direitos">Repositório no GitHub</a></li><li><a href="#equipe">Equipe</a></li></ul></div>
   </div>
-  <div class="wrap copy">
-    <span>© 2026 Caminho dos Direitos · projeto acadêmico</span>
-    <span>Dados públicos da Prefeitura de São Paulo e do Governo Federal</span>
-  </div>
+  <div class="wrap copy"><span>© 2026 Caminho dos Direitos · projeto acadêmico</span><span>Dados públicos da Prefeitura de São Paulo e do Governo Federal</span></div>
   <div class="faixa-cores"></div>
 </footer>
 
+<script src="site/dados_site.js"></script>
+<script src="site/site.js"></script>
+<script>
+(function(){
+  const { ic, desenharMapa, legendaMapa, esc } = CDS;
+  /* mapa do hero */
+  desenharMapa(document.getElementById('mapa-hero'), { selecionado: 43 });
+  document.getElementById('leg-hero').innerHTML = legendaMapa();
+
+  /* arquitetura: etapas, ferramentas e trilhas (p = painel, a = app) */
+  const ETAPAS = [
+    { n: 'Origem', i: 'banco', d: 'O que já existe (bases públicas) e o que a solução passa a gerar (app e WhatsApp).', f: [
+      ['IBGE · Censo 2022', 'População total e por faixa etária', 'ex', 'p'],
+      ['SMADS · Dados Abertos SP', 'CadÚnico, Bolsa Família, BPC, CRAS', 'ex', 'p'],
+      ['CNES · GeoSampa', 'UBS, distritos, risco R1–R4', 'ex', 'p'],
+      ['App do agente (PWA)', 'Casos, plano, encaminhamentos', 'ex', 'a'],
+      ['Cidadão no WhatsApp', 'Ouvir em áudio, PARAR, status', 'ex', 'a']] },
+    { n: 'Ingestão', i: 'entrada', d: 'Carga mensal das bases e entrada única e segura do app.', f: [
+      ['Azure Data Factory', 'Carga mensal na Bronze + cópia diária do app', 'az', 'pa'],
+      ['Azure API Management', 'HTTPS, autenticação, limite de requisições', 'az', 'a'],
+      ['Webhook FastAPI', 'Valida a assinatura da Meta, descarta repetidas', 'ex', 'a']] },
+    { n: 'Armazenamento', i: 'camadas', d: 'Lakehouse para análise e banco transacional para o app.', f: [
+      ['Databricks · Delta Lake', 'Bronze, Prata e Ouro no ADLS Gen2', 'az', 'p'],
+      ['Azure SQL Database', '16 tabelas do modelo lógico do app', 'az', 'a'],
+      ['Azure Blob Storage', 'Áudio do lembrete, temporário', 'az', 'a']] },
+    { n: 'Processamento', i: 'cpu', d: 'Tratamento e modelo em lote; IA do app em tempo real.', f: [
+      ['Python · tratamento', 'pandas, GeoPandas, PySAL', 'ex', 'p'],
+      ['Python · priorização', 'scikit-learn (RF, GB), SciPy, NumPy', 'ex', 'p'],
+      ['Motor de regras + RAG', 'Plano de Direitos com fonte citada', 'ex', 'a'],
+      ['faster-whisper + Claude', 'Transcreve local, organiza texto filtrado', 'ex', 'a'],
+      ['edge-tts · Container Apps', 'Lembrete em voz (OGG/Opus)', 'az', 'a']] },
+    { n: 'Consumo', i: 'tela', d: 'Cada pessoa da rede recebe o dado no formato que usa.', f: [
+      ['Power BI', 'Gestor público, com RLS por subprefeitura', 'ex', 'p'],
+      ['GitHub Pages', 'Painel HTML e este site', 'ex', 'p'],
+      ['App agente/coordenador', 'Plano, casos e campanhas', 'ex', 'a'],
+      ['WhatsApp Cloud API', 'Lembrete em texto e voz ao cidadão', 'ex', 'a']] }
+  ];
+  const TXT = {
+    todas: 'Da esquerda para a direita: Origem → Ingestão → Armazenamento → Processamento → Consumo. Todo dia o banco do app é copiado para a Bronze, e as duas trilhas se encontram.',
+    p: 'Lote mensal: as 14 bases públicas entram no lakehouse, são tratadas e conferidas, passam pelo modelo de priorização e viram o modelo dimensional que o painel lê.',
+    a: 'Tempo real: o atendimento é gravado na hora, a IA organiza a anotação e gera o lembrete, e o cidadão recebe e responde pelo WhatsApp.'
+  };
+  const pipe = document.getElementById('pipeline');
+  pipe.insertAdjacentHTML('beforeend', ETAPAS.map((e, k) => `
+    <div class="etapa-arq rv d${k}">
+      <div class="topo-e"><span class="circ">${ic(e.i)}</span><div><small>Etapa ${k + 1}</small><h3>${e.n}</h3></div></div>
+      <p class="desc">${e.d}</p>
+      <ul class="ferr">${e.f.map(([n, r, t, tr]) => `<li data-tr="${tr}"><b><i class="${t}"></i>${esc(n)}</b><span>${esc(r)}</span></li>`).join('')}</ul>
+    </div>`).join(''));
+  const txt = document.getElementById('trilha-txt');
+  function trilha(t) {
+    document.querySelectorAll('.trilhas button').forEach(b => b.setAttribute('aria-pressed', b.dataset.trilha === t));
+    pipe.querySelectorAll('.ferr li').forEach(li => {
+      const tem = t === 'todas' || li.dataset.tr.includes(t);
+      li.classList.toggle('apaga', !tem); li.classList.toggle('acende', tem && t !== 'todas');
+    });
+    txt.textContent = TXT[t];
+  }
+  document.querySelectorAll('.trilhas button').forEach(b => b.onclick = () => trilha(b.dataset.trilha));
+  trilha('todas');
+  CDS.observar(pipe);
+  const dlg = document.getElementById('diagrama');
+  document.getElementById('abrir-diagrama').onclick = () => dlg.showModal ? dlg.showModal() : window.open('arquitetura/arquitetura_dados.png');
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+  /* realça o item do menu da seção visível */
+  const links = [...document.querySelectorAll('.topo ul a')];
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle('ativo', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) io.observe(s); });
+})();
+</script>
 </body>
 </html>

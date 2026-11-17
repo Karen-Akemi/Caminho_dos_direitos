@@ -27,6 +27,7 @@
   .slicer select.on{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue) inset}
   #limpar{height:44px;width:84px;border:2px solid var(--blue);border-radius:6px;background:#fff;color:var(--blue);font:inherit;font-weight:700;font-size:13px;cursor:pointer}
   #limpar:hover{background:#EEF2FF}
+  .slicer select:disabled{background:#F2F4F7;color:#475467;cursor:not-allowed;opacity:1}
   /* KPIs */
   .kpi{font-size:27px;font-weight:600;text-align:right;line-height:1;color:var(--ink);cursor:default}
   /* mapa */
@@ -136,6 +137,22 @@ const subs = [...new Set(Object.values(D.distritos).map(d=>d.s))].sort((a,b)=>a.
 /* ---------- estado dos filtros ---------- */
 const F = {sub:null, dist:null, uni:null, prog:null, doc:null, dest:null, lem:null, cob:null};
 
+/* ---------- visão por perfil, vinda do site (?sub=...&uni=...&dist=...&travar=1) ----------
+   Simula a segurança por linha (RLS) do Power BI: com travar=1, o filtro fica fixo. */
+const TRAVA = {};
+(() => {
+  const q = new URLSearchParams(location.search);
+  const sub = q.get('sub'), uni = +q.get('uni'), dist = +q.get('dist');
+  if (sub && subs.includes(sub)) F.sub = sub;
+  if (dist && D.distritos[dist]) { F.dist = dist; F.sub = F.sub || D.distritos[dist].s; }
+  if (uni && D.unidades[uni]) { F.uni = uni; F.sub = D.distritos[D.unidades[uni][1]].s; }
+  if (q.get('travar') === '1') { if (F.sub) TRAVA.sub = F.sub; if (F.uni) TRAVA.uni = F.uni; }
+})();
+function aplicarTrava(){
+  if (TRAVA.sub) { F.sub = TRAVA.sub; if (F.dist && D.distritos[F.dist].s !== TRAVA.sub) F.dist = null; }
+  if (TRAVA.uni) { F.uni = TRAVA.uni; F.dist = null; }
+}
+
 function distritosGeo(){
   // distritos que passam por subprefeitura / distrito / unidade
   if (F.uni) return new Set([D.unidades[F.uni][1]]);
@@ -165,6 +182,7 @@ function opts(sel, itens, atual){
   sel.classList.toggle('on', atual!==null && atual!=='' );
 }
 function montarFiltros(){
+  aplicarTrava();
   opts($('f-sub'), subs.map(s=>[s,s]), F.sub);
   const ds = Object.entries(D.distritos).filter(([k,d]) => !F.sub || d.s===F.sub)
      .sort((a,b)=>a[1].n.localeCompare(b[1].n,'pt')).map(([k,d])=>[k,d.n]);
@@ -174,6 +192,7 @@ function montarFiltros(){
   }).sort((a,b)=>a[1][0].localeCompare(b[1][0],'pt')).map(([k,u])=>[k,u[0]]);
   opts($('f-uni'), us, F.uni);
   opts($('f-prog'), ORDEM_PROG.map(p=>[progId[p],p]), F.prog);
+  $('f-sub').disabled = !!TRAVA.sub; $('f-dist').disabled = !!TRAVA.uni; $('f-uni').disabled = !!TRAVA.uni;
 }
 $('f-sub').onchange = e => { F.sub = e.target.value || null; F.dist = null; F.uni = null; render(); };
 $('f-dist').onchange = e => { F.dist = e.target.value ? +e.target.value : null; F.uni = null; render(); };

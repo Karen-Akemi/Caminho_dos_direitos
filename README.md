@@ -11,6 +11,7 @@
 <p align="center">
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/"><b>📊 Abrir o dashboard</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>🌐 Site do projeto</b></a> ·
+  <a href="https://karen-akemi.github.io/Caminho_dos_direitos/site/entrar.html"><b>🔐 Demo por cargo</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo"><b>📱 Protótipo do app</b></a> ·
   <a href="#-demonstração"><b>🎥 Pitch</b></a> ·
   <a href="#-demonstração"><b>🖥️ Slides</b></a>
@@ -68,6 +69,7 @@ O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos
   - resultado dos encaminhamentos.
 - **Campanhas recomendadas** para os distritos urgentes e de prioridade alta, e **alertas cruzados** entre o território e o que o app registrou.
 - **Filtros** por subprefeitura, distrito, unidade e programa. No Power BI, cada gestor vê só a sua subprefeitura.
+- Na versão HTML, a segurança por linha é simulada pela URL: `dashboard/?sub=M'Boi Mirim&travar=1` ou `dashboard/?uni=410&travar=1` travam o filtro (é o que a demo por cargo usa).
 
 **🧠 Modelo de priorização** (Python)
 - **Direito provável sem benefício:** compara cada distrito com os de perfil social parecido. Assim estima quantas pessoas têm direito provável a **BPC idoso** ou **Bolsa Família** e não recebem.
@@ -99,6 +101,7 @@ O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos
 |---|---|
 | 📊 **Painel do monitoramento** (interativo, sem baixar nada) | [Abrir no navegador](https://karen-akemi.github.io/Caminho_dos_direitos/) · [arquivo do Power BI](dashboard/Caminho-dos-direitos.pbix) |
 | 🌐 **Site do projeto** | [Abrir o site](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html) |
+| 🔐 **Demo por cargo** (login simulado: secretaria, subprefeitura, coordenação e agente) | [Entrar na demo](https://karen-akemi.github.io/Caminho_dos_direitos/site/entrar.html) |
 | 📱 **Protótipo do app** | [Ver as telas no site](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo) |
 | 🎬 **Vídeos das funções de IA** | [Ver abaixo](#-vídeos-de-demonstração) |
 | 🎥 **Pitch** e 🖥️ **Slides** | 🚧 Em finalização |
@@ -162,6 +165,12 @@ O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pel
 ├── README.md
 ├── index.html                     # abre o painel no GitHub Pages
 ├── indexsite.html                 # site de apresentação do projeto
+├── site/
+│   ├── entrar.html                # login simulado: escolha do cargo
+│   ├── plataforma.html            # plataforma por cargo (secretaria, subprefeitura, coordenação, agente)
+│   ├── plataforma.js · site.js · site.css
+│   ├── dados_site.js              # dados do site, gerados a partir de dados/
+│   └── gerar_dados_site.py        # gera o dados_site.js (python site/gerar_dados_site.py .)
 ├── assets/
 │   ├── logo.png
 │   ├── telas/                     # telas do protótipo do app
