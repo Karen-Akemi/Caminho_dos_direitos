@@ -13,14 +13,16 @@
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>🌐 Site do projeto</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/site/entrar.html"><b>🔐 Demo por cargo</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo"><b>📱 Protótipo do app</b></a> ·
-  <a href="#-demonstração"><b>🎥 Pitch</b></a> ·
-  <a href="#-demonstração"><b>🖥️ Slides</b></a>
+  🎥 Pitch e 🖥️ Slides <sub>(🚧 em finalização)</sub>
 </p>
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/Python-Colab-3776AB?logo=python&logoColor=white">
   <img alt="Power BI" src="https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black">
   <img alt="Figma" src="https://img.shields.io/badge/Figma-Prot%C3%B3tipo-F24E1E?logo=figma&logoColor=white">
+  <img alt="Azure" src="https://img.shields.io/badge/Microsoft%20Azure-Arquitetura-0078D4?logo=microsoftazure&logoColor=white">
+  <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-WhatsApp-009688?logo=fastapi&logoColor=white">
+  <img alt="Claude" src="https://img.shields.io/badge/IA-Claude%20%2B%20Whisper-D97757?logo=anthropic&logoColor=white">
   <img alt="Recorte" src="https://img.shields.io/badge/Recorte-96%20distritos%20de%20S%C3%A3o%20Paulo-1F3FAE">
 </p>
 
@@ -34,10 +36,26 @@
 
 O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos benefícios sociais e dos documentos a que elas têm direito. Ele junta um **app para os agentes em campo**, um **painel para coordenadores e gestores** e um **modelo de priorização** que mostra onde agir primeiro nos 96 distritos do município de São Paulo.
 
+## 📌 Sumário
+
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Funcionalidades](#️-funcionalidades)
+- [Arquitetura](#️-arquitetura)
+- [Privacidade e LGPD](#-privacidade-e-lgpd)
+- [Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [Demonstração](#-demonstração)
+- [Função dos notebooks](#-função-dos-notebooks)
+- [Como rodar](#️-como-rodar)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Equipe e Colaboradores](#-equipe-e-colaboradores)
+- [Referências](#-referências)
+- [Licença](#-licença)
+
 ## 📖 Sobre o Projeto
 
 - **Problema:** muitas pessoas que teriam direito a benefícios sociais não os recebem. Falta documento, o cadastro (como o CadÚnico) está desatualizado ou elas não sabem que têm o direito.
-- **Motivação:** os agentes de saúde e os assistentes sociais são quem chega até essas pessoas. Mas eles não têm uma ferramenta simples para identificar as pendências, orientar e encaminhar cada caso aos serviços (CRAS, cartório, Poupatempo, UBS). A ideia é ser um diferencial em relação ao e-SUS para quem trabalha em campo.
+- **Motivação:** os agentes de saúde e os assistentes sociais são quem chega até essas pessoas. Mas eles não têm uma ferramenta simples para identificar as pendências, orientar e encaminhar cada caso aos serviços (CRAS, cartório, Poupatempo, UBS). Os sistemas que eles já usam registram o atendimento, mas não mostram quais documentos e benefícios a família ainda não tem nem para onde encaminhar cada caso. O Caminho dos Direitos cobre esse espaço.
+- **Como chegamos ao tema:** uma pesquisa exploratória com moradores e profissionais da linha de frente ajudou o grupo a definir o problema. Os números do projeto vêm das bases públicas. Os detalhes estão em [`pesquisa/`](pesquisa/README.md).
 - **Objetivo principal:** responder **quem está sem documento ou sem direito, onde, e o que fazer primeiro**. Para isso, o projeto cruza o que o app registra com os dados públicos do território.
 - **Público-alvo:**
   - agentes de saúde e assistentes sociais em campo, que usam o app;
@@ -71,12 +89,47 @@ O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos
 - **Filtros** por subprefeitura, distrito, unidade e programa. No Power BI, cada gestor vê só a sua subprefeitura.
 - Na versão HTML, a segurança por linha é simulada pela URL: `dashboard/?sub=M'Boi Mirim&travar=1` ou `dashboard/?uni=410&travar=1` travam o filtro (é o que a demo por cargo usa).
 
+> ⚠️ **Dados do app são simulados.** O app ainda não está em uso. Os indicadores de casos, pendências, encaminhamentos e alertas do painel vêm de [`Simulacao_App_v2`](notebooks/Simulacao_App_v2.ipynb), calibrado nos dados reais e no modelo (pasta `dados/saida_app/`). Os dados do território e do modelo vêm das bases públicas.
+
 **🧠 Modelo de priorização** (Python)
 - **Direito provável sem benefício:** compara cada distrito com os de perfil social parecido. Assim estima quantas pessoas têm direito provável a **BPC idoso** ou **Bolsa Família** e não recebem.
 - **Índice e campanhas:** calcula um **índice de prioridade (0 a 100)** e sugere campanhas.
 - **Resultado do modelo:**
   - os **10 distritos urgentes** concentram **55%** dessas pessoas (cerca de 54.947);
   - os mais prioritários são Jardim Ângela, Tremembé e Grajaú.
+- **Qualidade do modelo** (validação cruzada com 5 partes, repetida 5 vezes; [`metricas_modelo.csv`](dados/saida_modelo/metricas_modelo.csv)):
+
+  | Alvo | Modelo escolhido | R² | Erro médio (MAE) |
+  |---|---|---|---|
+  | Taxa de BPC idoso | Random Forest | 0,81 (± 0,02) | 2 p.p. |
+  | Cobertura do Bolsa Família | Regressão linear (Ridge) | 0,19 (± 0,03) | 5 p.p. |
+
+  A estimativa do BPC é confiável. A do Bolsa Família explica pouco da variação entre os distritos e por isso pesa como indicativo: o índice de prioridade não depende só dela, e a análise de sensibilidade mostra que o ranking se mantém estável.
+
+## 🏗️ Arquitetura
+
+A arquitetura proposta é **híbrida**. A infraestrutura roda na **Microsoft Azure** com **Azure Databricks** e camadas medalhão (Bronze → Prata → Ouro). O processamento e os modelos são em **Python**, e a solução usa APIs externas onde elas são a melhor opção (WhatsApp Cloud API e Claude).
+
+<p align="center">
+  <img src="arquitetura/arquitetura_dados.png" alt="Arquitetura de dados do Caminho dos Direitos" width="100%">
+</p>
+
+- **Trilha do painel (lote mensal):** as bases públicas entram pelo Azure Data Factory, são tratadas e passam pelo modelo. Depois viram o modelo dimensional que o Power BI lê.
+- **Trilha do app (tempo real):** o app grava o atendimento no Azure SQL Database, a IA organiza a anotação e o lembrete sai pelo WhatsApp.
+- **Governança:** Microsoft Entra ID com segurança por linha por subprefeitura, Azure Key Vault para os segredos e Azure Monitor para logs e alertas.
+
+No protótipo, o processamento roda no Google Colab e o painel no GitHub Pages. A explicação camada por camada e o caminho até a produção estão em [`arquitetura/README.md`](arquitetura/README.md).
+
+## 🔒 Privacidade e LGPD
+
+O projeto guarda só o necessário para encaminhar cada caso:
+
+- **Renda:** a calculadora mostra a renda por pessoa, mas o app guarda só a faixa, nunca o valor.
+- **Anotação por voz:** a IA remove o dado clínico antes de qualquer outro passo. Ao salvar, o áudio é apagado e o texto é descartado. Ficam só as marcações que o agente confirmou.
+- **IA externa:** o Claude recebe apenas o texto já filtrado.
+- **WhatsApp:** o telefone é guardado como hash, e o cidadão pode responder PARAR para não receber mais lembretes.
+- **Acesso:** cada gestor vê só a sua subprefeitura, e o coordenador aprova quem entra.
+- **Segredos:** tokens e chaves ficam nos Secrets do Colab (no protótipo) ou no Azure Key Vault (na arquitetura proposta), nunca no código.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -87,9 +140,12 @@ O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos
   - **Python** no **Google Colab**;
   - **FastAPI** com **Cloudflare Tunnel**, para o servidor do WhatsApp;
   - **WhatsApp Cloud API** (Meta).
-- **Banco de dados:**
+- **Banco de dados e modelagem:**
   - **Oracle SQL Developer Data Modeler**, para o modelo conceitual, o lógico e o dimensional (Snowflake + Galaxy), com scripts SQL;
-  - os dados tratados ficam em CSV.
+  - no protótipo, os dados tratados ficam em CSV.
+- **Arquitetura proposta (Microsoft Azure):**
+  - Azure Data Factory, Azure Databricks (Delta Lake), Azure SQL Database e Azure Blob Storage;
+  - Azure API Management, Microsoft Entra ID, Azure Key Vault e Azure Monitor.
 - **Outras ferramentas:**
   - **Power BI**;
   - **IA:** Whisper para a transcrição, Claude (Anthropic) para a explicação com RAG e para organizar a anotação, edge-tts e gTTS para as vozes;
@@ -159,6 +215,30 @@ O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pel
 </tr>
 </table>
 
+## ▶️ Como rodar
+
+**Painel e site:** não precisam de instalação. Basta abrir os links da [Demonstração](#-demonstração) ou abrir `dashboard/index.html` e `indexsite.html` direto no navegador, porque os dados já vêm dentro das páginas. Se os dados de `dados/` mudarem, gere de novo o arquivo de dados do site:
+
+```bash
+python site/gerar_dados_site.py .
+```
+
+**Notebooks:**
+
+1. Copie para uma pasta do seu Google Drive a pasta `dados/` e as pastas `notebooks/simulador/` e `notebooks/ia/`. As bases públicas originais (seção [Referências](#-referências)) também precisam estar no Drive. Localmente, o grupo as guarda em `para_o_colab/`, que não vai para o GitHub.
+2. Abra o notebook no Google Colab e ajuste o caminho da pasta do projeto na seção de configuração (variável `PROJETO`).
+3. Rode com **Ambiente de execução → Executar tudo**, respeitando a ordem da trilha do dashboard (1 → 2 → 3).
+
+**Chaves (opcionais):** cadastre nos **Secrets do Colab**, nunca no código. Sem elas, os notebooks rodam em modo demonstração e nada é enviado para fora.
+
+| Segredo | Para quê |
+|---|---|
+| `ANTHROPIC_API_KEY` | Explicação com IA e organização da anotação por voz |
+| `WHATSAPP_TOKEN` e `WHATSAPP_PHONE_ID` | Lembrete por WhatsApp no notebook do app |
+| `WA_VERIFY_TOKEN`, `WA_APP_SECRET`, `WA_ACCESS_TOKEN` e `WA_PHONE_ID` | Servidor do WhatsApp (webhook) |
+
+O passo a passo de cada notebook está em [`notebooks/README.md`](notebooks/README.md).
+
 ## 📁 Estrutura do Projeto
 
 ```
@@ -190,12 +270,19 @@ O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pel
 │   └── README.md                  # guia dos notebooks
 ├── dados/
 │   ├── saida/                     # território tratado
-│   ├── saida_modelo/              # indicadores, lacunas e recomendações do modelo
+│   │   └── extras/                # índice IDA por distrito (base auxiliar)
+│   ├── saida_modelo/              # indicadores, lacunas, recomendações e métricas do modelo
 │   └── saida_app/                 # dados do app (SIMULADO)
+├── arquitetura/
+│   ├── arquitetura_dados.png      # diagrama da arquitetura na Azure
+│   └── README.md                  # explicação camada por camada
 ├── modelagem/                     # modelos conceitual, lógico e dimensional e dicionário de dados
+├── pesquisa/                      # pesquisa exploratória que orientou a escolha do tema
 ├── documentacao/
 │   └── Notebooks_e_bases_de_dados.pdf   # guia dos notebooks e das bases de dados
-└── apresentacao/                  # 🚧 pitch e slides (em finalização)
+└── apresentacao/
+    ├── guia_banca_ml.md           # guia de estudo para a banca de Machine Learning
+    └── README.md                  # 🚧 pitch e slides (em finalização)
 ```
 
 ## 👥 Equipe e Colaboradores
@@ -208,22 +295,32 @@ O lembrete chegando a um celular de verdade, pela Cloud API da Meta, enviado pel
 
 ## 📚 Referências
 
-O projeto usa 14 bases públicas, recortadas nos 96 distritos da cidade de São Paulo:
+O projeto usa **14 bases**, recortadas nos 96 distritos da cidade de São Paulo: 12 bases públicas e 2 levantamentos do grupo.
 
-- **GeoSampa (Prefeitura de São Paulo):** limites dos distritos e setores de risco geológico (R1 a R4);
-- **IBGE, Censo 2022:** população total, população por faixa etária (via TabNet SMS-SP) e crianças de até 5 anos sem registro (SIDRA);
-- **SMADS:** famílias no CadÚnico (jan/2026) e localização dos CRAS (Geoportal SMADS);
-- **Portal de Dados Abertos da Prefeitura de São Paulo:**
-  - famílias no CadÚnico (jan/2026);
-  - famílias com Bolsa Família (2025);
-  - beneficiários do BPC (jul/2025);
-- **CNES (Ministério da Saúde):** UBS;
-- **ANEEL:** beneficiários da Tarifa Social (testada e descartada);
-- **Levantamento do grupo (2026):** cartórios de registro civil e postos do Poupatempo;
-- **Documentação da WhatsApp Cloud API (Meta):** base do servidor de lembretes.
+**Bases públicas (12)**
+
+1. **GeoSampa:** limites dos 96 distritos;
+2. **GeoSampa:** setores de risco geológico (R1 a R4);
+3. **IBGE, Censo 2022:** população total por distrito;
+4. **IBGE, Censo 2022:** população por faixa etária (via TabNet SMS-SP);
+5. **IBGE, Censo 2022 (SIDRA):** crianças de até 5 anos sem registro de nascimento;
+6. **SMADS:** famílias no CadÚnico por distrito (jan/2026);
+7. **Geoportal SMADS:** localização dos CRAS;
+8. **Portal de Dados Abertos da Prefeitura de São Paulo:** famílias no CadÚnico (jan/2026);
+9. **Portal de Dados Abertos da Prefeitura de São Paulo:** famílias com Bolsa Família (2025);
+10. **Portal de Dados Abertos da Prefeitura de São Paulo:** beneficiários do BPC (jul/2025);
+11. **CNES (Ministério da Saúde):** localização das UBS;
+12. **ANEEL:** beneficiários da Tarifa Social de Energia (testada e descartada).
+
+**Levantamentos do grupo (2)**
+
+13. cartórios de registro civil da capital (2026);
+14. postos do Poupatempo da capital (2026).
+
+**Referência técnica:** documentação da WhatsApp Cloud API (Meta), base do servidor de lembretes.
 
 Os detalhes de cada base, de como foram juntadas e das limitações estão em [`documentacao/Notebooks_e_bases_de_dados.pdf`](documentacao/Notebooks_e_bases_de_dados.pdf).
 
 ## 📄 Licença
 
-Projeto acadêmico, desenvolvido para a Global Solution 2026.2 da FIAP. O repositório ainda não tem uma licença definida. Sem ela, todos os direitos ficam com os autores.
+Projeto acadêmico, desenvolvido para a Global Solution 2026.2 da FIAP. © 2026 Angelo Rabello, Karen Akemi de Oliveira e Milena Barbosa. Todos os direitos reservados. O código e os dados podem ser consultados para fins de estudo e avaliação. Para outros usos, fale com os autores.

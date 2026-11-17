@@ -8,8 +8,8 @@ Este diretório contém os dados tratados (Camadas **Silver** e **Gold**), o pip
 
 A escuta ativa foi dividida em duas frentes complementares para capturar as duas pontas do ecossistema (o cidadão em busca do direito e o profissional da linha de frente):
 
-* **Formulário 1 — Experiência dos Cidadãos (Moradores de São Paulo):** https://docs.google.com/forms/d/e/1FAIpQLSdtQHJIurISK_tursUmGYUhlFhmI-WG_FN4gbNM_2NHsJU-8w/viewform?usp=sharing&ouid=113835617421361170556
-* **Formulário 2 — Profissionais da Linha de Frente (UBS / Assistência Social):** https://docs.google.com/forms/d/e/1FAIpQLSehmwNxE7cwcq04-ZV8DZPZDECy-SDVx1zVyVdnIY6R7vyUeQ/viewform?usp=sharing&ouid=113835617421361170556
+* **Formulário 1 — Experiência dos Cidadãos (Moradores de São Paulo):** https://docs.google.com/forms/d/e/1FAIpQLSdtQHJIurISK_tursUmGYUhlFhmI-WG_FN4gbNM_2NHsJU-8w/viewform?usp=sharing
+* **Formulário 2 — Profissionais da Linha de Frente (UBS / Assistência Social):** https://docs.google.com/forms/d/e/1FAIpQLSehmwNxE7cwcq04-ZV8DZPZDECy-SDVx1zVyVdnIY6R7vyUeQ/viewform?usp=sharing
 * **Aplicação Web e Protótipo:** [Caminho dos Direitos — GitHub Pages](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html)
 
 ---
