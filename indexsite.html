@@ -765,16 +765,19 @@ dialog.lightbox button{position:absolute;right:12px;top:12px;width:40px;height:4
 </section>
 
 <!-- =================== 14. PITCH =================== -->
-<section class="escuro">
+<section id="pitch" class="escuro">
   <div class="wrap pitch-grid">
     <div>
       <span class="tag rv">Pitch</span>
       <h2 class="rv d1">Veja o Caminho dos Direitos <span class="amarelo-t">em 5 minutos</span></h2>
       <p class="lead rv d2">O problema, a solução e o impacto que o projeto pode gerar.</p>
+      <div class="btns rv d3" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px">
+        <a class="btn btn-amarelo" href="apresentacao/GS_2TSCPV_Pitch_Caminho_dos_Direitos_AgentesTech.pdf" target="_blank" rel="noopener"><svg class="ic"><use href="#i-doc"/></svg>Ver os slides (PDF)</a>
+        <a class="btn btn-vidro" href="https://youtu.be/J50OedLo1p4" target="_blank" rel="noopener">Abrir no YouTube</a>
+      </div>
     </div>
-    <div class="video rv d1">
-      <!-- COLE AQUI o <iframe> do YouTube (Compartilhar > Incorporar) no lugar do .ph -->
-      <div class="ph"><div><svg class="ic" style="width:40px;height:40px;margin:0 auto 10px"><use href="#i-play"/></svg>Vídeo do pitch em breve</div></div>
+    <div class="video rv d1" style="border-style:solid">
+      <iframe src="https://www.youtube-nocookie.com/embed/J50OedLo1p4" title="Pitch do Caminho dos Direitos" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </div>
 </section
@@ -798,9 +801,9 @@ dialog.lightbox button{position:absolute;right:12px;top:12px;width:40px;height:4
   <div class="wrap">
     <div class="centro"><span class="tag rv">Equipe</span><h2 class="rv d1">Quem fez</h2></div>
     <div class="equipe">
-      <div class="pessoa rv"><div class="av" style="background:var(--azul)">A</div><h3>Angelo Rabello</h3><p>Apresentação e site</p><p>RM 564338</p><a href="https://github.com/AngeloRBLL0">GitHub</a></div>
-      <div class="pessoa rv d1"><div class="av" style="background:var(--verde)">K</div><h3>Karen Akemi de Oliveira</h3><p>Dados e dashboard</p><p>RM 562733</p><a href="https://github.com/Karen-Akemi">GitHub</a></div>
-      <div class="pessoa rv d2"><div class="av" style="background:var(--laranja)">M</div><h3>Milena Barbosa</h3><p>Protótipo do app</p><p>RM 558913</p><a href="https://github.com/MiihDev">GitHub</a></div>
+      <div class="pessoa rv"><div class="av" style="background:var(--azul)">A</div><h3>Angelo Rabello</h3><p>Apresentação e site</p><p>RM 564338</p><a href="https://github.com/AngeloRBLL0">GitHub</a> · <a href="https://www.linkedin.com/in/angelo-rabello-ferreir4/">LinkedIn</a></div>
+      <div class="pessoa rv d1"><div class="av" style="background:var(--verde)">K</div><h3>Karen Akemi de Oliveira</h3><p>Dados e dashboard</p><p>RM 562733</p><a href="https://github.com/Karen-Akemi">GitHub</a> · <a href="https://www.linkedin.com/in/karen-akemi-de-oliveira-8ab495353/">LinkedIn</a></div>
+      <div class="pessoa rv d2"><div class="av" style="background:var(--laranja)">M</div><h3>Milena Barbosa</h3><p>Protótipo do app</p><p>RM 558913</p><a href="https://github.com/MiihDev">GitHub</a> · <a href="https://www.linkedin.com/in/milena-oliveira-11b563252">LinkedIn</a></div>
     </div>
     <div class="cta-final rv" style="margin-top:72px">
       <div>
@@ -823,7 +826,7 @@ dialog.lightbox button{position:absolute;right:12px;top:12px;width:40px;height:4
       <span class="logo-branco"><img src="assets/logo.png" alt="Caminho dos Direitos"></span>
       <p>Você leva o direito até a porta.<br>Global Solution 2026.2 · FIAP · Tecnologia em Data Science.</p>
     </div>
-    <div><h4>Projeto</h4><ul><li><a href="#problema">O problema</a></li><li><a href="#por-que">Por que nós</a></li><li><a href="#arquitetura">Arquitetura</a></li><li><a href="#prototipo">Protótipo</a></li></ul></div>
+    <div><h4>Projeto</h4><ul><li><a href="#problema">O problema</a></li><li><a href="#por-que">Por que nós</a></li><li><a href="#arquitetura">Arquitetura</a></li><li><a href="#prototipo">Protótipo</a></li><li><a href="#pitch">Pitch em vídeo</a></li><li><a href="apresentacao/GS_2TSCPV_Pitch_Caminho_dos_Direitos_AgentesTech.pdf">Slides (PDF)</a></li></ul></div>
     <div><h4>Dados</h4><ul><li><a href="dashboard/">Painel</a></li><li><a href="site/entrar.html">Demo por perfil</a></li><li><a href="https://github.com/Karen-Akemi/Caminho_dos_direitos/tree/main/notebooks">Notebooks</a></li><li><a href="documentacao/Notebooks_e_bases_de_dados.pdf">Guia das bases</a></li></ul></div>
     <div><h4>Código</h4><ul><li><a href="https://github.com/Karen-Akemi/Caminho_dos_direitos">Repositório no GitHub</a></li><li><a href="#equipe">Equipe</a></li></ul></div>
   </div>

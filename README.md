@@ -13,7 +13,8 @@
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html"><b>🌐 Site do projeto</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/site/entrar.html"><b>🔐 Demo por cargo</b></a> ·
   <a href="https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo"><b>📱 Protótipo do app</b></a> ·
-  🎥 Pitch e 🖥️ Slides <sub>(🚧 em finalização)</sub>
+  <a href="https://youtu.be/J50OedLo1p4"><b>🎥 Vídeo do pitch</b></a> ·
+  <a href="apresentacao/GS_2TSCPV_Pitch_Caminho_dos_Direitos_AgentesTech.pdf"><b>🖥️ Slides</b></a>
 </p>
 
 <p align="center">
@@ -162,7 +163,8 @@ O projeto guarda só o necessário para encaminhar cada caso:
 | 🔐 **Demo por cargo** (login simulado: secretaria, subprefeitura, coordenação e agente) | [Entrar na demo](https://karen-akemi.github.io/Caminho_dos_direitos/site/entrar.html) |
 | 📱 **Protótipo do app** | [Ver as telas no site](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo) |
 | 🎬 **Vídeos das funções de IA** | [Ver abaixo](#-vídeos-de-demonstração) |
-| 🎥 **Pitch** e 🖥️ **Slides** | 🚧 Em finalização |
+| 🎥 **Vídeo do pitch** | [Assistir no YouTube](https://youtu.be/J50OedLo1p4) |
+| 🖥️ **Slides do pitch** | [Abrir o PDF](apresentacao/GS_2TSCPV_Pitch_Caminho_dos_Direitos_AgentesTech.pdf) |
 
 ## 🐍 Função dos notebooks
 
@@ -290,17 +292,18 @@ O passo a passo de cada notebook está em [`notebooks/README.md`](notebooks/READ
 ├── documentacao/
 │   └── Notebooks_e_bases_de_dados.pdf   # guia dos notebooks e das bases de dados
 └── apresentacao/
+    ├── GS_2TSCPV_Pitch_Caminho_dos_Direitos_AgentesTech.pdf  # slides do pitch
     ├── guia_banca_ml.md           # guia de estudo para a banca de Machine Learning
-    └── README.md                  # 🚧 pitch e slides (em finalização)
+    └── README.md                  # links do vídeo e dos slides
 ```
 
 ## 👥 Equipe e Colaboradores
 
-| Integrante | Links |
-|---|---|
-| Angelo Rabello | [GitHub](https://github.com/AngeloRBLL0) |
-| Karen Akemi de Oliveira | [GitHub](https://github.com/Karen-Akemi) |
-| Milena Barbosa | [GitHub](https://github.com/MiihDev) |
+| Integrante | RM | Links |
+|---|---|---|
+| Angelo Rabello | 564338 | [GitHub](https://github.com/AngeloRBLL0) · [LinkedIn](https://www.linkedin.com/in/angelo-rabello-ferreir4/) |
+| Karen Akemi de Oliveira | 562733 | [GitHub](https://github.com/Karen-Akemi) · [LinkedIn](https://www.linkedin.com/in/karen-akemi-de-oliveira-8ab495353/) |
+| Milena Barbosa | 558913 | [GitHub](https://github.com/MiihDev) · [LinkedIn](https://www.linkedin.com/in/milena-oliveira-11b563252) |
 
 ## 📚 Referências
 
