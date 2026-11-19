@@ -64,6 +64,9 @@ Na origem há dois tipos de dado: **o que já existe** (bases públicas) e **o q
 | **GeoSampa** | Limites dos 96 distritos e setores de risco R1–R4 |
 | **App do agente (PWA)** | Casos, Plano de Direitos, situação de cada direito, encaminhamentos e anotação por voz |
 | **Cidadão no WhatsApp** | Toque em "Ouvir em áudio", PARAR / VOLTAR e status de entrega (enviada, entregue, lida, falhou) |
+| **Pesquisa exploratória do grupo** | Respostas de moradores e profissionais da linha de frente (Google Forms), pseudonimizadas com SHA-256. Orientou a escolha do tema; **não alimenta o painel** ([`pesquisa/`](../pesquisa/README.md)) |
+
+> Das 14 bases, a 14ª (crianças até 5 anos sem registro, IBGE/SIDRA) é usada só na apresentação, fora do painel.
 
 ### 2. Ingestão
 
@@ -89,7 +92,8 @@ Na origem há dois tipos de dado: **o que já existe** (bases públicas) e **o q
 |---|---|---|
 | Tratamento | [`Tratamento_GS_v6`](../notebooks/Tratamento_GS_v6.ipynb) | pandas, GeoPandas, PySAL (esda, libpysal), geopy, scikit-learn, statsmodels |
 | Priorização | [`Modelo_GS_v4`](../notebooks/Modelo_GS_v4.ipynb) | scikit-learn (Random Forest, Gradient Boosting), SciPy, NumPy |
-| Simulação do app | [`Simulacao_App_v2`](../notebooks/Simulacao_App_v2.ipynb) | NumPy, pandas (só enquanto o app não está em operação) |
+| Simulação do app | [`Simulacao_App_v2`](../notebooks/Simulacao_App_v2.ipynb) | NumPy, pandas (só enquanto o app não está em operação). Gera casos, documentos e encaminhamentos com as datas de um piloto de 04/05 a 13/11/2026 |
+| Dados das páginas HTML | [`gerar_dados_painel.py`](../dashboard/gerar_dados_painel.py) e [`gerar_dados_site.py`](../site/gerar_dados_site.py) | Python puro (csv, json): leem os CSVs da camada Ouro e geram `dados_painel.js` e `dados_site.js` |
 
 **IA do app · Python no Azure Container Apps (tempo real)**
 
@@ -106,8 +110,8 @@ Código: o motor de regras e o RAG estão em [`notebooks/simulador/`](../noteboo
 
 | Ferramenta | Para quem | O que entrega |
 |---|---|---|
-| **Power BI** | Gestor público | Painel do monitoramento lendo a camada Ouro pelo Databricks SQL, com segurança por linha (RLS) por subprefeitura |
-| **GitHub Pages** | Banca e público | [Painel HTML](https://karen-akemi.github.io/Caminho_dos_direitos/) e [site do projeto](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html) |
+| **Power BI** | Gestor público | Painel do monitoramento com as abas **Gestão** (metas e evolução no tempo) e **Operação** (quem está esperando e há quanto tempo), lendo a camada Ouro pelo Databricks SQL, com segurança por linha (RLS) por subprefeitura |
+| **GitHub Pages** | Banca e público | [Painel HTML](https://karen-akemi.github.io/Caminho_dos_direitos/) (mesmas abas do Power BI) e [site do projeto](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html), com a plataforma de demonstração por cargo (secretaria, subprefeitura, coordenação e agente) |
 | **App agente/coordenador** | Agente e coordenador | Plano de Direitos, casos da unidade e campanhas recomendadas |
 | **WhatsApp Cloud API (Meta)** | Cidadão | Lembrete do encaminhamento em texto (mensagem-modelo) com o botão "Ouvir em áudio" e mensagem de voz |
 
@@ -119,7 +123,7 @@ Código: o motor de regras e o RAG estão em [`notebooks/simulador/`](../noteboo
 |---|---|---|
 | **Bronze** | Bases brutas, do jeito que chegaram, e a cópia diária do banco do app | Pasta `Dados` do Drive |
 | **Prata** | Território tratado e conferido: nomes de distrito padronizados, join espacial, 96 distritos sem repetição | [`dados/saida/`](../dados/saida): `distritos_base`, `fato_acesso_distrito_servico`, `fato_beneficios_distrito` e `kpi_cidade` |
-| **Ouro** | Modelo dimensional **Snowflake + Galaxy**: 7 fatos e 6 dimensões, pronto para o painel | [`dados/saida_modelo/`](../dados/saida_modelo), [`dados/saida_app/`](../dados/saida_app) e, de [`dados/saida/`](../dados/saida), `dim_distrito`, `dim_subprefeitura`, `dim_equipamento` e `fato_risco_setor` |
+| **Ouro** | Modelo dimensional **Snowflake + Galaxy**: 8 fatos e 6 dimensões, pronto para o painel. A `dim_tempo` (calendário) é criada no Power BI e liga a abertura do caso, o encaminhamento e a identificação do documento | [`dados/saida_modelo/`](../dados/saida_modelo), [`dados/saida_app/`](../dados/saida_app) e, de [`dados/saida/`](../dados/saida), `dim_distrito`, `dim_subprefeitura`, `dim_equipamento` e `fato_risco_setor` |
 
 As conferências do tratamento (96 distritos, população somada igual ao Censo, as duas bases do CadÚnico iguais) são a porta de entrada da Prata: dado que não passa nelas não sobe de camada.
 
@@ -155,7 +159,7 @@ O que já foi construído e como cada peça roda quando a solução estiver em o
 | Banco do app | Modelo lógico no Oracle Data Modeler e SQLite no servidor do WhatsApp | Azure SQL Database (script gerado pelo Data Modeler) |
 | IA e WhatsApp | Módulos `ia/` no Colab, expostos pelo Cloudflare Tunnel | FastAPI no Azure Container Apps, com URL fixa |
 | Segredos | Secrets do Colab | Azure Key Vault |
-| Painel | Power BI Desktop (`.pbix`) e HTML no GitHub Pages | Power BI Service com RLS e HTML no GitHub Pages |
+| Painel | Power BI Desktop ([`dashboard/`](../dashboard/): `Caminho-dos-direitos.pbix` e `caminho-dos-direitos-dashboard-v2.pbix`) e HTML no GitHub Pages, com dados gerados pelos scripts `gerar_dados_*.py` | Power BI Service com RLS e HTML no GitHub Pages, com a `dim_tempo` como tabela da camada Ouro |
 | App | Protótipo navegável no Figma | PWA para agente e coordenador |
 
 ---
