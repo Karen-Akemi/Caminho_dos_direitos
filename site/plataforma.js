@@ -129,20 +129,15 @@
   /* ---------- campanhas (aprovar / confirmar) ---------- */
   function vistaCampanhas() {
     const lista = CD.recs.filter(r => escopo.has(r.d)).sort((a, b) => ORDEM_CL[D[a.d].cl] - ORDEM_CL[D[b.d].cl] || D[b.d].idx - D[a.d].idx);
-    const progs = ['Todos os programas', ...new Set(lista.map(r => r.p))];
-    let filtro = progs[0];
     const verbo = perfil === 'coord' ? 'Confirmar indicação' : 'Aprovar campanha';
     const feito = perfil === 'coord' ? 'Indicação confirmada' : 'Campanha aprovada';
     vista.innerHTML = cab(perfil === 'sec' ? 'Cidade' : perfil === 'sub' ? SUB : titulo(uni.n), 'Campanhas recomendadas',
       'O modelo recomenda campanhas só para distritos de prioridade urgente ou alta, com o motivo e o público estimado.') + rls() +
-      `<div class="resumo" id="resumo"></div><div class="filtros" id="fprog" style="margin-bottom:14px"></div><div class="camps" id="camps"></div>
+      `<div class="resumo" id="resumo"></div><div class="camps" id="camps"></div>
        <p class="fonte">Origem: ESTIMATIVA DO MODELO (Modelo_GS_v4). A aprovação é só uma simulação e fica guardada neste navegador.</p>`;
     const id = r => r.d + '|' + r.a;
     function desenhar() {
-      $('fprog').innerHTML = progs.map(p => `<button type="button" aria-pressed="${p === filtro}">${esc(p)}</button>`).join('');
-      $('fprog').querySelectorAll('button').forEach((b, i) => b.onclick = () => { filtro = progs[i]; desenhar(); });
-      const vis = lista.filter(r => filtro === progs[0] || r.p === filtro);
-      $('camps').innerHTML = vis.length ? vis.map(r => {
+      $('camps').innerHTML = lista.length ? lista.map(r => {
         const ok = !!EST.camp[id(r)], d = D[r.d];
         return `<div class="camp${ok ? ' ok' : ''}"><div class="topo-c"><span class="cl ${d.cl}">${d.cl}</span><span class="chip az">${esc(r.p)}</span></div>
           <h3>${esc(r.a)}</h3><p><b style="color:var(--texto)">${esc(d.n)}</b> · ${esc(d.s)}</p><p>${esc(r.m)}</p>

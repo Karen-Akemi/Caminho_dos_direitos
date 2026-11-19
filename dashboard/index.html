@@ -163,7 +163,6 @@
       <div class="slicer"><label for="f-sub">Subprefeitura</label><select id="f-sub"></select></div>
       <div class="slicer"><label for="f-dist">Distrito</label><select id="f-dist"></select></div>
       <div class="slicer"><label for="f-uni">Unidade</label><select id="f-uni"></select></div>
-      <div class="slicer"><label for="f-prog">Programa</label><select id="f-prog"></select></div>
       <button id="limpar" type="button">Limpar</button>
     </div>
   </div>
@@ -376,12 +375,11 @@ const docsPendPorCaso = {}; D.docs.forEach(([c,d,di,dr]) => { if (dr<0) (docsPen
 const encPorCaso = {}; D.enc.forEach(x => (encPorCaso[x[0]] ||= []).push(x));
 const destPorCaso = {}; D.enc.forEach(([c,p,de]) => (destPorCaso[c] ||= new Set()).add(de));
 const lemPorCaso = {}; D.enc.forEach(([c,p,de,r,l]) => (lemPorCaso[c] ||= new Set()).add(l));
-const progPorCaso = {}; D.itens.forEach(([c,p]) => (progPorCaso[c] ||= new Set()).add(p));
 const subs = [...new Set(Object.values(D.distritos).map(d=>d.s))].sort((a,b)=>a.localeCompare(b,'pt'));
 const iConc = D.RES.indexOf('Concluído'), iFaltou = D.RES.indexOf('Faltou'), iAg = D.RES.indexOf('Agendado'), iComp = D.RES.indexOf('Compareceu');
 
 /* ======================= estado ======================= */
-const F = {sub:null, dist:null, uni:null, prog:null, doc:null, dest:null, lem:null, cob:null};
+const F = {sub:null, dist:null, uni:null, doc:null, dest:null, lem:null, cob:null};
 const UI = {aba:'gestao', evo:'doc', ordSit:'nome', fila:'todas'};
 const TRAVA = {};
 (() => {
@@ -405,7 +403,6 @@ function distritosGeo(){
 function casoPassa(id, c, geo, ignorar){
   if (!geo.has(c[0])) return false;
   if (F.uni && c[1] !== F.uni) return false;
-  if (F.prog && ignorar!=='prog' && !(progPorCaso[id] && progPorCaso[id].has(F.prog))) return false;
   if (F.doc!==null && ignorar!=='doc' && !(docsPendPorCaso[id] && docsPendPorCaso[id].has(F.doc))) return false;
   if (F.dest!==null && ignorar!=='dest' && !(destPorCaso[id] && destPorCaso[id].has(F.dest))) return false;
   if (F.lem!==null && ignorar!=='lem' && !(lemPorCaso[id] && lemPorCaso[id].has(F.lem))) return false;
@@ -423,7 +420,6 @@ function opts(sel, itens, atual){
   sel.innerHTML = '<option value="">Todos</option>' + itens.map(([v,t]) => `<option value="${esc(v)}"${String(v)===String(atual)?' selected':''}>${esc(t)}</option>`).join('');
   sel.classList.toggle('on', atual!==null && atual!=='');
 }
-const ORDEM_PROG_FILTRO = ['Documentação básica','CadÚnico','Bolsa Família','BPC','Tarifa Social de Energia','Pé-de-Meia','Farmácia Popular'];
 function montarFiltros(){
   aplicarTrava();
   opts($('f-sub'), subs.map(s=>[s,s]), F.sub);
@@ -434,13 +430,11 @@ function montarFiltros(){
      const d = D.distritos[u[1]]; return d && (!F.sub || d.s===F.sub) && (!F.dist || u[1]===F.dist);
   }).sort((a,b)=>a[1][0].localeCompare(b[1][0],'pt')).map(([k,u])=>[k,u[0]]);
   opts($('f-uni'), us, F.uni);
-  opts($('f-prog'), ORDEM_PROG_FILTRO.map(p=>[progId[p],p]), F.prog);
   $('f-sub').disabled = !!TRAVA.sub; $('f-dist').disabled = !!TRAVA.uni; $('f-uni').disabled = !!TRAVA.uni;
 }
 $('f-sub').onchange = e => { F.sub = e.target.value || null; F.dist = null; F.uni = null; render(); };
 $('f-dist').onchange = e => { F.dist = e.target.value ? +e.target.value : null; F.uni = null; render(); };
 $('f-uni').onchange = e => { F.uni = e.target.value ? +e.target.value : null; render(); };
-$('f-prog').onchange = e => { F.prog = e.target.value ? +e.target.value : null; render(); };
 $('limpar').onclick = () => { Object.keys(F).forEach(k=>F[k]=null); render(); };
 function escolherDistrito(k){
   if (F.dist === k) F.dist = null;
@@ -564,10 +558,10 @@ function fluxoDocs(casos){
   });
   return out;
 }
-function fluxoEnc(casos, progOk){
+function fluxoEnc(casos){
   const out = [];
   D.enc.forEach(([c,p,de,r,l,dEnc,dRes]) => {
-    if (!casos.has(c) || !progOk(p) || (F.dest!==null && de!==F.dest) || (F.lem!==null && l!==F.lem)) return;
+    if (!casos.has(c) ||(F.dest!==null && de!==F.dest) || (F.lem!==null && l!==F.lem)) return;
     out.push({id:c, ini:dEnc, fim: r===iConc ? dRes : -1, r, de, p});
   });
   return out;
@@ -582,17 +576,16 @@ function render(){
   $('aba-gestao').hidden = UI.aba!=='gestao'; $('aba-operacao').hidden = UI.aba!=='operacao';
   const geo = distritosGeo();
   const casos = casosFiltrados(geo);
-  const progOk = p => !F.prog || p === F.prog;
-  const ctx = {geo, casos, progOk};
+  const ctx = {geo, casos};
   if (UI.aba==='gestao') renderGestao(ctx); else renderOperacao(ctx);
 }
 
 /* ----------------------- GESTÃO ----------------------- */
-function renderGestao({geo, casos, progOk}){
+function renderGestao({geo, casos}){
   // KPIs com meta
   let ativos = 0, novos30 = 0;
   casos.forEach(id => { const c = D.casos[id]; if (c[5]) ativos++; if (c[7] > REF-30) novos30++; });
-  const fe = fluxoEnc(casos, progOk);
+  const fe = fluxoEnc(casos);
   const encTot = fe.length, encConc = fe.filter(x=>x.r===iConc).length, encFalta = fe.filter(x=>x.r===iFaltou).length;
   const tempos = fe.filter(x=>x.r===iConc && x.fim>=0).map(x=>x.fim-x.ini);
   const tMed = mediana(tempos);
@@ -680,24 +673,22 @@ function renderGestao({geo, casos, progOk}){
   });
 
   // situação dos direitos por programa
-  const casosSP = casosFiltrados(geo, 'prog');
   const sit = {}; Object.keys(D.prog).forEach(p => sit[p] = D.SIT.map(()=>0));
-  D.itens.forEach(([c,p,s]) => { if (casosSP.has(c)) sit[p][s]++; });
+  D.itens.forEach(([c,p,s]) => { if (casos.has(c)) sit[p][s]++; });
   $('ord-sit').value = UI.ordSit;
   const outros = Object.keys(D.prog).map(Number).filter(p => p!==ID_DOC);
   const share = (p,i) => { const t = sit[p].reduce((a,b)=>a+b,0); return t ? sit[p][i]/t : 0; };
   outros.sort((a,b) => UI.ordSit==='nome' ? D.prog[a].localeCompare(D.prog[b],'pt') : share(b,+UI.ordSit)-share(a,+UI.ordSit));
   const el = $('situacao'); el.innerHTML = '';
   [ID_DOC, ...outros].forEach((id, ix) => {
-    const row = barraEmp(el, {nome:D.prog[id], v:sit[id], cats:D.SIT, cores:COR_SIT, txt:TXT_SIT, larguraLbl:160, altura:32, dim: F.prog && F.prog!==id,
-      onClick: () => { F.prog = F.prog===id ? null : id; render(); }, tipExtra: dica('Clique para filtrar o programa'), unidade:''});
+    const row = barraEmp(el, {nome:D.prog[id], v:sit[id], cats:D.SIT, cores:COR_SIT, txt:TXT_SIT, larguraLbl:160, altura:32, unidade:''});
     if (ix===0) { row.style.marginBottom='14px'; row.querySelector('.lbl').style.fontWeight='600'; row.querySelector('.lbl').style.color='#101828'; }
   });
   el.insertAdjacentHTML('beforeend', `<div class="nota">Número à direita = direitos sugeridos no programa. Segmentos estreitos demais para o texto mostram o % ao passar o mouse.</div>`);
 
   // matriz renda × faixa etária
   const m = D.REN.map(()=>D.ETA.map(()=>new Set()));
-  D.itens.forEach(([c,p,s]) => { if (casos.has(c) && progOk(p) && D.SIT[s]!=='Já recebe') { const kc = D.casos[c]; m[kc[3]][kc[2]].add(c); } });
+  D.itens.forEach(([c,p,s]) => { if (casos.has(c) && D.SIT[s]!=='Já recebe') { const kc = D.casos[c]; m[kc[3]][kc[2]].add(c); } });
   const colTot = D.ETA.map(()=>new Set()), linTot = D.REN.map(()=>new Set()), tudo = new Set();
   m.forEach((row,i)=>row.forEach((s,j)=>s.forEach(c=>{colTot[j].add(c);linTot[i].add(c);tudo.add(c);})));
   const T = tudo.size || 1, maxC = Math.max(1, ...m.flat().map(s=>s.size));
@@ -715,7 +706,7 @@ function renderGestao({geo, casos, progOk}){
   // efetividade do lembrete
   const casosSL = casosFiltrados(geo, 'lem');
   const porLem = D.LEM.map(()=>D.RES.map(()=>0));
-  D.enc.forEach(([c,p,de,r,l]) => { if (casosSL.has(c) && progOk(p) && (F.dest===null || de===F.dest)) porLem[l][r]++; });
+  D.enc.forEach(([c,p,de,r,l]) => { if (casosSL.has(c) && (F.dest===null || de===F.dest)) porLem[l][r]++; });
   const somaL = v => v.reduce((a,b)=>a+b,0);
   const comL = D.RES.map((_,j)=>porLem[0][j]+porLem[1][j]+porLem[2][j]), semL = porLem[3];
   const taxa = (v,j) => somaL(v) ? v[j]/somaL(v) : 0;
@@ -761,14 +752,14 @@ function renderAlertas(box, geo){
 }
 
 /* ----------------------- OPERAÇÃO ----------------------- */
-function renderOperacao({geo, casos, progOk}){
+function renderOperacao({geo, casos}){
   // pendências abertas por pessoa (ativos)
   const fila = [];
   casos.forEach(id => {
     const c = D.casos[id]; if (!c[5]) return;
     const itensAb = [];
     const ds = (docsPorCaso[id]||[]).filter(x => x[3]<0 && (F.doc===null || x[1]===F.doc));
-    const encs = (encPorCaso[id]||[]).filter(x => progOk(x[1]) && (F.dest===null || x[2]===F.dest) && (F.lem===null || x[4]===F.lem));
+    const encs = (encPorCaso[id]||[]).filter(x => (F.dest===null || x[2]===F.dest) && (F.lem===null || x[4]===F.lem));
     const encDoc = encs.filter(x => x[1]===ID_DOC);
     if (ds.length) {
       const e = encDoc.find(x => x[3]!==iConc);
@@ -792,7 +783,7 @@ function renderOperacao({geo, casos, progOk}){
 
   let ativos = 0; casos.forEach(id => { if (D.casos[id][5]) ativos++; });
   const atraso = fila.filter(x=>x.dias>30).length, vAtraso = fila.length ? atraso/fila.length : null;
-  const fe = fluxoEnc(new Set([...casos].filter(id=>D.casos[id][5])), progOk);
+  const fe = fluxoEnc(new Set([...casos].filter(id=>D.casos[id][5])));
   const agend = fe.filter(x=>x.r===iAg).length, faltas = fe.filter(x=>x.r===iFaltou).length;
   const semDoc = new Set(); D.docs.forEach(([c,d,di,dr]) => { if (dr<0 && casos.has(c) && D.casos[c][5] && (F.doc===null || d===F.doc)) semDoc.add(c); });
   const k = $('kpis-o'); k.innerHTML = '';
@@ -812,7 +803,7 @@ function renderOperacao({geo, casos, progOk}){
   const sem = [];
   for (let i = 11; i >= 0; i--) { const fim = REF - 7*i, ini = fim - 6; sem.push({ini, fim, novos:0, resolv:0, rot: dataTxt(ini).slice(0,5), rot2: ''}); }
   casos.forEach(id => { const c = D.casos[id]; const s = sem.find(w => c[7]>=w.ini && c[7]<=w.fim); if (s) s.novos++; });
-  fluxoEnc(casos, progOk).forEach(x => { if (x.fim>=0) { const s = sem.find(w => x.fim>=w.ini && x.fim<=w.fim); if (s) s.resolv++; } });
+  fluxoEnc(casos).forEach(x => { if (x.fim>=0) { const s = sem.find(w => x.fim>=w.ini && x.fim<=w.fim); if (s) s.resolv++; } });
   legenda($('ritmo-leg'), ['Casos novos','Encaminhamentos concluídos'], ['#1F3FAE', COR_FEITO]);
   grafAgrupado($('ritmo'), sem);
 
@@ -853,7 +844,7 @@ function renderOperacao({geo, casos, progOk}){
   // encaminhamentos por destino
   const casosSE = casosFiltrados(geo, 'dest');
   const porDest = D.DEST.map(()=>D.RES.map(()=>0));
-  D.enc.forEach(([c,p,de,r,l]) => { if (casosSE.has(c) && progOk(p) && (F.lem===null || l===F.lem)) porDest[de][r]++; });
+  D.enc.forEach(([c,p,de,r,l]) => { if (casosSE.has(c) && (F.lem===null || l===F.lem)) porDest[de][r]++; });
   const ordDest = D.DEST.map((n,i)=>[n,i,porDest[i].reduce((a,b)=>a+b,0)]).sort((a,b)=>b[2]-a[2]);
   const ee = $('encaminhamentos'); ee.innerHTML = `<div class="legend" id="enc-leg" style="margin-bottom:10px"></div>`;
   legenda($('enc-leg'), D.RES, COR_RES);

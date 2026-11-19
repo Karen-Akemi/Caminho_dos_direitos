@@ -1,6 +1,6 @@
 # Painel do monitoramento
 
-O painel tem **duas abas**, uma para cada público. As duas usam os mesmos filtros (subprefeitura, distrito, unidade e programa) e os mesmos dados.
+O painel tem **duas abas**, uma para cada público. As duas usam os mesmos filtros (subprefeitura, distrito e unidade) e os mesmos dados. Não há filtro de programa: os indicadores por distrito não variam por programa, e a situação de cada direito aparece lado a lado no gráfico "Situação dos direitos por programa".
 
 | Aba | Para quem | Pergunta que responde |
 |---|---|---|
