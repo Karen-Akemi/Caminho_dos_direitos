@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FB63DCA7-6B30-42FE-3E96-0384149D1CED" containerWithKeyObject="0CF84E38-9C05-51FE-53F6-8632D11FCC90" localFKIndex="FD13B325-5D0C-425B-B2F8-B22AA133D3D3" name="fk_item_caso">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<referredTableLongName>dim_caso</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6974ABCD-A933-52EA-3493-6EC7A9E9CD16</referredTableID>
+<keyObject>7B7BDC20-A2C8-01B9-6744-AF6FF4229666</keyObject>
+<referredKeyID>7B7BDC20-A2C8-01B9-6744-AF6FF4229666</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_caso</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
