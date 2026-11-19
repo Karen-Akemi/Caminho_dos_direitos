@@ -38,7 +38,7 @@ for r in ind:
         n=r["distrito"], s=r["subprefeitura"], pop=int(num(r["pop_total"])),
         cad=int(num(r["familias_cadunico"])), pbf=int(num(r["familias_pbf"])),
         bpc=int(num(r["bpc_idoso"])), r34=int(num(r["setores_risco_r3r4"])),
-        dcras=round(num(r["dist_cras_km"]), 2), lac=int(num(r["lacuna_pessoas"])),
+        dcras=round(num(r["dist_cras_km"]), 2), lac=round(num(r["lacuna_pessoas"]), 1),  # 1 casa: a soma bate com a base (99.929,5)
         lacBpc=int(num(r["lacuna_bpc_idosos"])), lacPbf=int(num(r["lacuna_pbf_familias"])),
         idx=round(num(r["indice_prioridade"]), 1), cl=r["classe_prioridade"],
         cobPbf=round(num(r["cobertura_pbf"]), 4), cobPbfEsp=round(num(r["cobertura_pbf_esperada"]), 4),

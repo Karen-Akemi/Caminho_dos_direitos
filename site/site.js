@@ -8,7 +8,7 @@
   const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- números que crescem ----------
-     <b data-conta="99915" data-dec="0" data-pre="" data-suf="">0</b> */
+     <b data-conta="99930" data-dec="0" data-pre="" data-suf="">0</b> */
   function animarNumero(el) {
     if (el.dataset.feito) return;
     el.dataset.feito = 1;

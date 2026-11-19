@@ -91,7 +91,7 @@ Na origem há dois tipos de dado: **o que já existe** (bases públicas) e **o q
 | Etapa | Notebook | Bibliotecas |
 |---|---|---|
 | Tratamento | [`Tratamento_GS_v6`](../notebooks/Tratamento_GS_v6.ipynb) | pandas, GeoPandas, PySAL (esda, libpysal), geopy, scikit-learn, statsmodels |
-| Priorização | [`Modelo_GS_v4`](../notebooks/Modelo_GS_v4.ipynb) | scikit-learn (Random Forest, Gradient Boosting), SciPy, NumPy |
+| Priorização | [`Modelo_GS_v4`](../notebooks/Modelo_GS_v4.ipynb) | scikit-learn (Random Forest, Gradient Boosting e regressão Ridge), SciPy, NumPy |
 | Simulação do app | [`Simulacao_App_v2`](../notebooks/Simulacao_App_v2.ipynb) | NumPy, pandas (só enquanto o app não está em operação). Gera casos, documentos e encaminhamentos com as datas de um piloto de 04/05 a 13/11/2026 |
 | Dados das páginas HTML | [`gerar_dados_painel.py`](../dashboard/gerar_dados_painel.py) e [`gerar_dados_site.py`](../site/gerar_dados_site.py) | Python puro (csv, json): leem os CSVs da camada Ouro e geram `dados_painel.js` e `dados_site.js` |
 
