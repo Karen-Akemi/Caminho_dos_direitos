@@ -123,7 +123,7 @@ Código: o motor de regras e o RAG estão em [`notebooks/simulador/`](../noteboo
 |---|---|---|
 | **Bronze** | Bases brutas, do jeito que chegaram, e a cópia diária do banco do app | Pasta `Dados` do Drive |
 | **Prata** | Território tratado e conferido: nomes de distrito padronizados, join espacial, 96 distritos sem repetição | [`dados/saida/`](../dados/saida): `distritos_base`, `fato_acesso_distrito_servico`, `fato_beneficios_distrito` e `kpi_cidade` |
-| **Ouro** | Modelo dimensional **Snowflake + Galaxy**: 8 fatos e 6 dimensões, pronto para o painel. A `dim_tempo` (calendário) é criada no Power BI e liga a abertura do caso, o encaminhamento e a identificação do documento | [`dados/saida_modelo/`](../dados/saida_modelo), [`dados/saida_app/`](../dados/saida_app) e, de [`dados/saida/`](../dados/saida), `dim_distrito`, `dim_subprefeitura`, `dim_equipamento` e `fato_risco_setor` |
+| **Ouro** | Modelo dimensional **Snowflake + Galaxy**: 7 fatos e 6 dimensões, pronto para o painel. No modelo, a `dim_tempo` é uma proposta em escala; no protótipo, a evolução no tempo do painel usa um calendário criado no Power BI e a `fato_documento_historico` como tabelas de apoio | [`dados/saida_modelo/`](../dados/saida_modelo), [`dados/saida_app/`](../dados/saida_app) e, de [`dados/saida/`](../dados/saida), `dim_distrito`, `dim_subprefeitura`, `dim_equipamento` e `fato_risco_setor` |
 
 As conferências do tratamento (96 distritos, população somada igual ao Censo, as duas bases do CadÚnico iguais) são a porta de entrada da Prata: dado que não passa nelas não sobe de camada.
 
