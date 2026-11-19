@@ -28,7 +28,7 @@ A arquitetura segue as mesmas duas trilhas dos [notebooks](../notebooks/):
 ```mermaid
 flowchart LR
     subgraph P[Trilha do painel · lote mensal]
-        A[14 bases públicas] --> B[Azure Data Factory]
+        A[14 bases: 12 públicas + 2 do grupo] --> B[Azure Data Factory]
         B --> C[(Bronze)]
         C --> D[Python · Colab<br>tratamento e modelo]
         D --> E[(Prata)] --> F[(Ouro<br>Snowflake + Galaxy)]
@@ -66,13 +66,13 @@ Na origem há dois tipos de dado: **o que já existe** (bases públicas) e **o q
 | **Cidadão no WhatsApp** | Toque em "Ouvir em áudio", PARAR / VOLTAR e status de entrega (enviada, entregue, lida, falhou) |
 | **Pesquisa exploratória do grupo** | Respostas de moradores e profissionais da linha de frente (Google Forms), pseudonimizadas com SHA-256. Orientou a escolha do tema; **não alimenta o painel** ([`pesquisa/`](../pesquisa/README.md)) |
 
-> Das 14 bases, a 14ª (crianças até 5 anos sem registro, IBGE/SIDRA) é usada só na apresentação, fora do painel.
+> São 14 bases: 12 públicas e 2 levantamentos do grupo (cartórios e Poupatempo), listadas nas [Referências](../README.md#-referências). Uma delas, crianças de até 5 anos sem registro (IBGE/SIDRA), é usada só na apresentação, fora do painel.
 
 ### 2. Ingestão
 
 | Ferramenta | Tipo | Papel |
 |---|---|---|
-| **Azure Data Factory** | Azure | Carga mensal das 14 bases públicas na Bronze e carga diária do banco do app |
+| **Azure Data Factory** | Azure | Carga mensal das 14 bases (12 públicas e 2 do grupo) na Bronze e carga diária do banco do app |
 | **Azure API Management** | Azure | Entrada única e segura do app (HTTPS, autenticação e limite de requisições) |
 | **Webhook (FastAPI)** | Open source | Recebe os eventos da Meta, valida a assinatura `X-Hub-Signature-256` e descarta mensagens repetidas pelo `wamid` |
 

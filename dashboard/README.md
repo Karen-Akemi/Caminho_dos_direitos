@@ -71,7 +71,14 @@ python dashboard/gerar_dados_painel.py
 
 O script lê `dados/saida/`, `dados/saida_modelo/` e `dados/saida_app/` e gera `dados_painel.js`.
 
-## Como replicar no Power BI (`Caminho-dos-direitos.pbix`)
+## Arquivos do Power BI
+
+| Arquivo | O que é |
+|---|---|
+| [`caminho-dos-direitos-dashboard-v2.pbix`](caminho-dos-direitos-dashboard-v2.pbix) | Versão atual, com as abas **Gestão** e **Operação** e a `dim_tempo` |
+| [`Caminho-dos-direitos.pbix`](Caminho-dos-direitos.pbix) | Primeira versão, mantida como histórico |
+
+## Como replicar no Power BI
 
 1. Atualize as tabelas `dim_caso`, `fato_encaminhamento` e `fato_documento_pendente` (ganharam colunas de data) e importe `fato_documento_historico`.
 2. Crie a tabela de calendário e ligue a `data_abertura`, `data_encaminhamento` e `data_identificacao` (relação ativa só com uma; as outras com `USERELATIONSHIP`):

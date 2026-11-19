@@ -4,7 +4,7 @@ Projeto desenvolvido para a Global Solution da FIAP. O Caminho dos Direitos prop
 
 ## Apresentações
 
-- [Apresentação Completa](https://github.com/Karen-Akemi/Caminho_dos_direitos/blob/1f0878e4823217f9f23083457567087896a30e7c/apresentacao/GS_2TSCPV_Pitch_Caminho_dos_Direitos_AgentesTech.pdf) — reúne a pesquisa de campo, os protótipos, a arquitetura de dados e os links dos entregáveis.
+- [Apresentação Completa](GS_2TSCPV_Pitch_Caminho_dos_Direitos_AgentesTech.pdf) — reúne a pesquisa de campo, os protótipos, a arquitetura de dados e os links dos entregáveis.
 - [Pitch — apresentação resumida](https://youtu.be/J50OedLo1p4) — apresenta o problema, a solução e os impactos esperados.
 
 ## Como a solução funciona

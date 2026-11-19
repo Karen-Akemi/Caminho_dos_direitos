@@ -1,6 +1,6 @@
 # 📊 Pesquisa de Campo Primária — Caminho dos Direitos
 
-Este diretório contém os dados tratados (Camadas **Silver** e **Gold**), o pipeline de higienização e os principais *insights* extraídos da pesquisa primária realizada pelo grupo para fundamentar a solução **Caminho dos Direitos** (Global Solution FIAP 2026.2 — CitizenTech).
+Este diretório contém os dados tratados (camadas **Prata** e **Ouro**; nos nomes dos arquivos, `silver_` e `gold_`), o pipeline de higienização e os principais *insights* extraídos da pesquisa primária realizada pelo grupo para fundamentar a solução **Caminho dos Direitos** (Global Solution FIAP 2026.2 — CitizenTech).
 
 ---
 
@@ -16,14 +16,14 @@ A escuta ativa foi dividida em duas frentes complementares para capturar as duas
 
 ## 🗂️ Estrutura dos Arquivos no Repositório
 
-Os dados brutos (Camada Bronze) passaram por um pipeline em Python (`Pandas`) aplicando padronização `snake_case`, reconciliação territorial com a malha oficial de distritos da Prefeitura de São Paulo e **pseudonimização via hash criptográfico (`SHA-256`)** para proteção da privacidade dos respondentes (LGPD *by design*):
+Os dados brutos (camada Bronze) passaram por um pipeline em Python (`Pandas`) aplicando padronização `snake_case`, reconciliação territorial com a malha oficial de distritos da Prefeitura de São Paulo e **pseudonimização via hash criptográfico (`SHA-256`)** para proteção da privacidade dos respondentes (LGPD *by design*):
 
 | Arquivo | Camada | Descrição Técnica |
 | :--- | :---: | :--- |
-| `silver_pesquisa_cidadaos_tratada.csv` | **Silver** | Base higienizada de moradores ($n=19$), com bairros padronizados para Distritos/Subprefeituras oficiais e *flags* binárias de risco de bloqueio e fricção documental. |
-| `silver_pesquisa_agentes_tratada.csv` | **Silver** | Base higienizada de profissionais de saúde e assistência ($n=2$, Subprefeitura M'Boi Mirim), mapeando fluxos de encaminhamento e gargalos operacionais. |
-| `gold_pesquisa_canais_informacao.csv` | **Gold** | Tabela dimensional explodida (1:N) contabilizando a frequência individual de cada canal de informação utilizado pelos moradores. |
-| `gold_pesquisa_gargalos_documentais.csv` | **Gold** | Tabela analítica explodida (1:N) isolando os documentos e benefícios específicos que travaram a jornada dos respondentes. |
+| `silver_pesquisa_cidadaos_tratada.csv` | **Prata** | Base higienizada de moradores ($n=19$), com bairros padronizados para Distritos/Subprefeituras oficiais e *flags* binárias de risco de bloqueio e fricção documental. |
+| `silver_pesquisa_agentes_tratada.csv` | **Prata** | Base higienizada de profissionais de saúde e assistência ($n=2$, Subprefeitura M'Boi Mirim), mapeando fluxos de encaminhamento e gargalos operacionais. |
+| `gold_pesquisa_canais_informacao.csv` | **Ouro** | Tabela dimensional explodida (1:N) contabilizando a frequência individual de cada canal de informação utilizado pelos moradores. |
+| `gold_pesquisa_gargalos_documentais.csv` | **Ouro** | Tabela analítica explodida (1:N) isolando os documentos e benefícios específicos que travaram a jornada dos respondentes. |
 
 ---
 
@@ -69,3 +69,5 @@ Quando questionados sobre *"O que mais ajudaria você a resolver documentos e be
 > *"Acho que seria legal um sistema que com os meus dados apresentasse todos os benefícios que tenho direito e como consigo ter acesso a eles."* — **Morador(a) do Jardim Ângela, 18–29 anos**
 
 > *"Talvez uma forma, app ou sistema, não sei, que explicasse onde e como conseguir esses benefícios."* — **Morador(a) da Vila Franca (Paraisópolis), 18–29 anos**
+
+[← Voltar para o README principal](../README.md)

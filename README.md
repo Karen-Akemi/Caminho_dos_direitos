@@ -158,7 +158,7 @@ O projeto guarda só o necessário para encaminhar cada caso:
 
 | | Link |
 |---|---|
-| 📊 **Painel do monitoramento** (interativo, sem baixar nada) | [Abrir no navegador](https://karen-akemi.github.io/Caminho_dos_direitos/) · [arquivo do Power BI](dashboard/Caminho-dos-direitos.pbix) |
+| 📊 **Painel do monitoramento** (interativo, sem baixar nada) | [Abrir no navegador](https://karen-akemi.github.io/Caminho_dos_direitos/) · [Power BI, versão atual](dashboard/caminho-dos-direitos-dashboard-v2.pbix) · [Power BI, primeira versão](dashboard/Caminho-dos-direitos.pbix) |
 | 🌐 **Site do projeto** | [Abrir o site](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html) |
 | 🔐 **Demo por cargo** (login simulado: secretaria, subprefeitura, coordenação e agente) | [Entrar na demo](https://karen-akemi.github.io/Caminho_dos_direitos/site/entrar.html) |
 | 📱 **Protótipo do app** | [Ver as telas no site](https://karen-akemi.github.io/Caminho_dos_direitos/indexsite.html#prototipo) |
@@ -268,7 +268,8 @@ O passo a passo de cada notebook está em [`notebooks/README.md`](notebooks/READ
 │   ├── dados_painel.js            # dados do painel, gerados a partir de dados/
 │   ├── gerar_dados_painel.py      # gera o dados_painel.js (python dashboard/gerar_dados_painel.py)
 │   ├── README.md                  # indicadores, metas e como replicar no Power BI
-│   └── Caminho-dos-direitos.pbix  # arquivo do Power BI
+│   ├── caminho-dos-direitos-dashboard-v2.pbix  # Power BI, versão atual (abas Gestão e Operação)
+│   └── Caminho-dos-direitos.pbix  # Power BI, primeira versão
 ├── notebooks/
 │   ├── Tratamento_GS_v6.ipynb
 │   ├── Modelo_GS_v4.ipynb
@@ -315,7 +316,7 @@ O projeto usa **14 bases**, recortadas nos 96 distritos da cidade de São Paulo:
 2. **GeoSampa:** setores de risco geológico (R1 a R4);
 3. **IBGE, Censo 2022:** população total por distrito;
 4. **IBGE, Censo 2022:** população por faixa etária (via TabNet SMS-SP);
-5. **IBGE, Censo 2022 (SIDRA):** crianças de até 5 anos sem registro de nascimento;
+5. **IBGE, Censo 2022 (SIDRA):** crianças de até 5 anos sem registro de nascimento (usada só na apresentação, fora do painel);
 6. **SMADS:** famílias no CadÚnico por distrito (jan/2026);
 7. **Geoportal SMADS:** localização dos CRAS;
 8. **Portal de Dados Abertos da Prefeitura de São Paulo:** famílias no CadÚnico (jan/2026);
