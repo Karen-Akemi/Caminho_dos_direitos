@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="fato_recomendacoes" directorySegmentName="seg_0" id="80160FF1-5E4F-9310-C770-5EBF25B1A6B2">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="acao" id="27FE6F1F-94B8-8A1C-2F74-5D3619C2BC4F">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="origem" id="4A47756C-4DBF-01A5-7786-82AA83B76859">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="classe_prioridade" id="7EAD050F-48A7-5298-1D74-93F377ED53AE">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="publico_estimado" id="A0EB0275-A647-2E85-6E2E-B790C91B6FAD">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="programa" id="C875DE8A-EC5A-F6C7-5DCC-42463B189314">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="cod_distrito" id="D0EC68E4-A576-D1E2-872B-481989539A7B">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_recomendacao" id="DB772632-B820-514C-1E8A-7FB9F7A8D0B7">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="cras_referencia" id="E2F6DA92-C9A5-343A-A6F1-B405C8D0FCC5">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="motivo" id="F546E72D-EC93-0620-896C-F4979EC869D3">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="fk_rec_distrito" id="210B01D0-D35D-6B91-47BC-10CF160332D1">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="pk_fato_recomendacoes" id="2F68AB6C-E6FD-C1B3-7778-0CABB3499131">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

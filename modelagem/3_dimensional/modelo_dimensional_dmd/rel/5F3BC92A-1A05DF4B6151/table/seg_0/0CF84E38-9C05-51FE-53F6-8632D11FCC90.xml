@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0CF84E38-9C05-51FE-53F6-8632D11FCC90" name="fato_item_plano">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Grao: um direito sugerido por caso, com situacao. Fato sem medida. SIMULADO.]]></commentInRDBMS>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_caso" id="35BA2A81-66FC-4C6C-B023-6532E837F980">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>F8A05019-1FB4-9785-FBC7-1C5BACACE840</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FB63DCA7-6B30-42FE-3E96-0384149D1CED" referredColumn="38C62245-0107-D7F4-289D-66B72E2C4E9F"/>
+</associations>
+</Column>
+<Column name="id_programa" id="AD7FFD60-F176-ACDF-D0B2-E8E50261A617">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>15EDF17A-89EC-3D6D-5E74-973A71C62B2E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="627503BB-E5BA-FB24-107E-558390A3AC7C" referredColumn="3F1643DD-3BA2-2741-9015-78AC61579C75"/>
+</associations>
+</Column>
+<Column name="situacao" id="CF59B6B4-F403-2F63-EE91-1D236266DF41">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Dimensao degenerada: Ja recebe, Precisa atualizar, Ainda nao pediu, Falta documento, Bloqueado.]]></commentInRDBMS>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>EBA9967B-0E30-4C72-54AB-DE88A8080843</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="situacao_ordem" id="06A6F8AC-3D21-A2C8-3369-A00D806E1CC7">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>7DA7B046-59AC-3648-8C9D-ED3A19A8DAA4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="origem" id="3988102A-CF53-C04B-A849-DE7F28E14953">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>EBA9967B-0E30-4C72-54AB-DE88A8080843</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F1465A1A-933A-0DF4-295B-3F7956D89B44" name="pk_fato_item_plano">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35BA2A81-66FC-4C6C-B023-6532E837F980"/>
+<colUsage columnID="AD7FFD60-F176-ACDF-D0B2-E8E50261A617"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FD13B325-5D0C-425B-B2F8-B22AA133D3D3" name="fk_item_caso">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35BA2A81-66FC-4C6C-B023-6532E837F980"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="096A3B6F-3533-0632-AC71-9CC87985DB16" name="fk_item_programa">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AD7FFD60-F176-ACDF-D0B2-E8E50261A617"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

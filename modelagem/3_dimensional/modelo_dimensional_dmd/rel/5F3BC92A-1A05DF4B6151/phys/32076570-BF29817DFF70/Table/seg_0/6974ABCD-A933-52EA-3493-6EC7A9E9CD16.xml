@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="dim_caso" directorySegmentName="seg_0" id="6974ABCD-A933-52EA-3493-6EC7A9E9CD16">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="faixa_etaria" id="0975E8BB-FC5C-7198-2B13-D75051625C2D">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="area_risco_r3r4" id="21D4F905-8C20-0328-6216-0C802E123F5C">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="categoria_lembrete" id="245FD1A6-99F2-9373-DE10-17F8FCF6F344">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_caso" id="38C62245-0107-D7F4-289D-66B72E2C4E9F">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="whatsapp" id="4DF443F6-E26C-06F3-CBDD-A87BC1341952">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="faixa_renda_ordem" id="4DFC0E79-2D5B-A85B-6B00-3C89C3BCCBD2">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="origem" id="5BAD0EBE-5A25-75B2-B774-266542699417">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="cod_distrito" id="8098403F-BD1C-5CBC-652F-0FFC138393EC">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="formato_lembrete" id="AD0D07D1-0CB5-E12F-546F-D6682DC9EB6D">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="faixa_renda" id="CC1F9069-9980-F934-B56D-E5273CBC3D20">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_unidade" id="D53AF15B-F763-D829-961C-E29DB5DA2914">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="situacao_caso" id="DD52321C-5CE8-F6B0-D922-2F992D8E6D11">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="aceita_lembrete" id="E290DB6D-3A55-2ED6-6402-0F15AA396548">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="faixa_etaria_ordem" id="F2F88336-1159-9D7A-B8BB-3F0A9ACBEC92">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="fk_caso_unidade" id="3ECAFADC-BEA9-D408-C4E1-EC7D51D777C3">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="pk_dim_caso" id="7B7BDC20-A2C8-01B9-6744-AF6FF4229666">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

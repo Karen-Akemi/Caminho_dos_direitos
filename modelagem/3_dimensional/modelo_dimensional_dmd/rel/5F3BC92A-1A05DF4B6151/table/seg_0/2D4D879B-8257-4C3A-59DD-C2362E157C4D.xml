@@ -1,0 +1,109 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2D4D879B-8257-4C3A-59DD-C2362E157C4D" name="dim_distrito">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[96 distritos de SP (GeoSampa / Censo 2022). Dimensao conformada entre app e territorio.]]></commentInRDBMS>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="cod_distrito" id="87FFD0ED-141D-A3D4-6E79-9A74A9D6269D">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>D4781699-4515-BBAF-626D-96004F69ECC3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome_distrito" id="2EE63882-78A3-2442-4D89-AB9D98A078D0">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>FC6E119E-E4E8-FBE2-165D-B2F2B0E0B952</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="subprefeitura" id="70401258-EDE9-4570-BCBF-1139B7823C82">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>FC6E119E-E4E8-FBE2-165D-B2F2B0E0B952</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="92E08DB2-643C-278D-2F0A-51D54150CBED" referredColumn="6B54638C-3A73-8DFE-E324-85EE17DD910C"/>
+</associations>
+</Column>
+<Column name="area_km2" id="9193768F-D59A-CBC6-79B7-2E367F1E68E8">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>D5FB07F8-05E3-1156-DDC6-E94F673FD362</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pop_2022" id="BF67200E-E63A-662A-AF07-8A9F870768F8">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>EAF67FD5-F980-C9E7-0CCC-DD701DC90F86</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="densidade_hab_km2" id="7766CD19-A953-BD0C-3608-A2B80EE02E6C">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>88539597-E765-FA13-6A9D-DB199EF1B2B9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8A71C97C-8F0F-58CA-32EF-9E26F8FDB0CF" name="pk_dim_distrito">
+<sourceDDLFile>modelo_dimensional.sql</sourceDDLFile>
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="87FFD0ED-141D-A3D4-6E79-9A74A9D6269D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3400D1BD-D357-E46B-9C82-093B92276475" name="fk_distrito_subpref">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="70401258-EDE9-4570-BCBF-1139B7823C82"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

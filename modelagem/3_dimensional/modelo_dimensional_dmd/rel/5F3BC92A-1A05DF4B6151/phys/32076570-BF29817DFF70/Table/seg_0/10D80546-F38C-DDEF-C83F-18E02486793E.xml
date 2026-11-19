@@ -1,0 +1,152 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="fato_indicadores_distrito" directorySegmentName="seg_0" id="10D80546-F38C-DDEF-C83F-18E02486793E">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="cadunico_por_1000" id="03A305E6-BDD9-DF3D-731B-0EDFECEC502A">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="bpc_pcd" id="0767C19D-1EA7-9E11-199C-166CB538A2B5">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="cras_referencia" id="1D53D2A6-7D5A-4A6D-E5E9-C640C1254EA0">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="familias_cadunico" id="3E7005CB-D9CD-D8E9-E487-C2BB23F0250A">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="lacuna_pbf_familias" id="47ADDA71-D002-AD15-1C9C-36B1A0E2B048">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="origem_esperado_lacuna_indice" id="4B503642-F95C-682D-0D10-6A30816B8A30">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="tem_risco" id="5834C395-C9AD-08BF-6962-EAD4BD2B294A">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="pop_65_mais" id="597E6CBA-3835-76DF-1D3A-1E2DF469384A">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="bpc_idoso" id="59B21B9B-7370-E59A-CC8A-B78128E1C144">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="lacuna_por_1000" id="6EC71DB3-8044-03CB-57FC-EE2ABD91A00E">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="lacuna_bpc_idosos" id="8092DBB9-C242-5126-4530-74198F711331">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="origem_indicadores" id="8170507C-7E4C-6D05-E4D0-6EA4F6945AFB">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="cod_distrito" id="988F47D2-328D-D3B5-1659-FAEABD98B557">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="dist_cras_km" id="9A69A0AA-C93A-9C3B-3739-79C9B224989F">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="lacuna_pessoas" id="9B75598B-275A-23DD-FAA0-BE6E3EDE2CB4">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="setores_risco_r3r4" id="A6AE6AC4-05C3-253C-2669-FC58EA47477C">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="cobertura_pbf" id="BB713828-79F9-8CAC-D358-CF3408D7CF46">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="pct_65" id="BEBFC6CD-F2C1-8BEF-0272-E528CBEC7238">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="bpc_idoso_esperado_taxa" id="C02D2E30-6C63-30DE-BE10-988CE7CB0657">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="pop_total" id="C96A0EC1-1224-912C-2BBC-DB4E7658BDFA">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="indice_prioridade" id="D035DAEE-D860-8B68-6A9A-2FE986A24BB0">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="familias_pbf" id="DA4723C0-F686-7EA2-5FA5-A4DBC27B58F4">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="classe_prioridade" id="E0817C5D-D58B-BD5A-A13D-A2578AB87A2E">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="cobertura_pbf_esperada" id="F645E63C-2FA4-CD0F-E20F-6D1274AB4059">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="taxa_bpc_idoso" id="FC640F25-A0F7-E740-579B-F3E70BCC658D">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="fk_ind_distrito" id="555B3DDB-6A01-C121-3968-D615412FB6DB">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="pk_fato_indicadores_distrito" id="E95906EB-A4F9-278B-2270-8EBC68F9FA5E">
+<createdBy>miih4</createdBy>
+<createdTime>2026-11-19 00:43:21 UTC</createdTime>
+<ownerDesignName>modelo_dimensional_dmd</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>
