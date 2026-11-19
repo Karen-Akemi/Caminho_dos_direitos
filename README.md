@@ -88,7 +88,7 @@ O **Caminho dos Direitos** aproxima pessoas em situação de vulnerabilidade dos
   - ritmo da equipe nas últimas 12 semanas (casos novos × pendências resolvidas);
   - **fila de trabalho**: cada pessoa com pendência, há quanto tempo espera e o próximo passo;
   - documentos que faltam, encaminhamentos por destino e alertas do território.
-- **Filtros** por subprefeitura, distrito, unidade e programa. No Power BI, cada gestor vê só a sua subprefeitura.
+- **Filtros** por subprefeitura, distrito e unidade. Não há filtro de programa: a situação de cada direito aparece lado a lado no gráfico "Situação dos direitos por programa". No Power BI, cada gestor vê só a sua subprefeitura.
 - Na versão HTML, a segurança por linha é simulada pela URL: `dashboard/?sub=M'Boi Mirim&travar=1` ou `dashboard/?uni=410&travar=1` travam o filtro (é o que a demo por cargo usa). `&aba=gestao` ou `&aba=operacao` escolhem a aba.
 - As definições de cada indicador e as metas estão em [`dashboard/README.md`](dashboard/README.md).
 
